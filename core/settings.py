@@ -92,8 +92,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uz'
 LANGUAGES = (
-    ('uz_lat', 'O‘zbek (Lotin)'),
-    ('uz_cyr', 'Ўзбек (Кирилл)')
+    ('uz', 'O‘zbek'),
+    ('ru', 'Русский'),
 )
 
 TIME_ZONE = 'Asia/Tashkent'
