@@ -21,6 +21,16 @@ class CustomUser(models.Model):
         return self.full_name
 
 
+class Product(models.Model):
+    name = models.CharField(_("name"), max_length=200)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(_("description"), blank=True, null=True)
+    delivery_time = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
 class Order(models.Model):
     class OrderStatus(models.TextChoices):
         CREATED = 'CREATED', _('Created')
@@ -36,30 +46,29 @@ class Order(models.Model):
     total_price = models.DecimalField(decimal_places=2, max_digits=10)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    items = models.JSONField(default=list, blank=True, help_text=_("Order items in JSON format"))
-
     class Meta:
         verbose_name = _("Order")
         verbose_name_plural = _("Orders")
-
-    def calculate_total_price(self):
-        total = 0
-        for item in self.items:
-            product_price = item.get("price", 0)
-            quantity = item.get("quantity", 1)
-            total += product_price * quantity
-        self.total_price = total
-        return self.total_price
 
     def __str__(self):
         return f"Order #{self.id} - {self.user.full_name}"
 
 
-class Product(models.Model):
-    name = models.CharField(_("name"), max_length=200)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField(_("description"), blank=True, null=True)
-    delivery_time = models.CharField(max_length=100)
+class CartItem(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cart_items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='cart_items', blank=True, null=True)
+    quantity = models.PositiveIntegerField(default=1)
+    is_visible = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def calculate_amount(self):
+        if self.product and self.quantity:
+            self.amount = self.product.price * self.quantity
+        else:
+            self.amount = 0
+        return self.amount
 
     def __str__(self):
-        return self.name
+        return f"{self.product.name} - {self.user.full_name}"

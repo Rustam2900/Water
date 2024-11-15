@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from bot.models import CustomUser, Order, Product
+from bot.models import CustomUser, Order, Product, CartItem
 
 
 @admin.register(CustomUser)
@@ -12,21 +12,20 @@ class CustomUserAdmin(TranslationAdmin):
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number', 'display_items')
+class OrderAdmin(TranslationAdmin):
+    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number')
     list_filter = ('status', 'created_at')
     search_fields = ('user__username', 'address', 'phone_number')
-    readonly_fields = ('total_price', 'display_items')
-
-    def display_items(self, obj):
-        return "\n".join(
-            [f"{item['name']} - {item['quantity']}x ({item['size']}, {item['color']})" for item in obj.items]
-        )
-
-    display_items.short_description = "Buyurtma mahsulotlari"
 
 
 @admin.register(Product)
 class ProductAdmin(TranslationAdmin):
     list_display = ('name', 'price', 'delivery_time')
     search_fields = ('id', 'name')
+
+
+@admin.register(CartItem)
+class CartItemAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product', 'quantity', 'is_visible', 'created_at')
+    list_filter = ('user', 'product', 'is_visible')
+    search_fields = ('user__username', 'product__name')
