@@ -12,7 +12,7 @@ from bot.utils import default_languages, user_languages, introduction_template, 
     fix_phone
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
-from bot.db import save_user_language, save_user_info_to_db, get_user_language
+from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders
 from bot.states import UserStates
 from bot.models import CustomUser
 
@@ -135,3 +135,33 @@ def update_user_language(user_id, user_lang):
     except CustomUser.DoesNotExist:
         CustomUser.objects.create(telegram_id=user_id, user_lang=user_lang)
         print(f"User created with language {user_lang} for {user_id}")
+
+
+@dp.message(F.text.in_(["📦 My orders", "📦 Мои заказы"]))
+async def get_orders(message: Message):
+    user_id = message.from_user.id
+    user_lang = user_languages.get(user_id, 'en')
+
+    my_orders = await get_my_orders(user_id)
+
+    if not my_orders:
+        await message.answer(
+            text=default_languages[user_lang]['order_not_found'],
+            reply_markup=get_main_menu(user_lang)
+        )
+        return
+
+    msg = ""
+    sorted_orders = sorted(my_orders, key=lambda order: order.created_at, reverse=True)
+
+    for order in sorted_orders:
+        msg = ""
+        msg += f"Order #{order.id}\n"
+        msg += f"Status: {order.get_status_display()}\n"
+        msg += f"Address: {order.address}\n"
+        msg += f"Phone: {order.phone_number}\n"
+        msg += f"Total Price: {order.total_price} USD\n"
+        msg += f"Created At: {order.created_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
+        msg += "----------------------------\n"
+
+        await message.answer(text=f"{default_languages[user_lang]['order']}\n{msg}")

@@ -19,3 +19,26 @@ class CustomUser(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+class Order(models.Model):
+    class OrderStatus(models.TextChoices):
+        CREATED = 'CREATED', _('Created')
+        DELIVERED = 'DELIVERED', _('Delivered')
+        CANCELLED = 'CANCELLED', _('Cancelled')
+
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
+    status = models.CharField(max_length=20, choices=OrderStatus.choices, default=OrderStatus.CREATED)
+    address = models.CharField(_('address'), max_length=255)
+    latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
+    longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, validators=[phone_number_validator])
+    total_price = models.DecimalField(decimal_places=2, max_digits=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _("Order")
+        verbose_name_plural = _("Orders")
+
+    def __str__(self):
+        return f"Order #{self.id} - {self.user.full_name}"
