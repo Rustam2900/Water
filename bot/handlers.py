@@ -1,9 +1,10 @@
 import re
 from aiogram import Dispatcher, Bot, F
-from aiogram.enums import ParseMode
+from aiogram.enums import ParseMode, ContentType
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, \
+    ReplyKeyboardMarkup
 from asgiref.sync import sync_to_async
 
 from bot.keyboards import get_languages, get_main_menu
@@ -13,8 +14,8 @@ from bot.utils import default_languages, user_languages, introduction_template, 
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
-    get_product_by_id, get_order_for_user, create_order
-from bot.states import UserStates
+    get_product_detail, get_cart_items, link_cart_items_to_order, update_order_location, create_order, add_to_cart
+from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
 
 dp = Dispatcher()
@@ -197,9 +198,129 @@ async def get_categories(message: Message):
             category_name = product.name_uz
         else:
             category_name = product.name_ru
-        inline_buttons.append(InlineKeyboardButton(text=category_name, callback_data=f"category_{product.id}"))
+        inline_buttons.append(InlineKeyboardButton(text=category_name, callback_data=f"product_{product.id}"))
     inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
     await message.answer(
         text=default_languages[user_lang]['category_select'],
         reply_markup=inline_kb
     )
+
+
+@dp.callback_query(lambda call: call.data.startswith("product_"))
+async def handle_product_detail(call: CallbackQuery):
+    user_id = call.from_user.id
+    product_id = int(call.data.split("_")[1])
+    user_lang = await get_user_language(user_id)
+
+    product = await get_product_detail(product_id)
+
+    product_name = product.name_uz if user_lang == 'uz' else product.name_ru
+    description = product.description or "not"
+    message_text = (
+        f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
+        f"📄 {default_languages[user_lang]['products_description']}: {description}\n"
+        f"💲 {default_languages[user_lang]['products_price']}: {product.price} USD\n"
+        f"🚚 {default_languages[user_lang]['delivery_time']} {product.delivery_time or 'not'}"
+    )
+
+    inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
+    inline_buttons = []
+    inline_buttons.append(
+        InlineKeyboardButton(text=default_languages[user_lang]['place_order'], callback_data=f"order_{product.id}"))
+    inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
+
+    await call.message.edit_text(message_text, reply_markup=inline_kb)
+
+
+@dp.callback_query(lambda call: call.data.startswith("order_"))
+async def handle_order_start(call: CallbackQuery, state: FSMContext):
+    user_id = call.from_user.id
+    user_lang = await get_user_language(user_id)
+    product_id = int(call.data.split("_")[1])
+    await call.message.answer(text=default_languages[user_lang]['products_quantity_enter'])
+
+    await state.update_data(product_id=product_id)
+    await state.set_state(OrderState.waiting_for_quantity)
+
+
+@dp.message(OrderState.waiting_for_quantity)
+async def process_quantity(message: Message, state: FSMContext):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    data = await state.get_data()
+    quantity = int(message.text)
+    print("quantity: ", quantity)
+    product_id = data['product_id']
+
+    await add_to_cart(
+        user_id=message.from_user.id,
+        product_id=product_id,
+        quantity=quantity
+    )
+
+    await message.answer(default_languages[user_lang]['product_add_cart'])
+    await state.clear()
+
+
+@dp.message(F.text.in_(["savatcha", "саватча"]))
+async def show_cart(message: Message):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    cart_items = await get_cart_items(user_id)
+
+    if not cart_items:
+        await message.answer(default_languages[user_lang]['product_not_cart'])
+        return
+
+    message_text = f"{default_languages[user_lang]['product_shopping_cart']}\n\n"
+    for item in cart_items:
+        message_text += (
+            f"📦 {item.product.name_uz} - {item.quantity} dona\n"
+            f"💲 {default_languages[user_lang]['products_price']} {item.amount} USD\n\n"
+        )
+
+    inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
+    inline_buttons = []
+    inline_buttons.append(
+        InlineKeyboardButton(text=default_languages[user_lang]['place_order'], callback_data=f"confirm_order"))
+    inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
+    await message.answer(message_text, reply_markup=inline_kb)
+
+
+async def create_location_keyboard(message: Message):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    if user_lang not in default_languages:
+        user_lang = 'uz'
+    location_button = KeyboardButton(text=default_languages[user_lang]['send_location'], request_location=True)
+    location_keyboard = ReplyKeyboardMarkup(
+        keyboard=[[location_button]],
+        resize_keyboard=True,
+        one_time_keyboard=True
+    )
+    return location_keyboard
+
+
+@dp.callback_query(lambda c: c.data == "confirm_order")
+async def request_location(callback_query: CallbackQuery, state: FSMContext):
+    user_id = callback_query.from_user.id
+    user_lang = await get_user_language(user_id)
+    await callback_query.message.answer(text=default_languages[user_lang]['send_location_order'],
+                                        reply_markup=await create_location_keyboard(callback_query.message))
+    await state.set_state(OrderAddress.location)
+    await callback_query.answer()
+
+
+@dp.message(F.content_type == ContentType.LOCATION, OrderAddress.location)
+async def save_location_and_create_order(message: Message, state: FSMContext):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    latitude = message.location.latitude
+    longitude = message.location.longitude
+
+    order = await create_order(user_id)
+    await link_cart_items_to_order(user_id, order)
+    await update_order_location(order, latitude, longitude)
+
+    await message.answer(text=default_languages[user_lang]['order_save'])
+    await state.clear()

@@ -19,6 +19,9 @@ def get_main_menu(language):
         [
             KeyboardButton(text=default_languages[language]['my_orders']),
             KeyboardButton(text=default_languages[language]['settings'])
+        ],
+        [
+            KeyboardButton(text=default_languages[language]['cart'])
         ]
 
     ], resize_keyboard=True)
