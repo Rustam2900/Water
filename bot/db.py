@@ -1,4 +1,4 @@
-from bot.models import CustomUser, Order
+from bot.models import CustomUser, Order, Product
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
 
@@ -56,9 +56,9 @@ def get_my_orders(user_telegram_id):
 
 
 @sync_to_async
-def get_all_categories():
+def get_all_product():
     return list(
-        Category.objects.all()
+        Product.objects.all()
     )
 
 

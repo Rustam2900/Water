@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from bot.models import CustomUser, Order
+from bot.models import CustomUser, Order, Product
 
 
 @admin.register(CustomUser)
@@ -24,3 +24,9 @@ class OrderAdmin(admin.ModelAdmin):
         )
 
     display_items.short_description = "Buyurtma mahsulotlari"
+
+
+@admin.register(Product)
+class ProductAdmin(TranslationAdmin):
+    list_display = ('name', 'price', 'delivery_time')
+    search_fields = ('id', 'name')

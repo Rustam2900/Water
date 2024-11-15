@@ -10,3 +10,8 @@ class CustomUserTranslation(TranslationOptions):
 @register(models.Order)
 class ProductTranslation(TranslationOptions):
     fields = ('address',)
+
+
+@register(models.Product)
+class ProductTranslation(TranslationOptions):
+    fields = ('name', 'description')

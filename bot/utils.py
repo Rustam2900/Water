@@ -11,6 +11,7 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "category_select": "mahsulotlar  tanlang",
         "order_not_found": "Buyurtma topilmadi!",
         "successful_changed": "Muvaffaqiyatli o'zgartirildi",
         "select_language": "Til tanlang!",
@@ -26,6 +27,7 @@ default_languages = {
     },
 
     "ru": {
+        "category_select": "маҳсулотлар танланг",
         "order_not_found": "Буюртма топилмади!",
         "successful_changed": "Муваффақиятли ўзгартирилди",
         "select_language": "Тил танланг!",
