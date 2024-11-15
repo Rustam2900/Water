@@ -137,10 +137,10 @@ def update_user_language(user_id, user_lang):
         print(f"User created with language {user_lang} for {user_id}")
 
 
-@dp.message(F.text.in_(["📦 My orders", "📦 Мои заказы"]))
+@dp.message(F.text.in_(["📦 Mening buyurtmalarim", "📦 Менинг буюртмаларим"]))
 async def get_orders(message: Message):
     user_id = message.from_user.id
-    user_lang = user_languages.get(user_id, 'en')
+    user_lang = user_languages.get(user_id, 'uz')
 
     my_orders = await get_my_orders(user_id)
 

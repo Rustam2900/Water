@@ -1,4 +1,4 @@
-from bot.models import CustomUser
+from bot.models import CustomUser, Order
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
 
