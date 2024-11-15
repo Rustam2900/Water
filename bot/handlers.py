@@ -1,9 +1,10 @@
 import re
-from aiogram import Dispatcher, Bot
+from aiogram import Dispatcher, Bot, F
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery
+from asgiref.sync import sync_to_async
 
 from bot.keyboards import get_languages, get_main_menu
 
@@ -11,7 +12,7 @@ from bot.utils import default_languages, user_languages, introduction_template, 
     fix_phone
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
-from bot.db import save_user_language, save_user_info_to_db
+from bot.db import save_user_language, save_user_info_to_db, get_user_language
 from bot.states import UserStates
 from bot.models import CustomUser
 
@@ -102,3 +103,35 @@ async def company_contact(message: Message, state: FSMContext):
         await message.answer(text=error_message)
 
     await state.clear()
+
+
+@dp.message(F.text.in_(["⚙️ Sozlamalar", "⚙️ Созламалар"]))
+async def settings(message: Message):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=get_languages("setLang"))
+
+
+@dp.callback_query(F.data.startswith("setLang"))
+async def change_language(call: CallbackQuery):
+    user_id = call.from_user.id
+    user_lang = call.data.split("_")[1]
+    user_languages[call.from_user.id] = user_lang
+
+    await sync_to_async(update_user_language)(user_id, user_lang)
+
+    await call.message.answer(
+        text=default_languages[user_lang]['successful_changed'],
+        reply_markup=get_main_menu(user_lang)
+    )
+
+
+def update_user_language(user_id, user_lang):
+    try:
+        user_language = CustomUser.objects.get(telegram_id=user_id)
+        user_language.user_lang = user_lang
+        user_language.save()
+        print(f"User language updated for {user_id} to {user_lang}")
+    except CustomUser.DoesNotExist:
+        CustomUser.objects.create(telegram_id=user_id, user_lang=user_lang)
+        print(f"User created with language {user_lang} for {user_id}")

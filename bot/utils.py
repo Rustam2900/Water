@@ -11,15 +11,26 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "successful_changed": "Muvaffaqiyatli o'zgartirildi",
+        "select_language": "Til tanlang!",
+        'categories': 'Kategoriyalar',
+        "my_orders": "📦 Mening buyurtmalarim",
+        "contact_us": "📲 Biz bilan bog‘lanish",
+        "settings": "⚙️ Sozlamalar",
         "full_name": "Iltimos to'liq ismni kiriting",
         "contact": "Iltimos raqamiz kiriting Namuna: +998 93 068 29 11",
         "successful_registration": "Muvaffaqiyatli ro'yxatdan o'tdi",
         "sorry": "Kechirasiz, boshqa raqamni sinab ko'ring",
 
-
     },
 
     "ru": {
+        "successful_changed": "Муваффақиятли ўзгартирилди",
+        "select_language": "Тил танланг!",
+        'categories': 'Категориялар',
+        "my_orders": "📦 Менинг буюртмаларим",
+        "contact_us": "📲 Биз билан боғланиш",
+        "settings": "⚙️ Созламалар",
         "full_name": "Илтимос тўлиқ исмни киритинг",
         "contact": "Илтимос рақамиз киритинг Намуна: +998 93 068 29 11",
         "successful_registration": "Муваффақиятли рўйхатдан ўтди",
@@ -32,47 +43,49 @@ user_languages = {}
 local_user = {}
 
 introduction_template = {
-    'ru':
+    'uz':
         """
-    👕 Магазин Sneaker World <a href="https://t.me/sneaker_world_bot">Sneaker World</a> представляет!
-
-    Что может сделать бот?
-
-    Заказ одежды
-    Информация о последних модных трендах
-    Проверка счетов
-    Будьте в курсе эксклюзивных скидок и акций
-    Вопросы и помощь
-    🌐 SneakerBot - легкий и быстрый сервис!
-
-    🏠 Оставайтесь дома и пользуйтесь уникальными услугами!
-
-    🟢 Присоединяйтесь прямо сейчас: <a href="https://t.me/sneaker_world_bot">Sneaker World</a>
-    ✉️ Телеграм канал: <a href="https://t.me/sneaker_world_bot">Sneaker World</a>
-
-    Sneaker World - Ваш стиль!
+     💧 Chere Suv Kompaniyasi <a href="@pdf_2905_bot">Chere Water</a> ni taqdim etadi 💧
+    
+    Chere suvi bilan bog'liq barcha masalalaringizni hal qiling! 🚰
+    
+    Bot nimalarni qila oladi?
+    - Suv buyurtma qilish
+    - So'nggi suv tariflarini bilish
+    - Hisob-kitoblarni tekshirish
+    - Eksklyuziv chegirmalar va aksiyalar haqida xabardor bo'lish
+    - Savollar va yordam
+    🌐 ChereBot – oson va tezkor xizmat! 
+    
+    🏠 Uyda qolib unikal xizmatlardan foydalaning!
+    
+    🟢 Hoziroq qo'shiling: <a href="@pdf_2905_bot">Chere Water</a>
+    ✉️ Telegram kanal: <a href="@pdf_2905_bot">Chere Water</a>
+    
+    Chere - Sof Suv, Sog‘lom Hayot!
     """,
 
-    "en":
+    "ru":
 
         """
-    👕 Sneaker World shop <a href="https://t.me/sneaker_world_bot">Sneaker World</a> presents!
+    👕💧 Чере Сув Компанияси href="@pdf_2905_bot">Чере Wатер ни тақдим этади 💧
 
-    What can the bot do?
-
-    Place clothing orders
-    Get information about the latest fashion trends
-    Check accounts
-    Stay informed about exclusive discounts and promotions
-    Questions and assistance
-    🌐 SneakerBot - an easy and quick service!
-
-    🏠 Stay at home and enjoy unique services!
-
-    🟢 Join now: <a href="https://t.me/sneaker_world_bot">Sneaker World</a>
-    ✉️ Telegram channel: <a href="https://t.me/sneaker_world_bot">Sneaker World</a>
-
-    Sneaker World - Your Style!
+    Чере суви билан боғлиқ барча масалаларингизни ҳал қилинг! 🚰
+    
+    Бот нималарни қила олади?
+    - Сув буюртма қилиш
+    - Сўнгги сув тарифларини билиш
+    - Ҳисоб-китобларни текшириш
+    - Эксклюзив чегирмалар ва акциялар ҳақида хабардор бўлиш
+    - Саволлар ва ёрдам
+    🌐 ЧереБот – осон ва тезкор хизмат!
+    
+    🏠 Уйда қолиб уникал хизматлардан фойдаланинг!
+    
+    🟢 Ҳозироқ қўшилинг: href="@pdf_2905_bot">Чере Wатер
+    ✉️ Телеграм канал: href="@pdf_2905_bot">Чере Wатер
+    
+    Чере - Соф Сув, Соғлом Ҳаёт!
 
     """
 }
