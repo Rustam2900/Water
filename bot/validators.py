@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 
 def phone_number_validator(value):
-    regex = re.compile(r'^\+998 \d{2} \d{3} \d{2} \d{2}$')
+    regex = re.compile(r'^\+998\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$')
     if not regex.match(value):
         raise ValidationError("error")
 

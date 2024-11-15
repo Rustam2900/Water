@@ -18,7 +18,7 @@ from bot.models import CustomUser
 dp = Dispatcher()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
-phone_number_validator = re.compile(r'^\+998 \d{2} \d{3} \d{2} \d{2}$')
+phone_number_validator = re.compile(r'^\+998\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$')
 
 
 @dp.message(CommandStart())
