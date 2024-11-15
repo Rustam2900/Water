@@ -13,9 +13,19 @@ class CustomUserAdmin(TranslationAdmin):
 
 @admin.register(Order)
 class OrderAdmin(TranslationAdmin):
-    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number')
-    list_filter = ('status', 'created_at')
+    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number', 'is_confirmed')
+
+    list_filter = ('status', 'created_at', 'is_confirmed')
+
     search_fields = ('user__username', 'address', 'phone_number')
+
+    actions = ['mark_as_confirmed']
+
+    def mark_as_confirmed(self, request, queryset):
+        updated_count = queryset.update(is_confirmed=True)
+        self.message_user(request, f"{updated_count} buyurtmalar tasdiqlandi.")
+
+    mark_as_confirmed.short_description = ("Tanlangan buyurtmalarni tasdiqlangan deb belgilang")
 
 
 @admin.register(Product)
