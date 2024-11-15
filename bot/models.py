@@ -45,6 +45,9 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, validators=[phone_number_validator])
     total_price = models.DecimalField(decimal_places=2, max_digits=10)
     created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='orders/images/', blank=True, null=True, verbose_name=_('Order Image'))
+
+    is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
 
     class Meta:
         verbose_name = _("Order")
