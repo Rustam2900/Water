@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from bot.validators import phone_number_validator
-from django.contrib.postgres.fields import JSONField
 
 
 class CustomUser(models.Model):
@@ -37,7 +36,6 @@ class Order(models.Model):
     total_price = models.DecimalField(decimal_places=2, max_digits=10)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # JSONField importini django.db.models.JSONField ga o'zgartirish
     items = models.JSONField(default=list, blank=True, help_text=_("Order items in JSON format"))
 
     class Meta:
@@ -45,9 +43,6 @@ class Order(models.Model):
         verbose_name_plural = _("Orders")
 
     def calculate_total_price(self):
-        """
-        Mahsulotlarning umumiy narxini hisoblash.
-        """
         total = 0
         for item in self.items:
             product_price = item.get("price", 0)
