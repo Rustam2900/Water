@@ -12,7 +12,15 @@ class CustomUserAdmin(TranslationAdmin):
 
 
 @admin.register(Order)
-class OrderAdmin(TranslationAdmin):
-    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number')
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'status', 'total_price', 'created_at', 'phone_number', 'display_items')
     list_filter = ('status', 'created_at')
     search_fields = ('user__username', 'address', 'phone_number')
+    readonly_fields = ('total_price', 'display_items')
+
+    def display_items(self, obj):
+        return "\n".join(
+            [f"{item['name']} - {item['quantity']}x ({item['size']}, {item['color']})" for item in obj.items]
+        )
+
+    display_items.short_description = "Buyurtma mahsulotlari"

@@ -107,14 +107,17 @@ STATIC_URL = '/static/'
 
 if DEBUG:
     STATICFILES_DIRS = [
-        BASE_DIR.joinpath('staticfiles'), ]
+        BASE_DIR / 'staticfiles',  # Static fayllar uchun papka
+    ]
+else:
+    # Ishlab chiqarish uchun faqat STATIC_ROOT kerak bo'ladi
+    STATICFILES_DIRS = []
 
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale/',
+    BASE_DIR / 'locale/',  # Tillar uchun papka
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -3,7 +3,7 @@ from aiogram import Dispatcher, Bot, F
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 from asgiref.sync import sync_to_async
 
 from bot.keyboards import get_languages, get_main_menu
@@ -165,3 +165,97 @@ async def get_orders(message: Message):
         msg += "----------------------------\n"
 
         await message.answer(text=f"{default_languages[user_lang]['order']}\n{msg}")
+
+
+@dp.message(F.text.in_(["📲 Biz bilan bog‘lanish", "📲 Биз билан боғланиш"]))
+async def contact_us(message: Message):
+    user_id = message.from_user.id
+    user_lang = user_languages.get(user_id, 'uz')
+
+    contact_info = f"{default_languages[user_lang]['contact_us']}\n" \
+                   f"Address: UZB\n" \
+                   f"Email: jumanazarustam.com\n" \
+                   f"Phone: +998 93 068 29 11\n" \
+                   f"Working Hours: Tashkent \n" \
+                   f"telegram: @Jumanazarov_Rustam"
+
+    await message.answer(contact_info)
+
+
+@dp.message(F.text.in_(["Buyurtma berish", "Буюртма бериш"]))
+async def get_categories(message: Message):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    print(f"User language: {user_lang}")
+    categories = await get_all_categories()
+    inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
+    inline_buttons = []
+
+    for category in categories:
+        if user_lang == 'uz':
+            category_name = category.name_ru
+        else:
+            category_name = category.name_en
+        inline_buttons.append(InlineKeyboardButton(text=category_name, callback_data=f"category_{category.id}"))
+    inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
+    await message.answer(
+        text=default_languages[user_lang]['category_select'],
+        reply_markup=inline_kb
+    )
+
+
+@dp.callback_query(lambda call: call.data.startswith("category_"))
+async def handle_products_by_category(call: CallbackQuery):
+    user_id = call.from_user.id
+    user_lang = await get_user_language(user_id)
+    category_id = int(call.data.split("_")[1])
+
+    products = await fetch_products_by_category(category_id)
+    inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
+    inline_buttons = []
+
+    for product in products:
+        product_name = product.name_ru if user_lang == 'ru' else product.name_en
+        inline_buttons.append(InlineKeyboardButton(text=product_name, callback_data=f"product_{product.id}"))
+
+    inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
+    await call.message.edit_text(text=default_languages[user_lang]['products'], reply_markup=inline_kb)
+
+
+@dp.callback_query(lambda call: call.data.startswith("product_"))
+async def handle_product_detail(call: CallbackQuery):
+    user_id = call.from_user.id
+    product_id = int(call.data.split("_")[1])
+    user_lang = await get_user_language(user_id)
+
+    product = await get_product_detail(product_id)
+
+    product_name = product.name_ru if user_lang == 'ru' else product.name_en
+    description = product.description or "not"
+    message_text = (
+        f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
+        f"📄 {default_languages[user_lang]['products_description']}: {description}\n"
+        f"💲 {default_languages[user_lang]['products_price']}: {product.price} USD\n"
+        f"📏 {default_languages[user_lang]['products_size']}: {product.size or 'not'}\n"
+        f"🎨 {default_languages[user_lang]['products_ranks']}: {product.color or 'not'}\n"
+        f"🚚 {default_languages[user_lang]['delivery_time']} {product.delivery_time or 'not'}"
+    )
+
+    inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
+    inline_buttons = []
+    inline_buttons.append(
+        InlineKeyboardButton(text=default_languages[user_lang]['place_order'], callback_data=f"order_{product.id}"))
+    inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
+
+    await call.message.edit_text(message_text, reply_markup=inline_kb)
+
+
+@dp.callback_query(lambda call: call.data.startswith("order_"))
+async def handle_order_start(call: CallbackQuery, state: FSMContext):
+    user_id = call.from_user.id
+    user_lang = await get_user_language(user_id)
+    product_id = int(call.data.split("_")[1])
+    await call.message.answer(text=default_languages[user_lang]['products_ranks_enter'])
+
+    await state.update_data(product_id=product_id)
+    await state.set_state(OrderState.waiting_for_color)
