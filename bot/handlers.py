@@ -14,7 +14,8 @@ from bot.utils import default_languages, user_languages, introduction_template, 
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
-    get_product_detail, get_cart_items, link_cart_items_to_order, update_order_location, create_order, add_to_cart
+    get_product_detail, get_cart_items, link_cart_items_to_order, update_order_location, create_order, add_to_cart, \
+    get_order_for_user, save_receipt_image, finalize_order
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
 
@@ -317,10 +318,30 @@ async def save_location_and_create_order(message: Message, state: FSMContext):
     user_lang = await get_user_language(user_id)
     latitude = message.location.latitude
     longitude = message.location.longitude
+    await message.answer(text=default_languages[user_lang]['send_receipt'])
 
-    order = await create_order(user_id)
+    order = await create_order(user_id, save=False)
     await link_cart_items_to_order(user_id, order)
     await update_order_location(order, latitude, longitude)
+    await state.set_state(OrderAddress.image)
+    await message.answer(text=default_languages[user_lang]['send_receipt'])
+
+
+@dp.message(F.content_type == "photo")
+async def handle_receipt_image(message: Message, state: FSMContext):
+    user_id = message.from_user.id
+
+    user_lang = await get_user_language(user_id)
+
+    order = await get_order_for_user(user_id)
+    if not order:
+        await message.answer(text=default_languages[user_lang]['order_not_found'])
+        return
+
+    receipt_file = message.photo[-1].file_id
+    await save_receipt_image(order, receipt_file)
+
+    await finalize_order(order)
 
     await message.answer(text=default_languages[user_lang]['order_save'])
     await state.clear()

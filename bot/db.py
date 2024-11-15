@@ -144,9 +144,13 @@ def update_order_location(order, latitude, longitude):
 
 
 @sync_to_async
-def create_order(user_id):
+def create_order(user_id, save=False):
     user = CustomUser.objects.get(telegram_id=user_id)
-    return Order.objects.create(user=user, total_price=0)
+    order = Order.objects.create(user=user)
+
+    if save:
+        order.save()
+    return order
 
 
 @sync_to_async
@@ -161,3 +165,19 @@ def add_to_cart(user_id, product_id, quantity):
         quantity=quantity,
         amount=amount
     )
+
+
+async def get_order_for_user(user_id):
+    return Order.objects.filter(user__telegram_id=user_id, status=Order.OrderStatus.CREATED).first()
+
+
+@sync_to_async
+def save_receipt_image(order, receipt_file):
+    order.receipt_image = receipt_file
+    order.save()
+
+
+@sync_to_async
+def finalize_order(order):
+    order.status = Order.OrderStatus.CREATED
+    order.save()

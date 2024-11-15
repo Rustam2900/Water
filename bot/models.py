@@ -43,7 +43,7 @@ class Order(models.Model):
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
     phone_number = models.CharField(max_length=20, validators=[phone_number_validator])
-    total_price = models.DecimalField(decimal_places=2, max_digits=10)
+    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='orders/images/', blank=True, null=True, verbose_name=_('Order Image'))
 
@@ -55,6 +55,14 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id} - {self.user.full_name}"
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        total_price = sum(cart_item.amount for cart_item in self.cart_items.all())
+        if self.total_price != total_price:
+            self.total_price = total_price
+            super().save(update_fields=['total_price'])
 
 
 class CartItem(models.Model):
@@ -75,3 +83,12 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.user.full_name}"
+
+    def save(self, *args, **kwargs):
+        self.calculate_amount()
+        super().save(*args, **kwargs)
+
+        if self.order:
+            order = self.order
+            order.total_price = sum(item.amount for item in order.cart_items.all())
+            order.save(update_fields=['total_price'])

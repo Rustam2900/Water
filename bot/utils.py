@@ -11,6 +11,7 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "send_receipt": "chek yuboring",
         "order": "Mening buyurtmalarim",
         "order_save": "Sizning buyurtmangiz qabul qilindi va saqlandi.",
         "send_location_order": "Buyurtmangizni tasdiqlash uchun manzilingizni yuboring.",
@@ -41,6 +42,7 @@ default_languages = {
     },
 
     "ru": {
+        "send_receipt": "чек юборинг",
         "order": "Менинг буюртмаларим",
         "order_save": "Сизнинг буюртмангиз қабул қилинди ва сақланди.",
         "send_location_order": "Буюртмангизни тасдиқлаш учун манзилингизни юборанг.",

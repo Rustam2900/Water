@@ -12,3 +12,4 @@ class OrderState(StatesGroup):
 
 class OrderAddress(StatesGroup):
     location = State()
+    image = State()
