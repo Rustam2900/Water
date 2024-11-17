@@ -124,10 +124,11 @@ def link_cart_items_to_order(user_id, order):
     cart_items = CartItem.objects.filter(user__telegram_id=user_id, order__isnull=True)
     total_price = sum(item.amount for item in cart_items)
 
-    cart_items.update(order=order)
+    # Faqat vaqtinchalik bog‘laymiz
+    for item in cart_items:
+        item.order = order
 
     order.total_price = total_price
-    order.save()
 
 
 @sync_to_async
@@ -138,18 +139,13 @@ def update_order_location(order, latitude, longitude):
     order.phone_number = user.phone_number
 
     google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
-
     order.address = f"Google Maps: {google_maps_link}"
-    order.save()
 
 
 @sync_to_async
-def create_order(user_id, save=False):
+def create_order(user_id):
     user = CustomUser.objects.get(telegram_id=user_id)
     order = Order.objects.create(user=user)
-
-    if save:
-        order.save()
     return order
 
 
@@ -167,7 +163,8 @@ def add_to_cart(user_id, product_id, quantity):
     )
 
 
-async def get_order_for_user(user_id):
+@sync_to_async
+def get_order_for_user(user_id):
     return Order.objects.filter(user__telegram_id=user_id, status=Order.OrderStatus.CREATED).first()
 
 
@@ -178,6 +175,9 @@ def save_receipt_image(order, receipt_file):
 
 
 @sync_to_async
-def finalize_order(order):
-    order.status = Order.OrderStatus.CREATED
+def save_order_to_database(order):
+    # Cart itemsni saqlash
+    CartItem.objects.filter(order=order).update(order=order)
+
+    # Orderni bazaga saqlash
     order.save()

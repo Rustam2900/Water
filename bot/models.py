@@ -37,16 +37,15 @@ class Order(models.Model):
         DELIVERED = 'DELIVERED', _('Delivered')
         CANCELLED = 'CANCELLED', _('Cancelled')
 
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='orders')
+    user = models.ForeignKey('CustomUser', on_delete=models.CASCADE, related_name='orders')
     status = models.CharField(max_length=20, choices=OrderStatus.choices, default=OrderStatus.CREATED)
     address = models.CharField(_('address'), max_length=255)
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
-    phone_number = models.CharField(max_length=20, validators=[phone_number_validator])
+    phone_number = models.CharField(max_length=20)
     total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='orders/images/', blank=True, null=True, verbose_name=_('Order Image'))
-
     is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
 
     class Meta:
@@ -56,39 +55,38 @@ class Order(models.Model):
     def __str__(self):
         return f"Order #{self.id} - {self.user.full_name}"
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        total_price = sum(cart_item.amount for cart_item in self.cart_items.all())
-        if self.total_price != total_price:
-            self.total_price = total_price
-            super().save(update_fields=['total_price'])
+    def update_total_price(self):
+        """Umumiy narxni hisoblash va yangilash."""
+        total = self.cart_items.aggregate(total=Sum('amount'))['total'] or 0.00
+        if self.total_price != total:
+            self.total_price = total
+            self.save(update_fields=['total_price'])
 
 
 class CartItem(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cart_items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    user = models.ForeignKey('CustomUser', on_delete=models.CASCADE, related_name='cart_items')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='cart_items')
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='cart_items', blank=True, null=True)
     quantity = models.PositiveIntegerField(default=1)
     is_visible = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
     def calculate_amount(self):
+        """Mahsulot narxini va miqdorini asosida `amount`ni hisoblash."""
         if self.product and self.quantity:
             self.amount = self.product.price * self.quantity
         else:
             self.amount = 0
         return self.amount
 
-    def __str__(self):
-        return f"{self.product.name} - {self.user.full_name}"
-
     def save(self, *args, **kwargs):
-        self.calculate_amount()
+        self.calculate_amount()  # `amount`ni yangilash
         super().save(*args, **kwargs)
 
         if self.order:
-            order = self.order
-            order.total_price = sum(item.amount for item in order.cart_items.all())
-            order.save(update_fields=['total_price'])
+            # Buyurtmaning umumiy narxini yangilash
+            self.order.update_total_price()
+
+    def __str__(self):
+        return f"{self.product.name} - {self.user.full_name}"

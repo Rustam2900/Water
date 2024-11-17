@@ -15,7 +15,7 @@ from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
     get_product_detail, get_cart_items, link_cart_items_to_order, update_order_location, create_order, add_to_cart, \
-    get_order_for_user, save_receipt_image, finalize_order
+    save_order_to_database, save_receipt_image, get_order_for_user
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
 
@@ -320,7 +320,7 @@ async def save_location_and_create_order(message: Message, state: FSMContext):
     longitude = message.location.longitude
     await message.answer(text=default_languages[user_lang]['send_receipt'])
 
-    order = await create_order(user_id, save=False)
+    order = await create_order(user_id)
     await link_cart_items_to_order(user_id, order)
     await update_order_location(order, latitude, longitude)
     await state.set_state(OrderAddress.image)
@@ -330,18 +330,20 @@ async def save_location_and_create_order(message: Message, state: FSMContext):
 @dp.message(F.content_type == "photo")
 async def handle_receipt_image(message: Message, state: FSMContext):
     user_id = message.from_user.id
-
     user_lang = await get_user_language(user_id)
 
+    # Vaqtinchalik orderni qaytarib olamiz
     order = await get_order_for_user(user_id)
     if not order:
         await message.answer(text=default_languages[user_lang]['order_not_found'])
         return
 
+    # Rasmni saqlaymiz
     receipt_file = message.photo[-1].file_id
     await save_receipt_image(order, receipt_file)
 
-    await finalize_order(order)
+    # Hamma ma'lumotlarni birdaniga saqlash
+    await save_order_to_database(order)
 
     await message.answer(text=default_languages[user_lang]['order_save'])
     await state.clear()
