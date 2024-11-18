@@ -32,8 +32,8 @@ class Product(models.Model):
 
 
 class CartItem(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cart_items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cart_items_user')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items_product')
     order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='cart_items', blank=True, null=True)
     quantity = models.PositiveIntegerField(default=1)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)

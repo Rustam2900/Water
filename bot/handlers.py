@@ -9,6 +9,7 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKe
     ReplyKeyboardMarkup
 from asgiref.sync import sync_to_async
 
+# from bot.kanal import send_order_to_channel
 from bot.keyboards import get_languages, get_main_menu
 
 from bot.utils import default_languages, user_languages, introduction_template, \
@@ -355,6 +356,9 @@ async def handle_receipt_image(message: Message, state: FSMContext):
     await save_receipt_image(order, image_name, file_bytes)
 
     await save_order_to_database(order)
+    # await send_order_to_channel(order)
 
     await message.answer(text=default_languages[user_lang]['order_save'])
     await state.clear()
+
+

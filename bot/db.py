@@ -159,3 +159,7 @@ def link_cart_items_to_order(user_id, order):
 
     order.total_price = total_price
     order.save()
+
+
+
+
