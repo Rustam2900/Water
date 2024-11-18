@@ -1,15 +1,8 @@
-import os
 import environ
 
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# SECRET_KEY = 'django-insecure-%--0$!c^h2*vji&+0rmkz+_h7-ti%%u$$^j$p#a7!h4k2!&0*q'
-#
-# DEBUG = True
-#
-# ALLOWED_HOSTS = []
 
 env = environ.Env(
     DEBUG=(bool, False)
@@ -107,17 +100,16 @@ STATIC_URL = '/static/'
 
 if DEBUG:
     STATICFILES_DIRS = [
-        BASE_DIR / 'staticfiles',  # Static fayllar uchun papka
+        BASE_DIR / 'staticfiles',
     ]
 else:
-    # Ishlab chiqarish uchun faqat STATIC_ROOT kerak bo'ladi
     STATICFILES_DIRS = []
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LOCALE_PATHS = [
-    BASE_DIR / 'locale/',  # Tillar uchun papka
+    BASE_DIR / 'locale/',
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

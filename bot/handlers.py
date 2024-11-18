@@ -360,5 +360,3 @@ async def handle_receipt_image(message: Message, state: FSMContext):
 
     await message.answer(text=default_languages[user_lang]['order_save'])
     await state.clear()
-
-
