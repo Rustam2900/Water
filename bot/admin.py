@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from bot.models import CustomUser, Order, Product, CartItem
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum
 
 
 @admin.register(CustomUser)
@@ -39,3 +39,6 @@ class CartItemAdmin(admin.ModelAdmin):
     list_display = ('user', 'product', 'quantity', 'is_visible', 'created_at')
     list_filter = ('user', 'product', 'is_visible')
     search_fields = ('user__username', 'product__name')
+
+
+admin.site.register(OrderMinSum)

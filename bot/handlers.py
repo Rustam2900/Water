@@ -1,4 +1,6 @@
 import re
+
+import aiohttp
 from aiogram import Dispatcher, Bot, F
 from aiogram.enums import ParseMode, ContentType
 from aiogram.filters import CommandStart
@@ -14,8 +16,8 @@ from bot.utils import default_languages, user_languages, introduction_template, 
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
-    get_product_detail, get_cart_items, link_cart_items_to_order, update_order_location, create_order, add_to_cart, \
-    save_order_to_database, save_receipt_image, get_order_for_user
+    get_product_detail, get_cart_items, link_cart_items_to_order, add_to_cart, \
+    save_order_to_database, save_receipt_image, get_or_create_order
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
 
@@ -109,7 +111,7 @@ async def company_contact(message: Message, state: FSMContext):
 
 
 @dp.message(F.text.in_(["⚙️ Sozlamalar", "⚙️ Созламалар"]))
-async def settings(message: Message):
+async def settings_(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
     await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=get_languages("setLang"))
@@ -312,19 +314,14 @@ async def request_location(callback_query: CallbackQuery, state: FSMContext):
     await callback_query.answer()
 
 
-@dp.message(F.content_type == ContentType.LOCATION, OrderAddress.location)
-async def save_location_and_create_order(message: Message, state: FSMContext):
-    user_id = message.from_user.id
-    user_lang = await get_user_language(user_id)
+@dp.message(F.content_type == ContentType.LOCATION)
+async def save_location_temp(message: Message, state: FSMContext):
     latitude = message.location.latitude
     longitude = message.location.longitude
-    await message.answer(text=default_languages[user_lang]['send_receipt'])
-
-    order = await create_order(user_id)
-    await link_cart_items_to_order(user_id, order)
-    await update_order_location(order, latitude, longitude)
+    google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
+    await state.update_data(latitude=latitude, longitude=longitude, maps_link=google_maps_link)
+    await message.answer(text="Lokatsiya qabul qilindi. Endi rasm yoki hujjat yuboring.")
     await state.set_state(OrderAddress.image)
-    await message.answer(text=default_languages[user_lang]['send_receipt'])
 
 
 @dp.message(F.content_type == "photo")
@@ -332,17 +329,31 @@ async def handle_receipt_image(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
 
-    # Vaqtinchalik orderni qaytarib olamiz
-    order = await get_order_for_user(user_id)
-    if not order:
-        await message.answer(text=default_languages[user_lang]['order_not_found'])
-        return
+    # Get state data
+    order_data = await state.get_data()
+    latitude = order_data.get("latitude")
+    longitude = order_data.get("longitude")
+    google_maps_link = order_data.get("maps_link")
 
-    # Rasmni saqlaymiz
-    receipt_file = message.photo[-1].file_id
-    await save_receipt_image(order, receipt_file)
+    # Get or create the order
+    order = await get_or_create_order(user_id)
+    await link_cart_items_to_order(user_id, order)
+    order.latitude = latitude
+    order.longitude = longitude
+    order.address = f"Google Maps: {google_maps_link}"
 
-    # Hamma ma'lumotlarni birdaniga saqlash
+    # Save photo
+    file_id = message.photo[-1].file_id
+    file = await bot.get_file(file_id)
+    file_path = file.file_path
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f'https://api.telegram.org/file/bot{settings.BOT_TOKEN}/{file_path}') as resp:
+            file_bytes = await resp.read()
+
+    image_name = f"{user_id}_receipt.jpg"
+    await save_receipt_image(order, image_name, file_bytes)
+
     await save_order_to_database(order)
 
     await message.answer(text=default_languages[user_lang]['order_save'])
