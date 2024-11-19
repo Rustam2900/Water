@@ -11,6 +11,8 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "min_order_required": "minimal buyurtma talab qilinadi",
+        "min_order_error": "minimal buyurtma yetmadi",
         "send_receipt": "chek yuboring",
         "order": "Mening buyurtmalarim",
         "order_save": "Sizning buyurtmangiz qabul qilindi va saqlandi.",
@@ -42,6 +44,8 @@ default_languages = {
     },
 
     "ru": {
+        "min_order_required": "минимал буюртма талаб қилинади",
+        "min_order_error": "минимал буюртма етмади",
         "send_receipt": "чек юборинг",
         "order": "Менинг буюртмаларим",
         "order_save": "Сизнинг буюртмангиз қабул қилинди ва сақланди.",

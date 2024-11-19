@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.core.files import File
 from io import BytesIO
 
-from bot.models import CustomUser, Order, Product, CartItem
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum
 
 
 @sync_to_async
@@ -152,14 +152,16 @@ def save_order_to_database(order):
 
 @sync_to_async
 def link_cart_items_to_order(user_id, order):
+    # Filter user's cart items
     cart_items = CartItem.objects.filter(user__telegram_id=user_id, order__isnull=True)
     total_price = sum(item.amount for item in cart_items)
+
+    min_order_sum = OrderMinSum.objects.first()
+    if min_order_sum and total_price < float(min_order_sum.min_order_sum):
+        return False, float(min_order_sum.min_order_sum)
 
     cart_items.update(order=order)
 
     order.total_price = total_price
     order.save()
-
-
-
-
+    return True, total_price

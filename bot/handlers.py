@@ -330,20 +330,27 @@ async def handle_receipt_image(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
 
-    # Get state data
     order_data = await state.get_data()
     latitude = order_data.get("latitude")
     longitude = order_data.get("longitude")
     google_maps_link = order_data.get("maps_link")
 
-    # Get or create the order
     order = await get_or_create_order(user_id)
-    await link_cart_items_to_order(user_id, order)
+    is_valid, check_value = await link_cart_items_to_order(user_id, order)
+
+    if not is_valid:
+        await message.answer(
+            text=(
+                f"{default_languages[user_lang]['min_order_error']}\n"
+                f"{default_languages[user_lang]['min_order_required']}: {check_value}"
+            )
+        )
+        return
+
     order.latitude = latitude
     order.longitude = longitude
     order.address = f"Google Maps: {google_maps_link}"
 
-    # Save photo
     file_id = message.photo[-1].file_id
     file = await bot.get_file(file_id)
     file_path = file.file_path
