@@ -309,8 +309,24 @@ async def create_location_keyboard(message: Message):
 async def request_location(callback_query: CallbackQuery, state: FSMContext):
     user_id = callback_query.from_user.id
     user_lang = await get_user_language(user_id)
-    await callback_query.message.answer(text=default_languages[user_lang]['send_location_order'],
-                                        reply_markup=await create_location_keyboard(callback_query.message))
+
+    order = await get_or_create_order(user_id)
+    is_valid, check_value = await link_cart_items_to_order(user_id, order)
+
+    if not is_valid:
+        await callback_query.message.answer(
+            text=(
+                f"{default_languages[user_lang]['min_order_error']}\n"
+                f"{default_languages[user_lang]['min_order_required']}: {check_value}"
+            )
+        )
+        await callback_query.answer()
+        return
+
+    await callback_query.message.answer(
+        text=default_languages[user_lang]['send_location_order'],
+        reply_markup=await create_location_keyboard(callback_query.message)
+    )
     await state.set_state(OrderAddress.location)
     await callback_query.answer()
 
