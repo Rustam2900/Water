@@ -65,7 +65,3 @@ async def send_order_to_channel(
     )
 
     await bot.send_message(chat_id=channel_id, text=order_message)
-
-    # image_path = f"media/{order.receipt_image.name}"
-    # with open(image_path, "rb") as image_che:
-    #     await bot.send_photo(channel_id, image_che)
