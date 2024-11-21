@@ -386,5 +386,5 @@ async def successful_payment_handler(message: Message, state: FSMContext):
         google_maps_link
     )
 
-    await message.answer(text="To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊")
+    await message.answer(text=default_languages[user_lang]['order__'])
     await state.clear()

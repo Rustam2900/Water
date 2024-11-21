@@ -11,6 +11,7 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "order__": "To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊",
         "min_order_required": "minimal buyurtma talab qilinadi",
         "min_order_error": "minimal buyurtma yetmadi",
         "send_receipt": "chek yuboring",
@@ -44,6 +45,7 @@ default_languages = {
     },
 
     "ru": {
+        "order__": "Тўлов амалга оширилди ва буюртмангиз қабул қилинди! 😊",
         "min_order_required": "минимал буюртма талаб қилинади",
         "min_order_error": "минимал буюртма етмади",
         "send_receipt": "чек юборинг",
