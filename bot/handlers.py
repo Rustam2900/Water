@@ -16,9 +16,10 @@ from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
     get_product_detail, get_cart_items, link_cart_items_to_order, add_to_cart, \
-    save_order_to_database, get_or_create_order
+    save_order_to_database, get_or_create_order, update_order, get_user
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
+from bot.kanal import send_order_to_channel
 from core.settings import PAYMENT_TOKEN
 
 dp = Dispatcher()
@@ -336,6 +337,7 @@ async def save_location_temp(message: Message, state: FSMContext):
     await state.update_data(latitude=latitude, longitude=longitude, maps_link=google_maps_link)
 
     total_price = message_history.pop(user_id, None)
+    await state.update_data(total_price=total_price)
 
     print("#################### total price", total_price)
     prices = [LabeledPrice(label="Buyurtma narxi", amount=total_price * 100)]
@@ -360,22 +362,29 @@ async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
 async def successful_payment_handler(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    user = await get_user(user_id)
 
     order_data = await state.get_data()
     latitude = order_data.get("latitude")
     longitude = order_data.get("longitude")
     google_maps_link = order_data.get("maps_link")
-    print("Google maps", google_maps_link)
+    total_price = order_data.get("total_price")
 
-    order = await get_or_create_order(user_id)
-    total_price = await link_cart_items_to_order(user_id, order)
-    print("####################@@@@@@@@@@@", total_price)
-    order.latitude = latitude
-    order.longitude = longitude
-    order.address = f"Google Maps: {google_maps_link}"
-    order.total_price = total_price
+    order = await update_order(
+        user_id,
+        latitude,
+        longitude,
+        google_maps_link,
+        total_price
+    )
 
     await save_order_to_database(order)
+    await send_order_to_channel(
+        order,
+        user.full_name,
+        user.phone_number,
+        google_maps_link
+    )
 
     await message.answer(text="To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊")
     await state.clear()

@@ -54,6 +54,7 @@ class CartItem(models.Model):
 class Order(models.Model):
     class OrderStatus(models.TextChoices):
         CREATED = 'CREATED', _('Created')
+        PAYED = 'PAYED', _('PAYED')
         DELIVERED = 'DELIVERED', _('Delivered')
         CANCELLED = 'CANCELLED', _('Cancelled')
 
@@ -63,7 +64,7 @@ class Order(models.Model):
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
     phone_number = models.CharField(max_length=20, validators=[phone_number_validator], blank=True, null=True)
-    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00)
+    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00,blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
 

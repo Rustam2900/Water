@@ -70,6 +70,11 @@ def get_user_orders(user_id):
 
 
 @sync_to_async
+def get_user(user_id):
+    return CustomUser.objects.get(telegram_id=user_id)
+
+
+@sync_to_async
 def get_user_language(user_id):
     try:
         user = CustomUser.objects.get(telegram_id=user_id)
@@ -100,7 +105,13 @@ def link_cart_items_to_order(user_id, order):
 
 
 @sync_to_async
-def get_or_create_order(user_id):
+def get_or_create_order(
+        user_id,
+        latitude=None,
+        longitude=None,
+        google_maps_link=None,
+        total_price=None
+):
     user = CustomUser.objects.get(telegram_id=user_id)
 
     orders = Order.objects.filter(
@@ -114,9 +125,41 @@ def get_or_create_order(user_id):
         order = Order.objects.create(
             user=user,
             status=Order.OrderStatus.CREATED,
-            total_price=0.00,
+            address=google_maps_link,
+            latitude=latitude,
+            longitude=longitude,
+            total_price=total_price,
             phone_number=user.phone_number,
         )
+    return order
+
+
+@sync_to_async
+def update_order(
+        user_id,
+        latitude=None,
+        longitude=None,
+        google_maps_link=None,
+        total_price=None
+):
+    user = CustomUser.objects.get(telegram_id=user_id)
+
+    order = Order.objects.filter(
+        user=user,
+        status=Order.OrderStatus.CREATED,
+    ).last()
+
+    if not order:
+        raise ValueError("No existing order with status 'CREATED' found.")
+
+    order.status = Order.OrderStatus.PAYED
+    order.address = google_maps_link
+    order.latitude = latitude
+    order.longitude = longitude
+    order.total_price = total_price
+    order.phone_number = user.phone_number
+    order.save()
+
     return order
 
 
@@ -138,7 +181,6 @@ def add_to_cart(user_id, product_id, quantity):
 def save_order_to_database(order):
     try:
         CartItem.objects.filter(order=order).update(order=order)
-        order.save()
     except Exception as e:
         print(f"Error saving order to database: {e}")
 
