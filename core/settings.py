@@ -13,6 +13,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 BOT_TOKEN = env.str('BOT_TOKEN')
+PAYMENT_TOKEN = env.str('PAYMENT_TOKEN')
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bot',
     'rest_framework'
+
 ]
 
 MIDDLEWARE = [
@@ -112,6 +114,8 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
 
 JAZZMIN_SETTINGS = {
     "site_title": "Library Admin",

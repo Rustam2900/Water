@@ -1,26 +1,25 @@
 import re
 
-import aiohttp
 from aiogram import Dispatcher, Bot, F
 from aiogram.enums import ParseMode, ContentType
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, \
-    ReplyKeyboardMarkup
+    ReplyKeyboardMarkup, LabeledPrice, PreCheckoutQuery
 from asgiref.sync import sync_to_async
 
-# from bot.kanal import send_order_to_channel
 from bot.keyboards import get_languages, get_main_menu
 
 from bot.utils import default_languages, user_languages, introduction_template, \
-    fix_phone
+    fix_phone, message_history
 from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
     get_product_detail, get_cart_items, link_cart_items_to_order, add_to_cart, \
-    save_order_to_database, save_receipt_image, get_or_create_order
+    save_order_to_database, get_or_create_order
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
+from core.settings import PAYMENT_TOKEN
 
 dp = Dispatcher()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -179,12 +178,8 @@ async def contact_us(message: Message):
     user_lang = user_languages.get(user_id, 'uz')
 
     contact_info = f"{default_languages[user_lang]['contact_us']}\n" \
-                   f"Address: UZB\n" \
-                   f"Email: jumanazarustam.com\n" \
-                   f"Phone: +998 93 068 29 11\n" \
-                   f"Working Hours: Tashkent \n" \
-                   f"telegram: @Jumanazarov_Rustam"
-
+                   f"Phone: +998916694474\n" \
+                   f"telegram: @Ruqiyasuv  \n"
     await message.answer(contact_info)
 
 
@@ -333,16 +328,36 @@ async def request_location(callback_query: CallbackQuery, state: FSMContext):
 
 @dp.message(F.content_type == ContentType.LOCATION)
 async def save_location_temp(message: Message, state: FSMContext):
+    user_id = message.from_user.id
     latitude = message.location.latitude
     longitude = message.location.longitude
     google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
+
     await state.update_data(latitude=latitude, longitude=longitude, maps_link=google_maps_link)
-    await message.answer(text="Lokatsiya qabul qilindi. Endi rasm yoki hujjat yuboring.")
-    await state.set_state(OrderAddress.image)
+
+    total_price = message_history.pop(user_id, None)
+
+    print("#################### total price", total_price)
+    prices = [LabeledPrice(label="Buyurtma narxi", amount=total_price * 100)]
+    await bot.send_invoice(
+        chat_id=message.from_user.id,
+        title="Buyurtma uchun to'lov",
+        description="Buyurtma uchun to'lovni amalga oshiring.",
+        payload="order_payment_payload",
+        provider_token=PAYMENT_TOKEN,
+        currency="UZS",
+        prices=prices
+    )
+    await state.set_state(OrderAddress.payment)
 
 
-@dp.message(F.content_type == "photo")
-async def handle_receipt_image(message: Message, state: FSMContext):
+@dp.pre_checkout_query()
+async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
+    await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True)
+
+
+@dp.message(F.content_type == ContentType.SUCCESSFUL_PAYMENT)
+async def successful_payment_handler(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
 
@@ -350,36 +365,17 @@ async def handle_receipt_image(message: Message, state: FSMContext):
     latitude = order_data.get("latitude")
     longitude = order_data.get("longitude")
     google_maps_link = order_data.get("maps_link")
+    print("Google maps", google_maps_link)
 
     order = await get_or_create_order(user_id)
-    is_valid, check_value = await link_cart_items_to_order(user_id, order)
-
-    if not is_valid:
-        await message.answer(
-            text=(
-                f"{default_languages[user_lang]['min_order_error']}\n"
-                f"{default_languages[user_lang]['min_order_required']}: {check_value}"
-            )
-        )
-        return
-
+    total_price = await link_cart_items_to_order(user_id, order)
+    print("####################@@@@@@@@@@@", total_price)
     order.latitude = latitude
     order.longitude = longitude
     order.address = f"Google Maps: {google_maps_link}"
-
-    file_id = message.photo[-1].file_id
-    file = await bot.get_file(file_id)
-    file_path = file.file_path
-
-    async with aiohttp.ClientSession() as session:
-        async with session.get(f'https://api.telegram.org/file/bot{settings.BOT_TOKEN}/{file_path}') as resp:
-            file_bytes = await resp.read()
-
-    image_name = f"{user_id}_receipt.jpg"
-    await save_receipt_image(order, image_name, file_bytes)
+    order.total_price = total_price
 
     await save_order_to_database(order)
-    # await send_order_to_channel(order)
 
-    await message.answer(text=default_languages[user_lang]['order_save'])
+    await message.answer(text="To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊")
     await state.clear()

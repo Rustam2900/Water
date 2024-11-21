@@ -1,10 +1,8 @@
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
 
-from django.core.files import File
-from io import BytesIO
-
 from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum
+from bot.utils import message_history
 
 
 @sync_to_async
@@ -137,11 +135,6 @@ def add_to_cart(user_id, product_id, quantity):
 
 
 @sync_to_async(thread_sensitive=True)
-def save_receipt_image(order, image_name, file_bytes):
-    order.receipt_image.save(image_name, File(BytesIO(file_bytes)), save=True)
-
-
-@sync_to_async(thread_sensitive=True)
 def save_order_to_database(order):
     try:
         CartItem.objects.filter(order=order).update(order=order)
@@ -152,8 +145,11 @@ def save_order_to_database(order):
 
 @sync_to_async
 def link_cart_items_to_order(user_id, order):
-    # Filter user's cart items
     cart_items = CartItem.objects.filter(user__telegram_id=user_id, order__isnull=True)
+
+    if not cart_items:
+        return False, None
+
     total_price = sum(item.amount for item in cart_items)
 
     min_order_sum = OrderMinSum.objects.first()
@@ -161,7 +157,12 @@ def link_cart_items_to_order(user_id, order):
         return False, float(min_order_sum.min_order_sum)
 
     cart_items.update(order=order)
+    updated_cart_items = CartItem.objects.filter(user__telegram_id=user_id, order=order)
+    print(f"Updated cart items: {list(updated_cart_items)}")
 
     order.total_price = total_price
+    message_history[user_id] = total_price
     order.save()
+    print(f"Order saved with total_price: {order.total_price}")
+
     return True, total_price
