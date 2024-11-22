@@ -14,4 +14,14 @@ class ProductTranslation(TranslationOptions):
 
 @register(models.Product)
 class ProductTranslation(TranslationOptions):
-    fields = ('name', 'description')
+    fields = ('name', )
+
+
+@register(models.State)
+class StateTranslation(TranslationOptions):
+    fields = ('name',)
+
+
+@register(models.County)
+class CountyTranslation(TranslationOptions):
+    fields = ('name',)

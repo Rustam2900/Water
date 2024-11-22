@@ -11,6 +11,9 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "back": "Orqaga",
+        "country": "Tuman tanlang:",
+        "state_": "Viloyat tanlang:",
         "order__": "To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊",
         "min_order_required": "minimal buyurtma talab qilinadi",
         "min_order_error": "minimal buyurtma yetmadi",
@@ -25,7 +28,7 @@ default_languages = {
         "product_not_cart": "Savatingiz boʻsh.",
         "cart": "savatcha",
         "place_order": "Buyurtma berish",
-        "delivery_time": "Yetkazib berish vaqti",
+        "delivery_time": "Yetkazib berish ",
         "products_price": "narxi",
         "products_description": "tavsifi",
         "products": "Mahsulotlar",
@@ -45,6 +48,9 @@ default_languages = {
     },
 
     "ru": {
+        "back": "Орқага",
+        "country": "Туман танланг:",
+        "state_": "Вилоят танланг:",
         "order__": "Тўлов амалга оширилди ва буюртмангиз қабул қилинди! 😊",
         "min_order_required": "минимал буюртма талаб қилинади",
         "min_order_error": "минимал буюртма етмади",
@@ -59,7 +65,7 @@ default_languages = {
         "product_not_cart": "Саватингиз бўш.",
         "cart": "саватча",
         "place_order": "Буюртма бериш",
-        "delivery_time": "Етказиб бериш вақти",
+        "delivery_time": "Етказиб бериш ",
         "products_price": "нархи",
         "products_description": "тавсифи",
         "products": "Маҳсулотлар",
@@ -83,51 +89,18 @@ user_languages = {}
 local_user = {}
 
 introduction_template = {
-    'uz':
-        """
-     💧 Chere Suv Kompaniyasi <a href="@pdf_2905_bot">Chere Water</a> ni taqdim etadi 💧
-    
-    Chere suvi bilan bog'liq barcha masalalaringizni hal qiling! 🚰
-    
-    Bot nimalarni qila oladi?
-    - Suv buyurtma qilish
-    - So'nggi suv tariflarini bilish
-    - Hisob-kitoblarni tekshirish
-    - Eksklyuziv chegirmalar va aksiyalar haqida xabardor bo'lish
-    - Savollar va yordam
-    🌐 ChereBot – oson va tezkor xizmat! 
-    
-    🏠 Uyda qolib unikal xizmatlardan foydalaning!
-    
-    🟢 Hoziroq qo'shiling: <a href="@pdf_2905_bot">Chere Water</a>
-    ✉️ Telegram kanal: <a href="@pdf_2905_bot">Chere Water</a>
-    
-    Chere - Sof Suv, Sog‘lom Hayot!
-    """,
+    'uz': """
+<b>💧 Ruqiya Shifo</b>
+Tanangiz va ruhingiz salomatligi uchun dam solingan tabiiy toza ichimlik suvi.
 
-    "ru":
+<b>🚛 Yetkazib berish bepul</b>
+""",
+    'ru': """
+<b>💧 Руқия Шифо</b>
+Танангиз ва руҳингиз саломатлиги учун дам солинган табиий тоза ичимлик суви.
 
-        """
-    👕💧 Чере Сув Компанияси href="@pdf_2905_bot">Чере Wатер ни тақдим этади 💧
-
-    Чере суви билан боғлиқ барча масалаларингизни ҳал қилинг! 🚰
-    
-    Бот нималарни қила олади?
-    - Сув буюртма қилиш
-    - Сўнгги сув тарифларини билиш
-    - Ҳисоб-китобларни текшириш
-    - Эксклюзив чегирмалар ва акциялар ҳақида хабардор бўлиш
-    - Саволлар ва ёрдам
-    🌐 ЧереБот – осон ва тезкор хизмат!
-    
-    🏠 Уйда қолиб уникал хизматлардан фойдаланинг!
-    
-    🟢 Ҳозироқ қўшилинг: href="@pdf_2905_bot">Чере Wатер
-    ✉️ Телеграм канал: href="@pdf_2905_bot">Чере Wатер
-    
-    Чере - Соф Сув, Соғлом Ҳаёт!
-
-    """
+<b>🚛 Етказиб бериш бепул</b>
+"""
 }
 
 order_text = {

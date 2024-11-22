@@ -11,6 +11,8 @@ class CustomUser(models.Model):
     user_lang = models.CharField(blank=True, null=True, max_length=10)
     telegram_id = models.CharField(blank=True, null=True, max_length=255, unique=True)
     tg_username = models.CharField(_("telegram username"), blank=True, null=True, max_length=255, unique=True)
+    state = models.ForeignKey("bot.State", on_delete=models.SET_NULL, null=True, blank=True)
+    county = models.ForeignKey("bot.County", on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -24,7 +26,6 @@ class CustomUser(models.Model):
 class Product(models.Model):
     name = models.CharField(_("name"), max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField(_("description"), blank=True, null=True)
     delivery_time = models.CharField(max_length=100)
 
     def __str__(self):
@@ -64,7 +65,7 @@ class Order(models.Model):
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
     phone_number = models.CharField(max_length=20, validators=[phone_number_validator], blank=True, null=True)
-    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00,blank=True, null=True)
+    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
 
@@ -78,3 +79,26 @@ class OrderMinSum(models.Model):
     class Meta:
         verbose_name = _("Order minimum sum")
         verbose_name_plural = _("Order minimum sum")
+
+
+class State(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("State")
+        verbose_name_plural = _("States")
+
+    def __str__(self):
+        return self.name
+
+
+class County(models.Model):
+    name = models.CharField(_("name"), blank=True, max_length=100)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, related_name="counties")
+
+    class Meta:
+        verbose_name = _("County")
+        verbose_name_plural = _("Counties")
+
+    def __str__(self):
+        return self.name

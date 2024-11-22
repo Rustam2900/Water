@@ -34,14 +34,19 @@ async def send_order_to_channel(
         full_name,
         phone_number,
         address,
+        state,
+        county,
+
 ):
-    channel_id = '@IT_RustamDevPythonMy'
+    channel_id = '-1002256139682'
 
     order_message = (
         f"Yangi Buyurtma!\n"
         f"Foydalanuvchi: {full_name}\n"
         f"Telefon raqam: {phone_number}\n"
         f"Manzil: {address}\n\n"
+        f"Viloyat: {state}\n\n"
+        f"Tuman: {county}\n\n"
         f"Buyurtma:\n"
     )
 

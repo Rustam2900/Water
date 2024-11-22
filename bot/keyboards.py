@@ -10,18 +10,18 @@ def get_languages(flag="lang"):
     return keyboard
 
 
-def get_main_menu(language):
+def get_main_menu(user_lang):
     main_menu_keyboard = ReplyKeyboardMarkup(keyboard=[
         [
-            KeyboardButton(text=default_languages[language]['categories'], ),
-            KeyboardButton(text=default_languages[language]['contact_us'])
+            KeyboardButton(text=default_languages[user_lang]['categories']),
+            KeyboardButton(text=default_languages[user_lang]['contact_us'])
         ],
         [
-            KeyboardButton(text=default_languages[language]['my_orders']),
-            KeyboardButton(text=default_languages[language]['settings'])
+            KeyboardButton(text=default_languages[user_lang]['my_orders']),
+            KeyboardButton(text=default_languages[user_lang]['settings'])
         ],
         [
-            KeyboardButton(text=default_languages[language]['cart'])
+            KeyboardButton(text=default_languages[user_lang]['cart'])
         ]
 
     ], resize_keyboard=True)

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County
 
 
 @admin.register(CustomUser)
@@ -42,3 +42,18 @@ class CartItemAdmin(admin.ModelAdmin):
 
 
 admin.site.register(OrderMinSum)
+
+
+@admin.register(State)
+class StateAdmin(TranslationAdmin):
+    list_display = ('id', 'name')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
+
+
+@admin.register(County)
+class CountyAdmin(TranslationAdmin):
+    list_display = ('id', 'name', 'state')
+    list_display_links = ('id', 'name')
+    search_fields = ('name',)
+    list_filter = ('state',)

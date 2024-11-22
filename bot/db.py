@@ -1,7 +1,7 @@
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
 
-from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County
 from bot.utils import message_history
 
 
@@ -71,7 +71,7 @@ def get_user_orders(user_id):
 
 @sync_to_async
 def get_user(user_id):
-    return CustomUser.objects.get(telegram_id=user_id)
+    return CustomUser.objects.select_related('state', 'county').get(telegram_id=user_id)
 
 
 @sync_to_async
@@ -208,3 +208,48 @@ def link_cart_items_to_order(user_id, order):
     print(f"Order saved with total_price: {order.total_price}")
 
     return True, total_price
+
+
+@sync_to_async
+def state_get():
+    return list(State.objects.all())
+
+
+@sync_to_async
+def county_get(state_id):
+    return list(County.objects.filter(state_id=state_id))
+
+
+@sync_to_async
+def create_or_update_user_state(telegram_id, state_id):
+    try:
+        state_instance = State.objects.get(id=state_id)
+
+        user, created = CustomUser.objects.update_or_create(
+            telegram_id=telegram_id,
+            defaults={
+                'state': state_instance
+            }
+        )
+        return user, created
+    except (IntegrityError, State.DoesNotExist) as e:
+        return None, False
+
+
+@sync_to_async
+def create_or_update_user_country(telegram_id, county_id):
+    try:
+        county_instance = County.objects.get(id=county_id)
+
+        state_instance = county_instance.state
+
+        user, created = CustomUser.objects.update_or_create(
+            telegram_id=telegram_id,
+            defaults={
+                'state': state_instance,
+                'county': county_instance,
+            }
+        )
+        return user, created
+    except (IntegrityError, County.DoesNotExist) as e:
+        return None, False
