@@ -7,15 +7,14 @@ from bot.headers import router
 from bot.management.commands.commands import commands
 
 logging.basicConfig(
-    level=logging.INFO,  # Log darajasi
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',  # Log formati
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("bot_logs.txt"),  # Faylga loglarni yozish
-        logging.StreamHandler()  # Terminalga loglarni chiqarish
+        logging.FileHandler("bot_logs.txt"),
+        logging.StreamHandler()
     ]
 )
 
-# Log obyektini chaqirish
 logger = logging.getLogger(__name__)
 
 

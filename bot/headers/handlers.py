@@ -1,8 +1,8 @@
 import re
 
-from aiogram import Dispatcher, Bot, F, Router
+from aiogram import Bot, F, Router
 from aiogram.enums import ParseMode, ContentType
-from aiogram.filters import CommandStart, Command
+from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, \
     ReplyKeyboardMarkup, LabeledPrice, PreCheckoutQuery
