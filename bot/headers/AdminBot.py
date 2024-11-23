@@ -12,31 +12,18 @@ from core.settings import ADMIN
 
 from bot.utils import user_languages
 
-dp = Dispatcher()
+router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
-
 
 # -------------------------------------->   Add Movie   <------------------------------------------- #
 
 
-# @dp.message(F.text.in_(["️Admin", "️Админ"]))
-# async def admin_check(message: Message):
-#     user_id = message.from_user.id
-#     user_lang = user_languages.get(user_id, 'uz')
-#     main_menu_markup = get_main_menu(user_lang)
-#     if user_id == ADMIN:
-#         await message.answer(get_user_language[user_lang]['admin_welcome'], reply_markup=None)
-#     else:
-#         await message.answer(get_user_language[user_lang]['admin_not'], reply_markup=main_menu_markup)
-#
-
-@dp.message(Command('admin'))
-async def admin(message: types.Message):
+@router.message(Command('admin'))
+async def admin(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
     main_menu_markup = get_main_menu(user_lang)
-    if user_id == ADMIN:
-        await message.answer(get_user_language[user_lang]['admin_welcome'], reply_markup=None)
+    if user_id == 5092869653:
+        await message.answer(text="👮🏻‍♂️Admin Xushkelibsiz", reply_markup=None)
     else:
-        await message.answer(get_user_language[user_lang]['admin_not'], reply_markup=main_menu_markup)
-
+        await message.answer(text="👮🏻‍♂️Uzur siz Admin emassiz", reply_markup=main_menu_markup)

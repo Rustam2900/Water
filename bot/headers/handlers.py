@@ -1,6 +1,6 @@
 import re
 
-from aiogram import Dispatcher, Bot, F
+from aiogram import Dispatcher, Bot, F, Router
 from aiogram.enums import ParseMode, ContentType
 from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
@@ -23,13 +23,13 @@ from bot.models import CustomUser
 from bot.kanal import send_order_to_channel
 from core.settings import PAYMENT_TOKEN, ADMIN
 
-dp = Dispatcher()
+router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
 phone_number_validator = re.compile(r'^\+998\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$')
 
 
-@dp.message(CommandStart())
+@router.message(CommandStart())
 async def welcome(message: Message):
     user_id = message.from_user.id
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
@@ -45,17 +45,8 @@ async def welcome(message: Message):
         msg = default_languages['welcome_message']
         await message.answer(msg, reply_markup=get_languages())
 
-@dp.message(Command('admin'))
-async def admin(message: Message):
-    user_id = message.from_user.id
-    user_lang = user_languages.get(user_id, 'uz')
-    main_menu_markup = get_main_menu(user_lang)
-    if user_id == 5092869653:
-        await message.answer(text="👮🏻‍♂️Admin Xushkelibsiz", reply_markup=None)
-    else:
-        await message.answer(text="👮🏻‍♂️Uzur siz Admin emassiz", reply_markup=main_menu_markup)
 
-@dp.callback_query(lambda call: call.data.startswith("lang"))
+@router.callback_query(lambda call: call.data.startswith("lang"))
 async def get_query_languages(call: CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
     user_lang = call.data.split("_")[1]
@@ -70,7 +61,7 @@ async def get_query_languages(call: CallbackQuery, state: FSMContext):
     await call.message.answer(text, reply_markup=None)
 
 
-@dp.message(UserStates.name)
+@router.message(UserStates.name)
 async def reg_user_contact(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
@@ -82,7 +73,7 @@ async def reg_user_contact(message: Message, state: FSMContext):
     await message.answer(text)
 
 
-@dp.message(UserStates.contact)
+@router.message(UserStates.contact)
 async def company_contact(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
@@ -122,14 +113,14 @@ async def company_contact(message: Message, state: FSMContext):
     await state.clear()
 
 
-@dp.message(F.text.in_(["⚙️ Sozlamalar", "⚙️ Созламалар"]))
+@router.message(F.text.in_(["⚙️ Sozlamalar", "⚙️ Созламалар"]))
 async def settings_(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
     await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=get_languages("setLang"))
 
 
-@dp.callback_query(F.data.startswith("setLang"))
+@router.callback_query(F.data.startswith("setLang"))
 async def change_language(call: CallbackQuery):
     user_id = call.from_user.id
     user_lang = call.data.split("_")[1]
@@ -154,7 +145,7 @@ def update_user_language(user_id, user_lang):
         print(f"User created with language {user_lang} for {user_id}")
 
 
-@dp.message(F.text.in_(["📦 Mening buyurtmalarim", "📦 Менинг буюртмаларим"]))
+@router.message(F.text.in_(["📦 Mening buyurtmalarim", "📦 Менинг буюртмаларим"]))
 async def get_orders(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
@@ -184,7 +175,7 @@ async def get_orders(message: Message):
         await message.answer(text=f"{default_languages[user_lang]['order']}\n{msg}")
 
 
-@dp.message(F.text.in_(["📲 Biz bilan bog‘lanish", "📲 Биз билан боғланиш"]))
+@router.message(F.text.in_(["📲 Biz bilan bog‘lanish", "📲 Биз билан боғланиш"]))
 async def contact_us(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
@@ -194,7 +185,7 @@ async def contact_us(message: Message):
     await message.answer(contact_info)
 
 
-@dp.message(F.text.in_(["Buyurtma berish", "Буюртма бериш"]))
+@router.message(F.text.in_(["Buyurtma berish", "Буюртма бериш"]))
 async def get_categories(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -216,7 +207,7 @@ async def get_categories(message: Message):
     )
 
 
-@dp.callback_query(lambda call: call.data.startswith("product_"))
+@router.callback_query(lambda call: call.data.startswith("product_"))
 async def handle_product_detail(call: CallbackQuery):
     user_id = call.from_user.id
     product_id = int(call.data.split("_")[1])
@@ -242,7 +233,7 @@ async def handle_product_detail(call: CallbackQuery):
     await call.message.edit_text(message_text, reply_markup=inline_kb)
 
 
-@dp.callback_query(lambda call: call.data.startswith("order_"))
+@router.callback_query(lambda call: call.data.startswith("order_"))
 async def handle_order_start(call: CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
@@ -253,7 +244,7 @@ async def handle_order_start(call: CallbackQuery, state: FSMContext):
     await state.set_state(OrderState.waiting_for_quantity)
 
 
-@dp.message(OrderState.waiting_for_quantity)
+@router.message(OrderState.waiting_for_quantity)
 async def process_quantity(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -272,7 +263,7 @@ async def process_quantity(message: Message, state: FSMContext):
     await state.clear()
 
 
-@dp.message(F.text.in_(["🛒Savatcha", "🛒Cаватча"]))
+@router.message(F.text.in_(["🛒Savatcha", "🛒Cаватча"]))
 async def show_cart(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -299,7 +290,7 @@ async def show_cart(message: Message):
     await message.answer(message_text, reply_markup=inline_kb)
 
 
-@dp.callback_query(lambda call: call.data == "go_back")
+@router.callback_query(lambda call: call.data == "go_back")
 async def go_back_to_main_menu(call: CallbackQuery):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
@@ -329,7 +320,7 @@ async def create_location_keyboard(message: Message):
     return location_keyboard
 
 
-@dp.callback_query(lambda c: c.data == "confirm_order")
+@router.callback_query(lambda c: c.data == "confirm_order")
 async def request_location(callback_query: CallbackQuery):
     user_id = callback_query.from_user.id
     user_lang = await get_user_language(user_id)
@@ -363,7 +354,7 @@ async def request_location(callback_query: CallbackQuery):
     await callback_query.answer()
 
 
-@dp.callback_query(lambda call: call.data.startswith("state_"))
+@router.callback_query(lambda call: call.data.startswith("state_"))
 async def handle_products_by_category(call: CallbackQuery):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
@@ -415,7 +406,7 @@ async def handle_products_by_category(call: CallbackQuery):
     )
 
 
-@dp.callback_query(lambda call: call.data.startswith("country_"))
+@router.callback_query(lambda call: call.data.startswith("country_"))
 async def handle_county_selection(call: CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
@@ -433,7 +424,7 @@ async def handle_county_selection(call: CallbackQuery, state: FSMContext):
     await state.set_state(OrderAddress.location)
 
 
-@dp.message(F.content_type == ContentType.LOCATION)
+@router.message(F.content_type == ContentType.LOCATION)
 async def save_location_temp(message: Message, state: FSMContext):
     user_id = message.from_user.id
     latitude = message.location.latitude
@@ -458,12 +449,12 @@ async def save_location_temp(message: Message, state: FSMContext):
     await state.set_state(OrderAddress.payment)
 
 
-@dp.pre_checkout_query()
+@router.pre_checkout_query()
 async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True)
 
 
-@dp.message(F.content_type == ContentType.SUCCESSFUL_PAYMENT)
+@router.message(F.content_type == ContentType.SUCCESSFUL_PAYMENT)
 async def successful_payment_handler(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -498,6 +489,3 @@ async def successful_payment_handler(message: Message, state: FSMContext):
     main_menu_markup = get_main_menu(user_lang)
     await message.answer(text=default_languages[user_lang]['order__'], reply_markup=main_menu_markup)
     await state.clear()
-
-
-
