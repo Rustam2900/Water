@@ -271,4 +271,4 @@ def get_statistics():
 
 @sync_to_async
 def get_all_users():
-    return CustomUser.objects.all()
+    return list(CustomUser.objects.all())

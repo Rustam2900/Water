@@ -18,3 +18,10 @@ class OrderAddress(StatesGroup):
 
 class SendMessage(StatesGroup):
     msg = State()
+
+
+class ProductSave(SendMessage):
+    lotin_name = State()
+    kiril_name = State()
+    price = State()
+    delivery_time = State()
