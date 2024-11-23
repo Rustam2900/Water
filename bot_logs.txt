@@ -921,3 +921,36 @@ Traceback (most recent call last):
 django.core.exceptions.FieldError: Cannot resolve keyword 'is_active' into field. Choices are: cart_items_user, county, county_id, created_at, full_name, full_name_ru, full_name_uz, id, orders, phone_number, state, state_id, telegram_id, tg_username, user_lang, username, username_ru, username_uz
 2024-11-24 01:07:14,576 - aiogram.dispatcher - INFO - Polling stopped
 2024-11-24 01:07:15,261 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:07:22,161 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 01:07:22,161 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 01:07:22,481 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 01:07:22,628 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:07:27,807 - aiogram.event - INFO - Update id=599358070 is handled. Duration 390 ms by bot id=8059469964
+2024-11-24 01:07:29,887 - aiogram.event - INFO - Update id=599358071 is handled. Duration 155 ms by bot id=8059469964
+2024-11-24 01:07:45,604 - aiogram.event - INFO - Update id=599358072 is handled. Duration 1703 ms by bot id=8059469964
+2024-11-24 01:09:22,651 - aiogram.event - INFO - Update id=599358073 is handled. Duration 843 ms by bot id=8059469964
+2024-11-24 01:09:34,622 - aiogram.event - INFO - Update id=599358074 is handled. Duration 500 ms by bot id=8059469964
+2024-11-24 01:09:39,383 - aiogram.event - INFO - Update id=599358075 is handled. Duration 1515 ms by bot id=8059469964
+2024-11-24 01:09:55,747 - aiogram.event - INFO - Update id=599358076 is handled. Duration 500 ms by bot id=8059469964
+2024-11-24 01:09:58,413 - aiogram.event - INFO - Update id=599358077 is handled. Duration 188 ms by bot id=8059469964
+2024-11-24 01:10:08,425 - aiogram.event - INFO - Update id=599358078 is handled. Duration 1936 ms by bot id=8059469964
+2024-11-24 01:10:58,986 - aiogram.event - INFO - Update id=599358079 is handled. Duration 438 ms by bot id=8059469964
+2024-11-24 01:11:04,146 - aiogram.event - INFO - Update id=599358080 is handled. Duration 172 ms by bot id=8059469964
+2024-11-24 01:14:24,666 - aiogram.event - INFO - Update id=599358081 is handled. Duration 436 ms by bot id=8059469964
+2024-11-24 01:14:26,995 - aiogram.event - INFO - Update id=599358082 is handled. Duration 234 ms by bot id=8059469964
+2024-11-24 01:14:37,626 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 01:14:38,201 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:14:46,009 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 01:14:46,009 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 01:14:46,227 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 01:14:46,362 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:15:27,315 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 01:15:28,220 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:15:34,970 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 01:15:34,970 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 01:15:35,204 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 01:15:35,372 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 01:15:40,822 - aiogram.event - INFO - Update id=599358083 is handled. Duration 485 ms by bot id=8059469964
+2024-11-24 01:18:58,540 - aiogram.event - INFO - Update id=599358084 is handled. Duration 422 ms by bot id=8059469964
+2024-11-24 01:19:05,014 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 01:19:05,487 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'

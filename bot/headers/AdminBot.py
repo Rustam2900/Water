@@ -19,8 +19,8 @@ from aiogram.utils.text_decorations import html_decoration as fmt
 router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 
-
 # -------------------------------------->   Add Movie   <------------------------------------------- #
+print("###############", ADMIN)
 
 
 @router.message(Command('admin'))
