@@ -1,5 +1,8 @@
+from datetime import timedelta
+
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
+from django.utils import timezone
 
 from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County
 from bot.utils import message_history
@@ -253,3 +256,19 @@ def create_or_update_user_country(telegram_id, county_id):
         return user, created
     except (IntegrityError, County.DoesNotExist) as e:
         return None, False
+
+
+@sync_to_async
+def get_statistics():
+    total_users = CustomUser.objects.count()
+
+    time_24_hours_ago = timezone.now() - timedelta(days=1)
+    new_users_24h = CustomUser.objects.filter(created_at__gte=time_24_hours_ago).count()
+
+    return f"👤 Bot a'zolar soni: {total_users}\n" \
+           f"🕒 Oxirgi 24 soatda qo'shilgan foydalanuvchilar: {new_users_24h}\n"
+
+
+@sync_to_async
+def get_all_users():
+    return CustomUser.objects.all()
