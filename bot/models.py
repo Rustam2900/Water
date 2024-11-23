@@ -54,8 +54,8 @@ class CartItem(models.Model):
 
 class Order(models.Model):
     class OrderStatus(models.TextChoices):
-        CREATED = 'CREATED', _('Created')
-        PAYED = 'PAYED', _('PAYED')
+        CREATED = 'YARATILGAN', _('YARATILGAN')
+        PAYED = "TO'LLANGAN", _("TO'LLANGAN")
         DELIVERED = 'DELIVERED', _('Delivered')
         CANCELLED = 'CANCELLED', _('Cancelled')
 

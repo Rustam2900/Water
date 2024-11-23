@@ -80,7 +80,7 @@ def get_user_language(user_id):
         user = CustomUser.objects.get(telegram_id=user_id)
         return user.user_lang
     except CustomUser.DoesNotExist:
-        return 'en'
+        return 'uz'
 
 
 @sync_to_async

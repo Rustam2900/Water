@@ -14,6 +14,7 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 BOT_TOKEN = env.str('BOT_TOKEN')
 PAYMENT_TOKEN = env.str('PAYMENT_TOKEN')
+ADMIN = env.str('ADMIN')
 
 INSTALLED_APPS = [
     'jazzmin',

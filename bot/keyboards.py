@@ -5,7 +5,7 @@ from bot.utils import default_languages
 def get_languages(flag="lang"):
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="O‘zbek 🇺🇿", callback_data=f"{flag}_uz"),
-         InlineKeyboardButton(text="Кирилл  🇷🇺", callback_data=f"{flag}_ru")],
+         InlineKeyboardButton(text="Кирилл  🇺🇿", callback_data=f"{flag}_ru")],
     ])
     return keyboard
 

@@ -1,5 +1,5 @@
 import asyncio
-
+import logging
 
 from django.core.management import BaseCommand
 
@@ -8,6 +8,7 @@ from bot.management.commands.commands import commands
 
 async def main():
     print("Starting bot...")
+    logging.basicConfig(level=logging.INFO)
 
     from bot.handlers import dp
     from bot.handlers import bot

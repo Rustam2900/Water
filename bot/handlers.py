@@ -2,7 +2,7 @@ import re
 
 from aiogram import Dispatcher, Bot, F
 from aiogram.enums import ParseMode, ContentType
-from aiogram.filters import CommandStart
+from aiogram.filters import CommandStart, Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, \
     ReplyKeyboardMarkup, LabeledPrice, PreCheckoutQuery
@@ -21,7 +21,7 @@ from bot.db import save_user_language, save_user_info_to_db, get_user_language, 
 from bot.states import UserStates, OrderAddress, OrderState
 from bot.models import CustomUser
 from bot.kanal import send_order_to_channel
-from core.settings import PAYMENT_TOKEN
+from core.settings import PAYMENT_TOKEN, ADMIN
 
 dp = Dispatcher()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -45,6 +45,15 @@ async def welcome(message: Message):
         msg = default_languages['welcome_message']
         await message.answer(msg, reply_markup=get_languages())
 
+@dp.message(Command('admin'))
+async def admin(message: Message):
+    user_id = message.from_user.id
+    user_lang = user_languages.get(user_id, 'uz')
+    main_menu_markup = get_main_menu(user_lang)
+    if user_id == 5092869653:
+        await message.answer(text="👮🏻‍♂️Admin Xushkelibsiz", reply_markup=None)
+    else:
+        await message.answer(text="👮🏻‍♂️Uzur siz Admin emassiz", reply_markup=main_menu_markup)
 
 @dp.callback_query(lambda call: call.data.startswith("lang"))
 async def get_query_languages(call: CallbackQuery, state: FSMContext):
@@ -180,9 +189,8 @@ async def contact_us(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
 
-    contact_info = f"{default_languages[user_lang]['contact_us']}\n" \
-                   f"Phone: +998916694474\n" \
-                   f"telegram: @Ruqiyasuv  \n"
+    contact_info = f"📞+998916694474\n" \
+                   f"📩 @Ruqiyasuv \n"
     await message.answer(contact_info)
 
 
@@ -219,7 +227,7 @@ async def handle_product_detail(call: CallbackQuery):
     product_name = product.name_uz if user_lang == 'uz' else product.name_ru
     message_text = (
         f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
-        f"💲 {default_languages[user_lang]['products_price']}: {product.price} som\n"
+        f"✅ {default_languages[user_lang]['products_price']}: {product.price} som\n"
         f"🚚 {default_languages[user_lang]['delivery_time']} {product.delivery_time or 'not'}"
     )
 
@@ -264,7 +272,7 @@ async def process_quantity(message: Message, state: FSMContext):
     await state.clear()
 
 
-@dp.message(F.text.in_(["savatcha", "саватча"]))
+@dp.message(F.text.in_(["🛒Savatcha", "🛒Cаватча"]))
 async def show_cart(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -344,7 +352,7 @@ async def request_location(callback_query: CallbackQuery):
     inline_buttons = []
 
     for state in states:
-        state_name = state.name_ru if user_lang == 'ru' else state.name_en
+        state_name = state.name_ru if user_lang == 'ru' else state.name_uz
         inline_buttons.append(
             InlineKeyboardButton(text=state_name or "Bizda faqat hozirda farg'on uchun xizmatarimiz bor",
                                  callback_data=f"state_{state.id}"))
@@ -365,10 +373,11 @@ async def handle_products_by_category(call: CallbackQuery):
 
     if not counties:
         await call.message.answer(
-            text="Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz bor."
-                 "Iltimos, boshqa viloyatni tanlang:"
-                 "Namangadan diller qidirilmoq."
-                 "Takliflar uchun @Ruqiyasuv +998916694474",
+            text="Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz bor. \n"
+                 "Iltimos, boshqa viloyatni tanlang:\n"
+                 "Namangadan diller qidirilmoq.\n"
+                 "Takliflar uchun:\n"
+                 "📞+998916694474 📩 @Ruqiyasuv",
         )
         states = await state_get()
         inline_kb = InlineKeyboardMarkup(row_width=2)
@@ -390,7 +399,7 @@ async def handle_products_by_category(call: CallbackQuery):
     inline_buttons = []
 
     for county in counties:
-        country_name = county.name_ru if user_lang == 'ru' else county.name_en
+        country_name = county.name_ru if user_lang == 'ru' else county.name_uz
         inline_buttons.append(
             InlineKeyboardButton(
                 text=country_name,
@@ -489,3 +498,6 @@ async def successful_payment_handler(message: Message, state: FSMContext):
     main_menu_markup = get_main_menu(user_lang)
     await message.answer(text=default_languages[user_lang]['order__'], reply_markup=main_menu_markup)
     await state.clear()
+
+
+
