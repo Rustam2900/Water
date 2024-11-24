@@ -20,8 +20,12 @@ class SendMessage(StatesGroup):
     msg = State()
 
 
-class ProductSave(SendMessage):
+class ProductSave(StatesGroup):
     lotin_name = State()
     kiril_name = State()
     price = State()
     delivery_time = State()
+
+
+class OrderMinSumState(StatesGroup):
+    min_sum = State()

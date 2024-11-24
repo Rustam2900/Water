@@ -9,15 +9,16 @@ from django.conf import settings
 
 from bot.db import get_statistics, get_all_users, get_all_product
 from bot.keyboards import get_main_menu, get_admin_menu
-from bot.models import Product
+from bot.models import Product, OrderMinSum
 from core.settings import ADMIN
 from bot.utils import user_languages
-from bot.states import SendMessage, ProductSave
+from bot.states import SendMessage, ProductSave, OrderMinSumState
 
 from aiogram.utils.text_decorations import html_decoration as fmt
 
 router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+
 
 # -------------------------------------->   Add Movie   <------------------------------------------- #
 
@@ -91,6 +92,40 @@ async def add_product(message: Message, state: FSMContext):
                              "Namuna: 20 L suv:")
     else:
         await message.answer("Siz admin emassiz, mahsulot qo'shish huquqiga ega emassiz:", reply_markup=None)
+
+
+@router.message(F.text == "💸 Min Summa")
+async def add_min_sum(message: Message, state: FSMContext):
+    if message.from_user.id == 5092869653:
+        await state.set_state(OrderMinSumState.min_sum)
+        await message.answer("Iltimos Minimal miqdor kiriting \n"
+                             "Namuna: 15000")
+    else:
+        await message.answer("Siz admin emassiz, mahsulot qo'shish huquqiga ega emassiz:", reply_markup=None)
+
+
+@router.message(OrderMinSumState.min_sum)
+async def add_min_sum_admin_save(message: Message, state: FSMContext):
+    if message.text.isdigit():
+        min_sum = int(message.text)
+        await state.update_data(min_sum=min_sum)
+
+        existing_record = await sync_to_async(OrderMinSum.objects.first)()
+
+        if existing_record:
+            existing_record.min_order_sum = min_sum
+            await sync_to_async(existing_record.save)()
+        else:
+            await sync_to_async(OrderMinSum.objects.create)(
+                min_order_sum=min_sum
+            )
+
+        await message.answer(
+            fmt.bold("Miqdor muvaffaqiyatli saqlandi!"),
+            parse_mode='HTML',
+            reply_markup=ReplyKeyboardRemove()
+        )
+        await state.clear()
 
 
 @router.message(ProductSave.lotin_name)

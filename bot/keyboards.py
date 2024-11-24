@@ -37,6 +37,9 @@ def get_admin_menu(user_lang):
         [
             KeyboardButton(text="➕ Mahsulot qo'shish"),
             KeyboardButton(text="➖ Mahsulot o'chirish")
+        ],
+        [
+            KeyboardButton(text="💸 Min Summa")
         ]
     ], resize_keyboard=True)
     return admin_menu_keyboard
