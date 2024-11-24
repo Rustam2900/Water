@@ -4,7 +4,7 @@ from asgiref.sync import sync_to_async
 from django.db import IntegrityError
 from django.utils import timezone
 
-from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County, BlockedUser
 from bot.utils import message_history
 
 
@@ -272,3 +272,8 @@ def get_statistics():
 @sync_to_async
 def get_all_users():
     return list(CustomUser.objects.all())
+
+
+@sync_to_async
+def get_all_blocked_users():
+    return list(BlockedUser.objects.all())

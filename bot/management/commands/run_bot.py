@@ -1,10 +1,12 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
+from asgiref.sync import sync_to_async
 from django.core.management import BaseCommand
 
 from bot.headers import router
 from bot.management.commands.commands import commands
+from bot.models import CustomUser
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,12 +20,30 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+@sync_to_async
+def get_all_user_ids():
+    """Barcha foydalanuvchilarning Telegram ID larini olish."""
+    return list(CustomUser.objects.values_list("telegram_id", flat=True))
+
+
+async def notify_users(bot: Bot, message: str):
+    """Hamma foydalanuvchilarga xabar yuborish."""
+    user_ids = await get_all_user_ids()
+    for user_id in user_ids:
+        try:
+            await bot.send_message(chat_id=user_id, text=message, parse_mode="HTML")
+        except Exception as e:
+            logging.error(f"Xabarni yuborishda xatolik yuz berdi: {e}")
+
+
 async def startup(bot: Bot):
-    await bot.send_message(chat_id=5092869653, text='<b>Bot ishga tushdi✅</b>')
+    await notify_users(bot, '<b>Bot ishga tushdi✅</b>')
+    logging.info("Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.")
 
 
 async def shutdown(bot: Bot):
-    await bot.send_message(chat_id=5092869653, text='<b>Bot ishdan toxtadi🛑</b>')
+    await notify_users(bot, '<b>Bot ishdan to\'xtadi🛑</b>')
+    logging.info("Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.")
 
 
 async def main():

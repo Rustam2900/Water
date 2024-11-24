@@ -7,10 +7,9 @@ from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery, InlineKey
 from asgiref.sync import sync_to_async
 from django.conf import settings
 
-from bot.db import get_statistics, get_all_users, get_all_product
+from bot.db import get_statistics, get_all_users, get_all_product, get_all_blocked_users
 from bot.keyboards import get_main_menu, get_admin_menu
-from bot.models import Product, OrderMinSum
-from core.settings import ADMIN
+from bot.models import Product, OrderMinSum, CustomUser, BlockedUser
 from bot.utils import user_languages
 from bot.states import SendMessage, ProductSave, OrderMinSumState
 
@@ -27,9 +26,19 @@ bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=Pars
 async def admin(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     main_menu_markup = get_main_menu(user_lang)
     admin_menu_markup = get_admin_menu(user_lang)
-    if user_id == 5092869653:
+    if user_id == 6736873215:
         await message.answer(text="👮🏻‍♂️Admin Xushkelibsiz\n"
                                   "Iltimos, quyidagi buyruqlardan birini tanlang:", reply_markup=admin_menu_markup)
     else:
@@ -39,7 +48,7 @@ async def admin(message: Message):
 @router.message(F.text == "👤Statistika")
 async def show_statistics(message: Message):
     user_id = message.from_user.id
-    if user_id == 5092869653:
+    if user_id == 6736873215:
         statistics = await get_statistics()
         await message.answer(text=statistics)
     else:
@@ -48,7 +57,7 @@ async def show_statistics(message: Message):
 
 @router.message(F.text == "✍️ Habar yuborish")
 async def send_message_users(message: Message, state: FSMContext):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         await state.set_state(SendMessage.msg)
         await message.answer(text='Reklama xabarini yuboring!', reply_markup=ReplyKeyboardRemove())
     else:
@@ -74,7 +83,7 @@ async def send_message(message: Message, state: FSMContext):
 
     sent_count = total_users - failed_count
     await bot.send_message(
-        chat_id=5092869653,
+        chat_id=6736873215,
         text=(
             f"<b>Bot a'zolari soni:</b> {total_users}\n"
             f"<b>Yuborilmadi:</b> {failed_count}\n"
@@ -86,7 +95,7 @@ async def send_message(message: Message, state: FSMContext):
 
 @router.message(F.text == "➕ Mahsulot qo'shish")
 async def add_product(message: Message, state: FSMContext):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         await state.set_state(ProductSave.lotin_name)
         await message.answer("Mahsulot nomini kiriting lotin tilida \n"
                              "Namuna: 20 L suv:")
@@ -96,7 +105,7 @@ async def add_product(message: Message, state: FSMContext):
 
 @router.message(F.text == "💸 Min Summa")
 async def add_min_sum(message: Message, state: FSMContext):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         await state.set_state(OrderMinSumState.min_sum)
         await message.answer("Iltimos Minimal miqdor kiriting \n"
                              "Namuna: 15000")
@@ -130,7 +139,7 @@ async def add_min_sum_admin_save(message: Message, state: FSMContext):
 
 @router.message(ProductSave.lotin_name)
 async def add_name_uz(message: Message, state: FSMContext):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         await state.update_data(lotin_name=message.text)
         await state.set_state(ProductSave.kiril_name)
         await message.answer("Mahsulor nomini kiriting Kiril harfida \n"
@@ -146,7 +155,7 @@ def is_valid_kiril_text(text: str) -> bool:
 
 @router.message(ProductSave.kiril_name)
 async def add_name_ru(message: Message, state: FSMContext):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         if is_valid_kiril_text(message.text):
             await state.update_data(kiril_name=message.text)
             await state.set_state(ProductSave.price)
@@ -214,7 +223,7 @@ async def get_product_keyboard(user_lang):
 
 @router.message(F.text == "➖ Mahsulot o'chirish")
 async def remove_product(message: Message):
-    if message.from_user.id == 5092869653:
+    if message.from_user.id == 6736873215:
         user_lang = "uz"
         keyboard = await get_product_keyboard(user_lang)
         if keyboard.inline_keyboard:
@@ -243,3 +252,109 @@ async def confirm_delete_product(callback: CallbackQuery):
         await callback.message.edit_text(
             "Tanlangan mahsulot topilmadi yoki allaqachon o'chirilgan."
         )
+
+
+async def get_user_keyboard():
+    users = await get_all_users()
+    inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
+    inline_buttons = []
+
+    for user in users:
+        inline_buttons.append(
+            InlineKeyboardButton(
+                text=f"{user.full_name or user.username} ({user.telegram_id})",
+                callback_data=f"block_{user.id}",
+            )
+        )
+
+    inline_kb.inline_keyboard = [
+        inline_buttons[i: i + 2] for i in range(0, len(inline_buttons), 2)
+    ]
+    return inline_kb
+
+
+@router.callback_query(lambda c: c.data.startswith("block_"))
+async def block_user(callback: CallbackQuery):
+    user_id = int(callback.data.split("_")[1])
+
+    try:
+        user = await sync_to_async(CustomUser.objects.get)(id=user_id)
+        blocked_user, created = await sync_to_async(BlockedUser.objects.get_or_create)(
+            telegram_id=user.telegram_id,
+            defaults={
+                "full_name": user.full_name,
+                "username": user.username,
+                "phone_number": user.phone_number,
+            },
+        )
+        if created:
+            await callback.message.edit_text(
+                f"Foydalanuvchi '{user.full_name or user.username}' muvaffaqiyatli bloklandi!"
+            )
+        else:
+            await callback.message.edit_text("Bu foydalanuvchi allaqachon qora ro'yxatda mavjud.")
+    except CustomUser.DoesNotExist:
+        await callback.message.edit_text("Tanlangan foydalanuvchi topilmadi.")
+
+
+@router.message(F.text == "🚫 Foydalanuvchini bloklash")
+async def show_users_to_block(message: Message):
+    if message.from_user.id == 6736873215:
+        keyboard = await get_user_keyboard()
+        if keyboard.inline_keyboard:
+            await message.answer(
+                text="Bloklanadigan foydalanuvchini tanlang:",
+                reply_markup=keyboard,
+            )
+        else:
+            await message.answer("Hozircha ro'yxatda foydalanuvchilar yo'q.")
+    else:
+        await message.answer("Siz admin emassiz, foydalanuvchilarni bloklash huquqiga ega emassiz.")
+
+
+async def get_unblock_keyboard():
+    blocked_users = await get_all_blocked_users()
+    inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
+    inline_buttons = []
+
+    for user in blocked_users:
+        inline_buttons.append(
+            InlineKeyboardButton(
+                text=f"{user.full_name or user.username} ({user.telegram_id})",
+                callback_data=f"unblock_{user.id}",
+            )
+        )
+
+    inline_kb.inline_keyboard = [
+        inline_buttons[i: i + 2] for i in range(0, len(inline_buttons), 2)
+    ]
+    return inline_kb
+
+
+@router.callback_query(lambda c: c.data.startswith("unblock_"))
+async def unblock_user(callback: CallbackQuery):
+    user_id = int(callback.data.split("_")[1])
+
+    try:
+        user = await sync_to_async(BlockedUser.objects.get)(id=user_id)
+        await sync_to_async(user.delete)()
+        await callback.message.edit_text(
+            f"Foydalanuvchi '{user.full_name or user.username}' muvaffaqiyatli blokdan chiqarildi!"
+        )
+    except BlockedUser.DoesNotExist:
+        await callback.message.edit_text("Tanlangan foydalanuvchi topilmadi yoki allaqachon blokdan chiqarilgan.")
+
+
+@router.message(F.text == "🚫 Foydalanuvchini blokdan ochish")
+async def show_blocked_users(message: Message):
+    if message.from_user.id == 6736873215:
+        keyboard = await get_unblock_keyboard()
+        if keyboard.inline_keyboard:
+            await message.answer(
+                text="Blokdan ochiladigan foydalanuvchini tanlang:",
+                reply_markup=keyboard,
+            )
+        else:
+            await message.answer("Bloklangan foydalanuvchilar ro'yxati bo'sh.")
+    else:
+        await message.answer("❌ Siz bu komandani bajarish huquqiga ega emassiz.")

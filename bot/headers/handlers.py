@@ -19,9 +19,9 @@ from bot.db import save_user_language, save_user_info_to_db, get_user_language, 
     save_order_to_database, get_or_create_order, update_order, get_user, state_get, create_or_update_user_state, \
     create_or_update_user_country, county_get
 from bot.states import UserStates, OrderAddress, OrderState
-from bot.models import CustomUser
+from bot.models import CustomUser, BlockedUser
 from bot.kanal import send_order_to_channel
-from core.settings import PAYMENT_TOKEN, ADMIN
+from core.settings import PAYMENT_TOKEN
 
 router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -32,6 +32,15 @@ phone_number_validator = re.compile(r'^\+998\s?\d{2}\s?\d{3}\s?\d{2}\s?\d{2}$')
 @router.message(CommandStart())
 async def welcome(message: Message):
     user_id = message.from_user.id
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
 
     if user and user.user_lang:
@@ -117,6 +126,16 @@ async def company_contact(message: Message, state: FSMContext):
 async def settings_(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @Rustam"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=get_languages("setLang"))
 
 
@@ -125,6 +144,16 @@ async def change_language(call: CallbackQuery):
     user_id = call.from_user.id
     user_lang = call.data.split("_")[1]
     user_languages[call.from_user.id] = user_lang
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await call.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
 
     await sync_to_async(update_user_language)(user_id, user_lang)
 
@@ -149,7 +178,16 @@ def update_user_language(user_id, user_lang):
 async def get_orders(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     my_orders = await get_my_orders(user_id)
 
     if not my_orders:
@@ -179,7 +217,16 @@ async def get_orders(message: Message):
 async def contact_us(message: Message):
     user_id = message.from_user.id
     user_lang = user_languages.get(user_id, 'uz')
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     contact_info = f"📞+998916694474\n" \
                    f"📩 @Ruqiyasuv \n"
     await message.answer(contact_info)
@@ -189,6 +236,16 @@ async def contact_us(message: Message):
 async def get_categories(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     print(f"User language: {user_lang}")
     products = await get_all_product()
     inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
@@ -212,7 +269,16 @@ async def handle_product_detail(call: CallbackQuery):
     user_id = call.from_user.id
     product_id = int(call.data.split("_")[1])
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
+    if is_blocked:
+        await call.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     product = await get_product_detail(product_id)
 
     product_name = product.name_uz if user_lang == 'uz' else product.name_ru
@@ -237,6 +303,16 @@ async def handle_product_detail(call: CallbackQuery):
 async def handle_order_start(call: CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await call.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     product_id = int(call.data.split("_")[1])
     await call.message.answer(text=default_languages[user_lang]['products_quantity_enter'])
 
@@ -267,6 +343,16 @@ async def process_quantity(message: Message, state: FSMContext):
 async def show_cart(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     cart_items = await get_cart_items(user_id)
 
     if not cart_items:
@@ -309,6 +395,16 @@ async def go_back_to_main_menu(call: CallbackQuery):
 async def create_location_keyboard(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     if user_lang not in default_languages:
         user_lang = 'uz'
     location_button = KeyboardButton(text=default_languages[user_lang]['send_location'], request_location=True)
@@ -324,7 +420,16 @@ async def create_location_keyboard(message: Message):
 async def request_location(callback_query: CallbackQuery):
     user_id = callback_query.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
+    if is_blocked:
+        await callback_query.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     order = await get_or_create_order(user_id)
     is_valid, check_value = await link_cart_items_to_order(user_id, order)
 
@@ -358,6 +463,17 @@ async def request_location(callback_query: CallbackQuery):
 async def handle_products_by_category(call: CallbackQuery):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await call.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    # Qora ro'yxatda bo'lmaganlar uchun davom etadi
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     state_id = int(call.data.split("_")[1])
 
     counties = await county_get(state_id)
@@ -410,7 +526,16 @@ async def handle_products_by_category(call: CallbackQuery):
 async def handle_county_selection(call: CallbackQuery, state: FSMContext):
     user_id = call.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
+    if is_blocked:
+        await call.message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     county_id = int(call.data.split("_")[1])
     user, created = await create_or_update_user_country(
         telegram_id=user_id,
@@ -427,6 +552,16 @@ async def handle_county_selection(call: CallbackQuery, state: FSMContext):
 @router.message(F.content_type == ContentType.LOCATION)
 async def save_location_temp(message: Message, state: FSMContext):
     user_id = message.from_user.id
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     latitude = message.location.latitude
     longitude = message.location.longitude
     google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
@@ -458,6 +593,16 @@ async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
 async def successful_payment_handler(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+
+    if is_blocked:
+        await message.answer(
+            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+        )
+        return
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     user = await get_user(user_id)
 
     order_data = await state.get_data()

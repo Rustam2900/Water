@@ -997,3 +997,578 @@ django.core.exceptions.FieldError: Cannot resolve keyword 'is_active' into field
 2024-11-24 13:42:58,620 - aiogram.event - INFO - Update id=599358105 is handled. Duration 639 ms by bot id=8059469964
 2024-11-24 13:43:00,342 - aiogram.event - INFO - Update id=599358106 is handled. Duration 186 ms by bot id=8059469964
 2024-11-24 13:43:05,992 - aiogram.event - INFO - Update id=599358107 is handled. Duration 405 ms by bot id=8059469964
+2024-11-24 14:44:39,087 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-24 14:44:39,112 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-24 15:15:18,838 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-24 15:15:18,842 - aiogram.dispatcher - WARNING - Sleep for 1.241755 seconds and try again... (tryings = 1, bot id = 8059469964)
+2024-11-24 15:15:20,932 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8059469964)
+2024-11-24 15:15:21,085 - aiogram.event - INFO - Update id=599358111 is not handled. Duration 94 ms by bot id=8059469964
+2024-11-24 15:15:21,086 - aiogram.event - INFO - Update id=599358112 is not handled. Duration 109 ms by bot id=8059469964
+2024-11-24 15:15:21,877 - aiogram.event - INFO - Update id=599358110 is handled. Duration 889 ms by bot id=8059469964
+2024-11-24 15:15:21,883 - aiogram.event - INFO - Update id=599358108 is handled. Duration 936 ms by bot id=8059469964
+2024-11-24 15:15:22,108 - aiogram.event - INFO - Update id=599358109 is handled. Duration 1125 ms by bot id=8059469964
+2024-11-24 15:16:29,489 - aiogram.event - INFO - Update id=599358113 is handled. Duration 2187 ms by bot id=8059469964
+2024-11-24 15:16:29,890 - aiogram.event - INFO - Update id=599358115 is handled. Duration 406 ms by bot id=8059469964
+2024-11-24 15:16:30,006 - aiogram.event - INFO - Update id=599358114 is handled. Duration 1186 ms by bot id=8059469964
+2024-11-24 15:16:33,661 - aiogram.event - INFO - Update id=599358116 is handled. Duration 453 ms by bot id=8059469964
+2024-11-24 15:16:40,075 - aiogram.event - INFO - Update id=599358117 is handled. Duration 594 ms by bot id=8059469964
+2024-11-24 15:16:43,292 - aiogram.event - INFO - Update id=599358118 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 15:16:51,333 - aiogram.event - INFO - Update id=599358119 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 15:16:54,620 - aiogram.event - INFO - Update id=599358120 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 15:16:58,282 - aiogram.event - INFO - Update id=599358121 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 15:17:15,642 - aiogram.event - INFO - Update id=599358122 is handled. Duration 406 ms by bot id=8059469964
+2024-11-24 15:17:21,650 - aiogram.event - INFO - Update id=599358123 is handled. Duration 188 ms by bot id=8059469964
+2024-11-24 15:17:29,262 - aiogram.event - INFO - Update id=599358124 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 15:17:34,257 - aiogram.event - INFO - Update id=599358125 is handled. Duration 186 ms by bot id=8059469964
+2024-11-24 15:19:22,817 - aiogram.event - INFO - Update id=599358126 is handled. Duration 421 ms by bot id=8059469964
+2024-11-24 15:21:24,346 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-24 15:21:24,347 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-24 15:21:25,358 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:25,379 - aiogram.dispatcher - WARNING - Sleep for 1.252148 seconds and try again... (tryings = 1, bot id = 8059469964)
+2024-11-24 15:21:26,649 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:26,650 - aiogram.dispatcher - WARNING - Sleep for 1.491205 seconds and try again... (tryings = 2, bot id = 8059469964)
+2024-11-24 15:21:28,146 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:28,147 - aiogram.dispatcher - WARNING - Sleep for 1.918593 seconds and try again... (tryings = 3, bot id = 8059469964)
+2024-11-24 15:21:30,075 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:30,076 - aiogram.dispatcher - WARNING - Sleep for 2.419276 seconds and try again... (tryings = 4, bot id = 8059469964)
+2024-11-24 15:21:32,510 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:32,512 - aiogram.dispatcher - WARNING - Sleep for 3.211608 seconds and try again... (tryings = 5, bot id = 8059469964)
+2024-11-24 15:21:35,730 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:35,731 - aiogram.dispatcher - WARNING - Sleep for 4.226011 seconds and try again... (tryings = 6, bot id = 8059469964)
+2024-11-24 15:21:39,974 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:39,975 - aiogram.dispatcher - WARNING - Sleep for 5.127375 seconds and try again... (tryings = 7, bot id = 8059469964)
+2024-11-24 15:21:45,105 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:45,106 - aiogram.dispatcher - WARNING - Sleep for 4.935803 seconds and try again... (tryings = 8, bot id = 8059469964)
+2024-11-24 15:21:50,047 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:50,048 - aiogram.dispatcher - WARNING - Sleep for 5.022492 seconds and try again... (tryings = 9, bot id = 8059469964)
+2024-11-24 15:21:55,087 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:21:55,088 - aiogram.dispatcher - WARNING - Sleep for 4.976901 seconds and try again... (tryings = 10, bot id = 8059469964)
+2024-11-24 15:22:00,079 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:00,080 - aiogram.dispatcher - WARNING - Sleep for 5.085093 seconds and try again... (tryings = 11, bot id = 8059469964)
+2024-11-24 15:22:05,181 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:05,181 - aiogram.dispatcher - WARNING - Sleep for 4.954687 seconds and try again... (tryings = 12, bot id = 8059469964)
+2024-11-24 15:22:10,140 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:10,140 - aiogram.dispatcher - WARNING - Sleep for 5.032112 seconds and try again... (tryings = 13, bot id = 8059469964)
+2024-11-24 15:22:15,182 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:15,182 - aiogram.dispatcher - WARNING - Sleep for 4.996240 seconds and try again... (tryings = 14, bot id = 8059469964)
+2024-11-24 15:22:20,191 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:20,191 - aiogram.dispatcher - WARNING - Sleep for 5.051485 seconds and try again... (tryings = 15, bot id = 8059469964)
+2024-11-24 15:22:25,251 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:25,252 - aiogram.dispatcher - WARNING - Sleep for 4.978567 seconds and try again... (tryings = 16, bot id = 8059469964)
+2024-11-24 15:22:30,236 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:30,237 - aiogram.dispatcher - WARNING - Sleep for 5.040770 seconds and try again... (tryings = 17, bot id = 8059469964)
+2024-11-24 15:22:35,283 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:35,284 - aiogram.dispatcher - WARNING - Sleep for 5.087578 seconds and try again... (tryings = 18, bot id = 8059469964)
+2024-11-24 15:22:40,375 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:40,376 - aiogram.dispatcher - WARNING - Sleep for 5.011661 seconds and try again... (tryings = 19, bot id = 8059469964)
+2024-11-24 15:22:45,403 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:45,404 - aiogram.dispatcher - WARNING - Sleep for 4.999196 seconds and try again... (tryings = 20, bot id = 8059469964)
+2024-11-24 15:22:50,415 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:50,415 - aiogram.dispatcher - WARNING - Sleep for 4.960633 seconds and try again... (tryings = 21, bot id = 8059469964)
+2024-11-24 15:22:55,385 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 15:22:55,386 - aiogram.dispatcher - WARNING - Sleep for 4.964356 seconds and try again... (tryings = 22, bot id = 8059469964)
+2024-11-24 15:23:10,880 - aiogram.dispatcher - INFO - Connection established (tryings = 23, bot id = 8059469964)
+2024-11-24 15:50:22,901 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 15:50:23,781 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:50:36,370 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 15:50:36,371 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 15:50:36,627 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 15:50:36,800 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:50:43,144 - aiogram.event - INFO - Update id=599358127 is handled. Duration 531 ms by bot id=8059469964
+2024-11-24 15:50:45,355 - aiogram.event - INFO - Update id=599358128 is not handled. Duration 15 ms by bot id=8059469964
+2024-11-24 15:51:10,776 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 15:51:11,664 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:51:19,409 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 15:51:19,411 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 15:51:19,630 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 15:51:19,809 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:51:24,309 - aiogram.event - INFO - Update id=599358129 is handled. Duration 594 ms by bot id=8059469964
+2024-11-24 15:51:27,484 - aiogram.event - INFO - Update id=599358130 is handled. Duration 360 ms by bot id=8059469964
+2024-11-24 15:51:41,296 - aiogram.event - INFO - Update id=599358131 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-24 15:53:11,903 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 15:53:12,791 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:53:21,556 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 15:53:21,557 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 15:53:21,767 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 15:53:21,973 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:53:27,184 - aiogram.event - INFO - Update id=599358132 is handled. Duration 578 ms by bot id=8059469964
+2024-11-24 15:53:29,444 - aiogram.event - INFO - Update id=599358133 is handled. Duration 296 ms by bot id=8059469964
+2024-11-24 15:53:33,950 - aiogram.event - INFO - Update id=599358134 is handled. Duration 296 ms by bot id=8059469964
+2024-11-24 15:54:03,981 - aiogram.event - INFO - Update id=599358135 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-24 15:54:03,982 - aiogram.event - ERROR - Cause exception while process update id=599358135 by bot id=8059469964
+NameError: name 'BlockedUser' is not defined
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 35, in welcome
+    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
+                                     ^^^^^^^^^^^
+NameError: name 'BlockedUser' is not defined
+2024-11-24 15:54:27,321 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 15:54:28,184 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:54:36,525 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 15:54:36,526 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 15:54:36,754 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 15:54:36,927 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:54:42,042 - aiogram.event - INFO - Update id=599358136 is handled. Duration 780 ms by bot id=8059469964
+2024-11-24 15:55:05,289 - aiogram.event - INFO - Update id=599358137 is handled. Duration 1672 ms by bot id=8059469964
+2024-11-24 15:57:11,799 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 15:57:12,522 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:57:20,772 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 15:57:20,774 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 15:57:21,080 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 15:57:21,280 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 15:57:31,535 - aiogram.event - INFO - Update id=599358138 is handled. Duration 672 ms by bot id=8059469964
+2024-11-24 15:57:35,536 - aiogram.event - INFO - Update id=599358139 is handled. Duration 282 ms by bot id=8059469964
+2024-11-24 15:57:38,686 - aiogram.event - INFO - Update id=599358140 is handled. Duration 171 ms by bot id=8059469964
+2024-11-24 16:01:10,284 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:01:11,194 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:01:19,728 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:01:19,729 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:01:19,945 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:01:20,179 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:01:26,018 - aiogram.event - INFO - Update id=599358141 is handled. Duration 766 ms by bot id=8059469964
+2024-11-24 16:01:30,617 - aiogram.event - INFO - Update id=599358142 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:01:34,334 - aiogram.event - INFO - Update id=599358143 is handled. Duration 235 ms by bot id=8059469964
+2024-11-24 16:01:36,148 - aiogram.event - INFO - Update id=599358144 is handled. Duration 406 ms by bot id=8059469964
+2024-11-24 16:01:37,507 - aiogram.event - INFO - Update id=599358145 is handled. Duration 217 ms by bot id=8059469964
+2024-11-24 16:01:39,177 - aiogram.event - INFO - Update id=599358146 is handled. Duration 155 ms by bot id=8059469964
+2024-11-24 16:01:42,000 - aiogram.event - INFO - Update id=599358147 is handled. Duration 217 ms by bot id=8059469964
+2024-11-24 16:05:18,580 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:05:19,438 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:05:28,401 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:05:28,404 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:05:28,638 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:05:28,819 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:05:32,920 - aiogram.event - INFO - Update id=599358148 is handled. Duration 780 ms by bot id=8059469964
+2024-11-24 16:05:37,730 - aiogram.event - INFO - Update id=599358149 is not handled. Duration 30 ms by bot id=8059469964
+2024-11-24 16:05:37,731 - aiogram.event - ERROR - Cause exception while process update id=599358149 by bot id=8059469964
+SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\AdminBot.py", line 324, in show_blocked_users
+    if blocked_users:
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 412, in __bool__
+    self._fetch_all()
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1558, in execute_sql
+    cursor = self.connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\utils\asyncio.py", line 24, in inner
+    raise SynchronousOnlyOperation(message)
+django.core.exceptions.SynchronousOnlyOperation: You cannot call this from an async context - use a thread or sync_to_async.
+2024-11-24 16:10:03,849 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:10:04,686 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:10:13,333 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:10:13,334 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:10:13,585 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:10:13,750 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:10:20,088 - aiogram.event - INFO - Update id=599358150 is handled. Duration 686 ms by bot id=8059469964
+2024-11-24 16:10:23,070 - aiogram.event - INFO - Update id=599358151 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 16:10:30,376 - aiogram.event - INFO - Update id=599358152 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-24 16:10:58,117 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:10:59,193 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:11:07,881 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:11:07,881 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:11:08,165 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:11:08,326 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:11:15,112 - aiogram.event - INFO - Update id=599358153 is handled. Duration 671 ms by bot id=8059469964
+2024-11-24 16:11:17,880 - aiogram.event - INFO - Update id=599358154 is handled. Duration 295 ms by bot id=8059469964
+2024-11-24 16:11:19,583 - aiogram.event - INFO - Update id=599358155 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:11:34,398 - aiogram.event - INFO - Update id=599358156 is handled. Duration 438 ms by bot id=8059469964
+2024-11-24 16:15:35,733 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:15:36,608 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:17:34,733 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:17:34,734 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:17:34,954 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:17:35,126 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:17:36,129 - aiogram.event - INFO - Update id=599358157 is handled. Duration 750 ms by bot id=8059469964
+2024-11-24 16:17:36,155 - aiogram.event - INFO - Update id=599358159 is handled. Duration 782 ms by bot id=8059469964
+2024-11-24 16:17:36,177 - aiogram.event - INFO - Update id=599358161 is handled. Duration 797 ms by bot id=8059469964
+2024-11-24 16:17:36,210 - aiogram.event - INFO - Update id=599358160 is handled. Duration 829 ms by bot id=8059469964
+2024-11-24 16:17:36,248 - aiogram.event - INFO - Update id=599358158 is handled. Duration 875 ms by bot id=8059469964
+2024-11-24 16:22:10,583 - aiogram.event - INFO - Update id=599358162 is handled. Duration 610 ms by bot id=8059469964
+2024-11-24 16:23:02,643 - aiogram.event - INFO - Update id=599358163 is handled. Duration 562 ms by bot id=8059469964
+2024-11-24 16:23:25,199 - aiogram.event - INFO - Update id=599358164 is handled. Duration 2329 ms by bot id=8059469964
+2024-11-24 16:23:32,371 - aiogram.event - INFO - Update id=599358165 is handled. Duration 592 ms by bot id=8059469964
+2024-11-24 16:23:35,670 - aiogram.event - INFO - Update id=599358166 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:23:55,642 - aiogram.event - INFO - Update id=599358167 is handled. Duration 500 ms by bot id=8059469964
+2024-11-24 16:23:59,229 - aiogram.event - INFO - Update id=599358168 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 16:24:04,240 - aiogram.event - INFO - Update id=599358169 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:24:06,229 - aiogram.event - INFO - Update id=599358170 is handled. Duration 343 ms by bot id=8059469964
+2024-11-24 16:24:08,672 - aiogram.event - INFO - Update id=599358171 is handled. Duration 234 ms by bot id=8059469964
+2024-11-24 16:24:10,457 - aiogram.event - INFO - Update id=599358172 is handled. Duration 437 ms by bot id=8059469964
+2024-11-24 16:24:21,347 - aiogram.event - INFO - Update id=599358173 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:24:25,205 - aiogram.event - INFO - Update id=599358174 is handled. Duration 171 ms by bot id=8059469964
+2024-11-24 16:24:29,311 - aiogram.event - INFO - Update id=599358175 is handled. Duration 234 ms by bot id=8059469964
+2024-11-24 16:24:33,157 - aiogram.event - INFO - Update id=599358176 is handled. Duration 157 ms by bot id=8059469964
+2024-11-24 16:24:34,953 - aiogram.event - INFO - Update id=599358177 is handled. Duration 204 ms by bot id=8059469964
+2024-11-24 16:24:36,524 - aiogram.event - INFO - Update id=599358178 is handled. Duration 188 ms by bot id=8059469964
+2024-11-24 16:24:38,147 - aiogram.event - INFO - Update id=599358179 is handled. Duration 312 ms by bot id=8059469964
+2024-11-24 16:24:39,758 - aiogram.event - INFO - Update id=599358180 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 16:24:42,935 - aiogram.event - INFO - Update id=599358181 is handled. Duration 265 ms by bot id=8059469964
+2024-11-24 16:24:44,517 - aiogram.event - INFO - Update id=599358182 is handled. Duration 234 ms by bot id=8059469964
+2024-11-24 16:24:48,744 - aiogram.event - INFO - Update id=599358183 is handled. Duration 170 ms by bot id=8059469964
+2024-11-24 16:25:17,866 - aiogram.event - INFO - Update id=599358184 is handled. Duration 702 ms by bot id=8059469964
+2024-11-24 16:26:44,290 - aiogram.event - INFO - Update id=599358185 is handled. Duration 625 ms by bot id=8059469964
+2024-11-24 16:27:27,378 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:27:28,259 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:27:36,525 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:27:36,526 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:27:36,723 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:27:36,930 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:27:37,186 - aiogram.event - INFO - Update id=599358186 is not handled. Duration 15 ms by bot id=8059469964
+2024-11-24 16:28:20,675 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 16:28:21,422 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:28:30,203 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:28:30,203 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:28:30,206 - bot.management.commands.run_bot - ERROR - Bot ishga tushishda xatolik yuzz berdi Bot.send_message() missing 1 required positional argument: 'chat_id'
+2024-11-24 16:28:56,293 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 16:28:56,294 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 16:28:56,520 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 16:28:56,673 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 16:30:56,096 - aiogram.event - INFO - Update id=599358187 is not handled. Duration 14 ms by bot id=8059469964
+2024-11-24 16:31:33,688 - aiogram.event - INFO - Update id=599358188 is not handled. Duration 15 ms by bot id=8059469964
+2024-11-24 16:32:31,300 - aiogram.event - INFO - Update id=599358189 is handled. Duration 687 ms by bot id=8059469964
+2024-11-24 16:32:43,131 - aiogram.event - INFO - Update id=599358190 is handled. Duration 170 ms by bot id=8059469964
+2024-11-24 16:32:48,801 - aiogram.event - INFO - Update id=599358191 is handled. Duration 172 ms by bot id=8059469964
+2024-11-24 16:32:53,897 - aiogram.event - INFO - Update id=599358192 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:32:57,229 - aiogram.event - INFO - Update id=599358193 is handled. Duration 360 ms by bot id=8059469964
+2024-11-24 16:33:06,390 - aiogram.event - INFO - Update id=599358194 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:33:08,756 - aiogram.event - INFO - Update id=599358195 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:33:13,868 - aiogram.event - INFO - Update id=599358196 is handled. Duration 264 ms by bot id=8059469964
+2024-11-24 16:34:03,717 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 121] The semaphore timeout period has expired
+2024-11-24 16:34:03,718 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-24 16:34:25,762 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:34:25,763 - aiogram.dispatcher - WARNING - Sleep for 1.328903 seconds and try again... (tryings = 1, bot id = 8059469964)
+2024-11-24 16:34:48,148 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:34:48,149 - aiogram.dispatcher - WARNING - Sleep for 1.659162 seconds and try again... (tryings = 2, bot id = 8059469964)
+2024-11-24 16:35:10,876 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:35:10,877 - aiogram.dispatcher - WARNING - Sleep for 2.398100 seconds and try again... (tryings = 3, bot id = 8059469964)
+2024-11-24 16:35:34,333 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:35:34,334 - aiogram.dispatcher - WARNING - Sleep for 3.018042 seconds and try again... (tryings = 4, bot id = 8059469964)
+2024-11-24 16:35:58,425 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:35:58,426 - aiogram.dispatcher - WARNING - Sleep for 3.903241 seconds and try again... (tryings = 5, bot id = 8059469964)
+2024-11-24 16:36:23,384 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:36:23,385 - aiogram.dispatcher - WARNING - Sleep for 4.933984 seconds and try again... (tryings = 6, bot id = 8059469964)
+2024-11-24 16:36:49,345 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:36:49,346 - aiogram.dispatcher - WARNING - Sleep for 4.933444 seconds and try again... (tryings = 7, bot id = 8059469964)
+2024-11-24 16:37:15,324 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:37:15,325 - aiogram.dispatcher - WARNING - Sleep for 4.974888 seconds and try again... (tryings = 8, bot id = 8059469964)
+2024-11-24 16:37:41,370 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:37:41,371 - aiogram.dispatcher - WARNING - Sleep for 4.868335 seconds and try again... (tryings = 9, bot id = 8059469964)
+2024-11-24 16:38:07,306 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:38:07,307 - aiogram.dispatcher - WARNING - Sleep for 4.995956 seconds and try again... (tryings = 10, bot id = 8059469964)
+2024-11-24 16:38:33,352 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:38:33,353 - aiogram.dispatcher - WARNING - Sleep for 4.958139 seconds and try again... (tryings = 11, bot id = 8059469964)
+2024-11-24 16:38:59,372 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:38:59,373 - aiogram.dispatcher - WARNING - Sleep for 5.064021 seconds and try again... (tryings = 12, bot id = 8059469964)
+2024-11-24 16:39:25,463 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:39:25,464 - aiogram.dispatcher - WARNING - Sleep for 4.971778 seconds and try again... (tryings = 13, bot id = 8059469964)
+2024-11-24 16:40:08,119 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [WinError 121] The semaphore timeout period has expired
+2024-11-24 16:40:08,120 - aiogram.dispatcher - WARNING - Sleep for 5.060088 seconds and try again... (tryings = 14, bot id = 8059469964)
+2024-11-24 16:40:34,253 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [The semaphore timeout period has expired]
+2024-11-24 16:40:34,255 - aiogram.dispatcher - WARNING - Sleep for 5.043154 seconds and try again... (tryings = 15, bot id = 8059469964)
+2024-11-24 16:42:04,021 - aiogram.dispatcher - INFO - Connection established (tryings = 16, bot id = 8059469964)
+2024-11-24 16:42:04,505 - aiogram.event - INFO - Update id=599358199 is handled. Duration 467 ms by bot id=8059469964
+2024-11-24 16:42:04,545 - aiogram.event - INFO - Update id=599358197 is handled. Duration 514 ms by bot id=8059469964
+2024-11-24 16:42:04,568 - aiogram.event - INFO - Update id=599358198 is handled. Duration 530 ms by bot id=8059469964
+2024-11-24 16:42:15,437 - aiogram.event - INFO - Update id=599358200 is handled. Duration 250 ms by bot id=8059469964
+2024-11-24 16:42:20,853 - aiogram.event - INFO - Update id=599358201 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 16:42:22,833 - aiogram.event - INFO - Update id=599358202 is handled. Duration 187 ms by bot id=8059469964
+2024-11-24 16:42:24,419 - aiogram.event - INFO - Update id=599358203 is handled. Duration 312 ms by bot id=8059469964
+2024-11-24 16:42:25,820 - aiogram.event - INFO - Update id=599358204 is handled. Duration 187 ms by bot id=8059469964
+2024-11-24 16:42:48,631 - aiogram.event - INFO - Update id=599358205 is handled. Duration 577 ms by bot id=8059469964
+2024-11-24 16:42:58,877 - aiogram.event - INFO - Update id=599358206 is handled. Duration 280 ms by bot id=8059469964
+2024-11-24 16:43:08,322 - aiogram.event - INFO - Update id=599358207 is handled. Duration 171 ms by bot id=8059469964
+2024-11-24 16:43:15,429 - aiogram.event - INFO - Update id=599358208 is handled. Duration 312 ms by bot id=8059469964
+2024-11-24 16:43:19,831 - aiogram.event - INFO - Update id=599358209 is handled. Duration 219 ms by bot id=8059469964
+2024-11-24 16:43:21,345 - aiogram.event - INFO - Update id=599358210 is handled. Duration 186 ms by bot id=8059469964
+2024-11-24 16:43:23,712 - aiogram.event - INFO - Update id=599358211 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:43:32,518 - aiogram.event - INFO - Update id=599358212 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 16:43:35,964 - aiogram.event - INFO - Update id=599358213 is handled. Duration 264 ms by bot id=8059469964
+2024-11-24 16:43:40,967 - aiogram.event - INFO - Update id=599358214 is handled. Duration 264 ms by bot id=8059469964
+2024-11-24 16:43:49,004 - aiogram.event - INFO - Update id=599358215 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:45:25,448 - aiogram.event - INFO - Update id=599358216 is handled. Duration 531 ms by bot id=8059469964
+2024-11-24 16:45:35,090 - aiogram.event - INFO - Update id=599358217 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:45:53,982 - aiogram.event - INFO - Update id=599358218 is handled. Duration 562 ms by bot id=8059469964
+2024-11-24 16:45:58,130 - aiogram.event - INFO - Update id=599358219 is handled. Duration 202 ms by bot id=8059469964
+2024-11-24 16:46:01,510 - aiogram.event - INFO - Update id=599358220 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 16:46:12,858 - aiogram.event - INFO - Update id=599358221 is handled. Duration 187 ms by bot id=8059469964
+2024-11-24 16:46:36,428 - aiogram.event - INFO - Update id=599358222 is handled. Duration 687 ms by bot id=8059469964
+2024-11-24 16:46:39,511 - aiogram.event - INFO - Update id=599358223 is handled. Duration 219 ms by bot id=8059469964
+2024-11-24 16:46:41,964 - aiogram.event - INFO - Update id=599358224 is handled. Duration 500 ms by bot id=8059469964
+2024-11-24 16:46:43,805 - aiogram.event - INFO - Update id=599358225 is handled. Duration 219 ms by bot id=8059469964
+2024-11-24 16:46:56,191 - aiogram.event - INFO - Update id=599358226 is handled. Duration 405 ms by bot id=8059469964
+2024-11-24 16:47:42,083 - aiogram.event - INFO - Update id=599358227 is handled. Duration 469 ms by bot id=8059469964
+2024-11-24 16:50:46,786 - aiogram.event - INFO - Update id=599358228 is handled. Duration 500 ms by bot id=8059469964
+2024-11-24 16:50:53,899 - aiogram.event - INFO - Update id=599358229 is handled. Duration 922 ms by bot id=8059469964
+2024-11-24 17:05:53,188 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-24 17:05:53,194 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-24 17:06:04,685 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8059469964)
+2024-11-24 17:08:37,122 - aiogram.event - INFO - Update id=599358230 is handled. Duration 436 ms by bot id=8059469964
+2024-11-24 17:24:46,669 - aiogram.event - INFO - Update id=599358231 is handled. Duration 405 ms by bot id=8059469964
+2024-11-24 17:24:51,227 - aiogram.event - INFO - Update id=599358232 is handled. Duration 171 ms by bot id=8059469964
+2024-11-24 18:02:45,334 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-24 18:02:45,336 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-24 18:02:57,550 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:02:57,553 - aiogram.dispatcher - WARNING - Sleep for 1.179238 seconds and try again... (tryings = 1, bot id = 8059469964)
+2024-11-24 18:02:58,743 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:02:58,743 - aiogram.dispatcher - WARNING - Sleep for 1.577742 seconds and try again... (tryings = 2, bot id = 8059469964)
+2024-11-24 18:03:00,323 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:00,324 - aiogram.dispatcher - WARNING - Sleep for 2.035171 seconds and try again... (tryings = 3, bot id = 8059469964)
+2024-11-24 18:03:02,386 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:02,387 - aiogram.dispatcher - WARNING - Sleep for 2.498433 seconds and try again... (tryings = 4, bot id = 8059469964)
+2024-11-24 18:03:04,900 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:04,901 - aiogram.dispatcher - WARNING - Sleep for 3.333945 seconds and try again... (tryings = 5, bot id = 8059469964)
+2024-11-24 18:03:08,248 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:08,248 - aiogram.dispatcher - WARNING - Sleep for 4.284822 seconds and try again... (tryings = 6, bot id = 8059469964)
+2024-11-24 18:03:12,539 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:12,540 - aiogram.dispatcher - WARNING - Sleep for 4.863836 seconds and try again... (tryings = 7, bot id = 8059469964)
+2024-11-24 18:03:17,410 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:17,410 - aiogram.dispatcher - WARNING - Sleep for 5.076908 seconds and try again... (tryings = 8, bot id = 8059469964)
+2024-11-24 18:03:22,495 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:22,495 - aiogram.dispatcher - WARNING - Sleep for 5.009345 seconds and try again... (tryings = 9, bot id = 8059469964)
+2024-11-24 18:03:27,511 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:27,512 - aiogram.dispatcher - WARNING - Sleep for 5.056484 seconds and try again... (tryings = 10, bot id = 8059469964)
+2024-11-24 18:03:32,584 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:32,584 - aiogram.dispatcher - WARNING - Sleep for 5.074422 seconds and try again... (tryings = 11, bot id = 8059469964)
+2024-11-24 18:03:37,670 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:37,671 - aiogram.dispatcher - WARNING - Sleep for 4.905148 seconds and try again... (tryings = 12, bot id = 8059469964)
+2024-11-24 18:03:42,589 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
+2024-11-24 18:03:42,590 - aiogram.dispatcher - WARNING - Sleep for 4.863613 seconds and try again... (tryings = 13, bot id = 8059469964)
+2024-11-24 18:03:57,938 - aiogram.dispatcher - INFO - Connection established (tryings = 14, bot id = 8059469964)
+2024-11-24 18:46:18,252 - aiogram.event - INFO - Update id=599358233 is handled. Duration 1890 ms by bot id=8059469964
+2024-11-24 19:34:09,589 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 19:34:10,565 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 19:34:11,421 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001693F646990>
+2024-11-24 19:34:38,394 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 19:34:38,396 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 19:34:39,951 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-24 19:34:39,952 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 19:34:40,163 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 19:39:56,904 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 19:39:59,470 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-24 19:39:59,737 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 19:40:08,486 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 19:40:08,488 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 19:40:10,332 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-24 19:40:10,332 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 19:40:10,501 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 19:40:25,478 - aiogram.event - INFO - Update id=599358234 is handled. Duration 578 ms by bot id=8059469964
+2024-11-24 19:40:28,896 - aiogram.event - INFO - Update id=599358235 is handled. Duration 156 ms by bot id=8059469964
+2024-11-24 19:40:30,803 - aiogram.event - INFO - Update id=599358236 is handled. Duration 234 ms by bot id=8059469964
+2024-11-24 19:40:33,089 - aiogram.event - INFO - Update id=599358237 is handled. Duration 360 ms by bot id=8059469964
+2024-11-24 19:40:35,074 - aiogram.event - INFO - Update id=599358238 is handled. Duration 453 ms by bot id=8059469964
+2024-11-24 19:40:40,556 - aiogram.event - INFO - Update id=599358239 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 19:40:44,526 - aiogram.event - INFO - Update id=599358240 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 19:40:48,024 - aiogram.event - INFO - Update id=599358241 is handled. Duration 546 ms by bot id=8059469964
+2024-11-24 19:40:50,877 - aiogram.event - INFO - Update id=599358242 is not handled. Duration 296 ms by bot id=8059469964
+2024-11-24 19:40:50,878 - aiogram.event - ERROR - Cause exception while process update id=599358242 by bot id=8059469964
+ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 490, in handle_products_by_category
+    inline_kb = InlineKeyboardMarkup(row_width=2)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+2024-11-24 19:40:56,095 - aiogram.event - INFO - Update id=599358243 is handled. Duration 235 ms by bot id=8059469964
+2024-11-24 19:40:58,523 - aiogram.event - INFO - Update id=599358244 is handled. Duration 406 ms by bot id=8059469964
+2024-11-24 19:41:22,793 - aiogram.event - INFO - Update id=599358245 is handled. Duration 516 ms by bot id=8059469964
+2024-11-24 19:42:24,562 - aiogram.event - INFO - Update id=599358246 is handled. Duration 625 ms by bot id=8059469964
+2024-11-24 19:42:32,858 - aiogram.event - INFO - Update id=599358247 is handled. Duration 734 ms by bot id=8059469964
+2024-11-24 19:43:32,737 - aiogram.event - INFO - Update id=599358248 is handled. Duration 609 ms by bot id=8059469964
+2024-11-24 19:43:42,875 - aiogram.event - INFO - Update id=599358249 is handled. Duration 187 ms by bot id=8059469964
+2024-11-24 19:43:45,025 - aiogram.event - INFO - Update id=599358250 is handled. Duration 186 ms by bot id=8059469964
+2024-11-24 19:43:55,497 - aiogram.event - INFO - Update id=599358251 is handled. Duration 233 ms by bot id=8059469964
+2024-11-24 19:43:59,464 - aiogram.event - INFO - Update id=599358252 is handled. Duration 516 ms by bot id=8059469964
+2024-11-24 19:44:04,279 - aiogram.event - INFO - Update id=599358253 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 19:44:09,194 - aiogram.event - INFO - Update id=599358254 is handled. Duration 218 ms by bot id=8059469964
+2024-11-24 19:44:19,957 - aiogram.event - INFO - Update id=599358255 is handled. Duration 203 ms by bot id=8059469964
+2024-11-24 19:44:27,363 - aiogram.event - INFO - Update id=599358256 is handled. Duration 764 ms by bot id=8059469964
+2024-11-24 19:46:23,831 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-24 19:46:25,895 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-24 19:46:26,148 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 19:46:26,384 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001464E721E90>
