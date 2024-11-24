@@ -1,10 +1,17 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 
-from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County
+from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County, BlockedUser
 
 
 @admin.register(CustomUser)
+class CustomUserAdmin(TranslationAdmin):
+    list_display = ('id', 'username', 'phone_number')
+    list_display_links = ('id', 'username', 'phone_number')
+    search_fields = ('username', 'phone_number')
+
+
+@admin.register(BlockedUser)
 class CustomUserAdmin(TranslationAdmin):
     list_display = ('id', 'username', 'phone_number')
     list_display_links = ('id', 'username', 'phone_number')

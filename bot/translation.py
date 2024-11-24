@@ -7,6 +7,11 @@ class CustomUserTranslation(TranslationOptions):
     fields = ('full_name', 'username')
 
 
+@register(models.BlockedUser)
+class CustomUserTranslation(TranslationOptions):
+    fields = ('full_name', 'username')
+
+
 @register(models.Order)
 class ProductTranslation(TranslationOptions):
     fields = ('address',)
@@ -14,7 +19,7 @@ class ProductTranslation(TranslationOptions):
 
 @register(models.Product)
 class ProductTranslation(TranslationOptions):
-    fields = ('name', )
+    fields = ('name',)
 
 
 @register(models.State)

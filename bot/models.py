@@ -102,3 +102,15 @@ class County(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BlockedUser(models.Model):
+    telegram_id = models.BigIntegerField(unique=True, null=True, blank=True)
+    full_name = models.CharField(_("full name"), blank=True, max_length=255)
+    username = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    phone_number = models.CharField(blank=True, unique=True, validators=[phone_number_validator],
+                                    max_length=20)
+    blocked_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
