@@ -990,3 +990,10 @@ django.core.exceptions.FieldError: Cannot resolve keyword 'is_active' into field
 2024-11-24 13:39:26,193 - aiogram.event - INFO - Update id=599358104 is handled. Duration 250 ms by bot id=8059469964
 2024-11-24 13:42:44,427 - aiogram.dispatcher - INFO - Polling stopped
 2024-11-24 13:42:45,221 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 13:42:52,895 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-24 13:42:52,897 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-24 13:42:53,117 - aiogram.dispatcher - INFO - Start polling
+2024-11-24 13:42:53,259 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-24 13:42:58,620 - aiogram.event - INFO - Update id=599358105 is handled. Duration 639 ms by bot id=8059469964
+2024-11-24 13:43:00,342 - aiogram.event - INFO - Update id=599358106 is handled. Duration 186 ms by bot id=8059469964
+2024-11-24 13:43:05,992 - aiogram.event - INFO - Update id=599358107 is handled. Duration 405 ms by bot id=8059469964
