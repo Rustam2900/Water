@@ -138,9 +138,9 @@ async def settings_(message: Message):
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Tilni o'zgartirish", callback_data="change_language")],
-        [InlineKeyboardButton(text="Telefon raqamini o'zgartirish", callback_data="change_phone")],
-        [InlineKeyboardButton(text="To'liq ismni o'zgartirish", callback_data="change_fullname")],
+        [InlineKeyboardButton(text=default_languages[user_lang]['lang_update'], callback_data="change_language")],
+        [InlineKeyboardButton(text=default_languages[user_lang]['phone_update'], callback_data="change_phone")],
+        [InlineKeyboardButton(text=default_languages[user_lang]['name_update'], callback_data="change_fullname")],
     ])
 
     await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=keyboard)
@@ -149,22 +149,23 @@ async def settings_(message: Message):
 @router.callback_query(F.data.in_(["change_language", "change_phone", "change_fullname"]))
 async def handle_settings(callback: CallbackQuery, state: FSMContext):
     user_id = callback.from_user.id
+    user_lang = await get_user_language(user_id)
     data = callback.data
 
     if data == "change_language":
         await callback.message.edit_text("Iltimos, tilni tanlang:", reply_markup=get_languages("setLang"))
 
     elif data == "change_phone":
-        await callback.message.edit_text("Iltimos, telefon raqamingizni yuboring:")
+        await callback.message.edit_text(default_languages[user_lang]['contact'])
         await state.set_state(UserUpdatePhone.waiting_for_phone)
 
     elif data == "change_fullname":
-        await callback.message.edit_text("Iltimos, to'liq ismingizni kiriting:")
+        await callback.message.edit_text(default_languages[user_lang]['full_name'])
         await state.set_state(UserUpdateName.waiting_for_name)
 
 
 @router.message(UserUpdatePhone.waiting_for_phone)
-async def handle_phone_update(message: Message):
+async def handle_phone_update(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
     phone_number = message.text
@@ -183,22 +184,22 @@ async def handle_phone_update(message: Message):
         user.phone_number = phone_number
         await sync_to_async(user.save)()
 
-    await message.answer(f"Sizning telefon raqamingiz muvaffaqiyatli yangilandi: {phone_number}")
-    await bot.delete_state(user_id)
+    await message.answer(f"{default_languages[user_lang]['contact_update']} {phone_number}")
+    await state.clear()
 
 
 @router.message(UserUpdateName.waiting_for_name)
-async def handle_fullname_update(message: Message):
+async def handle_fullname_update(message: Message, state: FSMContext):
     user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
     full_name = message.text
 
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     if user:
         user.full_name = full_name
         await sync_to_async(user.save)()
-
-    await message.answer(f"Sizning to'liq ismingiz muvaffaqiyatli yangilandi: {full_name}")
-    await bot.delete_state(user_id)
+    await message.answer(f"{default_languages[user_lang]['full_name_update']} {full_name}")
+    await state.clear()
 
 
 @router.callback_query(F.data.startswith("setLang"))

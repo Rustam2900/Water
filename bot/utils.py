@@ -11,6 +11,10 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "name_update": "To'liq ismni o'zgartirish",
+        "phone_update": "Telefon raqamini o'zgartirish",
+        "lang_update": "Tilni o'zgartirish",
+        "full_name_update": "Sizning to'liq ismingiz muvaffaqiyatli yangilandi:",
         "admin_not": "👮🏻‍♂️ Uzur siz Admin emassiz",
         "admin": "️Admin",
         "admin_welcome": "👮🏻‍♂️Admin Xushkelibsiz",
@@ -45,13 +49,19 @@ default_languages = {
         "settings": "⚙️ Sozlamalar",
         "full_name": "Iltimos to'liq ismni kiriting",
         "contact": "Iltimos raqamiz kiriting Namuna: +998 93 068 29 11",
+        "contact_update": "Sizning telefon raqamingiz muvaffaqiyatli yangilandi:",
         "successful_registration": "Muvaffaqiyatli ro'yxatdan o'tdi",
         "sorry": "Kechirasiz, boshqa raqamni sinab ko'ring",
 
     },
 
     "ru": {
-        "admin_welcome": "👮🏻‍♂️Admin Xushkelibsiz",
+        "name_update": "Тўлиқ исмни ўзгартириш",
+        "phone_update": "Телефон рақамини ўзгартириш",
+        "lang_update": "Тилни ўзгартириш",
+        "contact_update": "Сизнинг телефон рақамингиз муваффақиятли янгиланди:",
+        "full_name_update": "Сизнинг тўлиқ исмингиз муваффақиятли янгиланди:",
+        "admin_welcome": "👮🏻‍♂️️Админ Хушкелибсиз",
         "admin_not": "👮🏻‍♂️ Узур сиз Админ эмассиз",
         "admin": "Админ",
         "back": "Орқага",

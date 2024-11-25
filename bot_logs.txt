@@ -1742,3 +1742,142 @@ client_session: <aiohttp.client.ClientSession object at 0x000001464E721E90>
 2024-11-24 22:33:49,373 - aiogram.dispatcher - WARNING - Sleep for 4.972945 seconds and try again... (tryings = 16, bot id = 8059469964)
 2024-11-24 22:33:54,350 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [getaddrinfo failed]
 2024-11-24 22:33:54,351 - aiogram.dispatcher - WARNING - Sleep for 4.941510 seconds and try again... (tryings = 17, bot id = 8059469964)
+2024-11-25 11:50:36,529 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 11:50:36,530 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 11:50:38,654 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 11:50:38,655 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 11:50:38,763 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 11:50:39,305 - aiogram.event - INFO - Update id=599358282 is handled. Duration 422 ms by bot id=8059469964
+2024-11-25 11:50:52,374 - aiogram.event - INFO - Update id=599358283 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 11:50:54,731 - aiogram.event - INFO - Update id=599358284 is handled. Duration 280 ms by bot id=8059469964
+2024-11-25 11:50:57,627 - aiogram.event - INFO - Update id=599358285 is handled. Duration 234 ms by bot id=8059469964
+2024-11-25 11:51:04,775 - aiogram.event - INFO - Update id=599358286 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 11:51:17,594 - aiogram.event - INFO - Update id=599358287 is not handled. Duration 234 ms by bot id=8059469964
+2024-11-25 11:51:17,595 - aiogram.event - ERROR - Cause exception while process update id=599358287 by bot id=8059469964
+AttributeError: 'Bot' object has no attribute 'delete_state'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 187, in handle_phone_update
+    await bot.delete_state(user_id)
+          ^^^^^^^^^^^^^^^^
+AttributeError: 'Bot' object has no attribute 'delete_state'
+2024-11-25 11:52:10,997 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 11:52:12,437 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 11:52:12,697 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 11:52:21,174 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 11:52:21,175 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 11:52:22,336 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 11:52:22,337 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 11:52:22,451 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 11:52:26,713 - aiogram.event - INFO - Update id=599358288 is handled. Duration 405 ms by bot id=8059469964
+2024-11-25 11:52:28,218 - aiogram.event - INFO - Update id=599358289 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 11:52:30,706 - aiogram.event - INFO - Update id=599358290 is handled. Duration 265 ms by bot id=8059469964
+2024-11-25 11:52:36,714 - aiogram.event - INFO - Update id=599358291 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 11:53:01,921 - aiogram.event - INFO - Update id=599358292 is handled. Duration 342 ms by bot id=8059469964
+2024-11-25 11:53:04,317 - aiogram.event - INFO - Update id=599358293 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 11:53:05,958 - aiogram.event - INFO - Update id=599358294 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 11:53:09,508 - aiogram.event - INFO - Update id=599358295 is handled. Duration 312 ms by bot id=8059469964
+2024-11-25 11:53:11,988 - aiogram.event - INFO - Update id=599358296 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 11:53:18,329 - aiogram.event - INFO - Update id=599358297 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 11:53:32,824 - aiogram.event - INFO - Update id=599358298 is handled. Duration 157 ms by bot id=8059469964
+2024-11-25 11:53:34,805 - aiogram.event - INFO - Update id=599358299 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 11:53:42,717 - aiogram.event - INFO - Update id=599358300 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 11:53:44,541 - aiogram.event - INFO - Update id=599358301 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 11:55:49,450 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 11:55:51,348 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 11:55:51,600 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 11:55:59,814 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 11:55:59,815 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 11:56:01,177 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 11:56:01,178 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 11:56:01,288 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 11:56:05,913 - aiogram.event - INFO - Update id=599358302 is handled. Duration 359 ms by bot id=8059469964
+2024-11-25 11:56:08,986 - aiogram.event - INFO - Update id=599358303 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 11:56:11,403 - aiogram.event - INFO - Update id=599358304 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 11:56:16,337 - aiogram.event - INFO - Update id=599358305 is handled. Duration 281 ms by bot id=8059469964
+2024-11-25 11:56:19,989 - aiogram.event - INFO - Update id=599358306 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 11:56:21,902 - aiogram.event - INFO - Update id=599358307 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 11:56:25,527 - aiogram.event - INFO - Update id=599358308 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 11:56:27,433 - aiogram.event - INFO - Update id=599358309 is handled. Duration 343 ms by bot id=8059469964
+2024-11-25 11:56:30,340 - aiogram.event - INFO - Update id=599358310 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 11:56:34,081 - aiogram.event - INFO - Update id=599358311 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 11:56:35,684 - aiogram.event - INFO - Update id=599358312 is handled. Duration 358 ms by bot id=8059469964
+2024-11-25 11:56:37,694 - aiogram.event - INFO - Update id=599358313 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 11:56:40,257 - aiogram.event - INFO - Update id=599358314 is handled. Duration 421 ms by bot id=8059469964
+2024-11-25 11:56:49,689 - aiogram.event - INFO - Update id=599358315 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 11:57:12,633 - aiogram.event - INFO - Update id=599358316 is handled. Duration 375 ms by bot id=8059469964
+2024-11-25 11:57:17,840 - aiogram.event - INFO - Update id=599358317 is handled. Duration 531 ms by bot id=8059469964
+2024-11-25 12:06:20,932 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 12:06:22,245 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 12:06:22,504 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:06:22,730 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002939FE89850>
+2024-11-25 12:06:31,841 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 12:06:31,842 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 12:06:33,193 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 12:06:33,194 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 12:06:33,300 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:06:42,045 - aiogram.event - INFO - Update id=599358318 is handled. Duration 562 ms by bot id=8059469964
+2024-11-25 12:06:44,877 - aiogram.event - INFO - Update id=599358319 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 12:06:46,552 - aiogram.event - INFO - Update id=599358320 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:06:48,341 - aiogram.event - INFO - Update id=599358321 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 12:06:50,497 - aiogram.event - INFO - Update id=599358322 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:13:32,765 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 12:13:34,142 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 12:13:34,412 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
