@@ -130,8 +130,7 @@ async def settings_(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @Rustam"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -153,7 +152,8 @@ async def handle_settings(callback: CallbackQuery, state: FSMContext):
     data = callback.data
 
     if data == "change_language":
-        await callback.message.edit_text("Iltimos, tilni tanlang:", reply_markup=get_languages("setLang"))
+        await callback.message.edit_text(text=default_languages[user_lang]['select_language'],
+                                         reply_markup=get_languages("setLang"))
 
     elif data == "change_phone":
         await callback.message.edit_text(default_languages[user_lang]['contact'])
@@ -211,8 +211,7 @@ async def change_language(call: CallbackQuery):
 
     if is_blocked:
         await call.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+            default_languages[user_lang]['not']
         )
         return
 
@@ -245,8 +244,7 @@ async def get_orders(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -284,8 +282,7 @@ async def contact_us(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -303,8 +300,7 @@ async def get_categories(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+            default_languages[user_lang]['not']
         )
         return
 
@@ -336,8 +332,7 @@ async def handle_product_detail(call: CallbackQuery):
 
     if is_blocked:
         await call.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+            default_languages[user_lang]['not']
         )
         return
 
@@ -370,8 +365,7 @@ async def handle_order_start(call: CallbackQuery, state: FSMContext):
 
     if is_blocked:
         await call.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -410,8 +404,7 @@ async def show_cart(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+            default_languages[user_lang]['not']
         )
         return
 
@@ -462,8 +455,7 @@ async def create_location_keyboard(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -487,8 +479,7 @@ async def request_location(callback_query: CallbackQuery):
 
     if is_blocked:
         await callback_query.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -530,8 +521,7 @@ async def handle_products_by_category(call: CallbackQuery):
 
     if is_blocked:
         await call.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+            default_languages[user_lang]['not']
         )
         return
 
@@ -542,11 +532,7 @@ async def handle_products_by_category(call: CallbackQuery):
 
     if not counties:
         await call.message.answer(
-            text="Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz bor. \n"
-                 "Iltimos, boshqa viloyatni tanlang:\n"
-                 "Namangadan diller qidirilmoq.\n"
-                 "Takliflar uchun:\n"
-                 "📞+998916694474 📩 @Ruqiyasuv",
+            text=default_languages[user_lang]['connection']
         )
         states = await state_get()
         inline_kb = InlineKeyboardMarkup(row_width=2)
@@ -592,8 +578,7 @@ async def handle_county_selection(call: CallbackQuery, state: FSMContext):
 
     if is_blocked:
         await call.message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -614,12 +599,12 @@ async def handle_county_selection(call: CallbackQuery, state: FSMContext):
 @router.message(F.content_type == ContentType.LOCATION)
 async def save_location_temp(message: Message, state: FSMContext):
     user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
     is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
@@ -659,8 +644,7 @@ async def successful_payment_handler(message: Message, state: FSMContext):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 

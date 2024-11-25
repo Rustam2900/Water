@@ -1891,3 +1891,196 @@ client_session: <aiohttp.client.ClientSession object at 0x000002939FE89850>
 2024-11-25 12:14:02,961 - aiogram.event - INFO - Update id=599358325 is handled. Duration 186 ms by bot id=8059469964
 2024-11-25 12:14:04,480 - aiogram.event - INFO - Update id=599358326 is handled. Duration 155 ms by bot id=8059469964
 2024-11-25 12:14:07,386 - aiogram.event - INFO - Update id=599358327 is handled. Duration 327 ms by bot id=8059469964
+2024-11-25 12:22:21,563 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 12:22:23,531 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 12:22:23,806 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:22:32,223 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 12:22:32,224 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 12:22:33,755 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 12:22:33,756 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 12:22:33,864 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:22:38,904 - aiogram.event - INFO - Update id=599358328 is handled. Duration 438 ms by bot id=8059469964
+2024-11-25 12:22:41,065 - aiogram.event - INFO - Update id=599358329 is handled. Duration 188 ms by bot id=8059469964
+2024-11-25 12:22:46,429 - aiogram.event - INFO - Update id=599358330 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:22:48,072 - aiogram.event - INFO - Update id=599358331 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 12:22:49,694 - aiogram.event - INFO - Update id=599358332 is handled. Duration 266 ms by bot id=8059469964
+2024-11-25 12:22:51,674 - aiogram.event - INFO - Update id=599358333 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:22:54,421 - aiogram.event - INFO - Update id=599358334 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:22:58,859 - aiogram.event - INFO - Update id=599358335 is handled. Duration 327 ms by bot id=8059469964
+2024-11-25 12:23:00,143 - aiogram.event - INFO - Update id=599358336 is not handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:23:00,144 - aiogram.event - ERROR - Cause exception while process update id=599358336 by bot id=8059469964
+ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 549, in handle_products_by_category
+    inline_kb = InlineKeyboardMarkup(row_width=2)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+2024-11-25 12:23:07,176 - aiogram.event - INFO - Update id=599358337 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 12:23:10,576 - aiogram.event - INFO - Update id=599358338 is handled. Duration 204 ms by bot id=8059469964
+2024-11-25 12:23:13,004 - aiogram.event - INFO - Update id=599358339 is handled. Duration 327 ms by bot id=8059469964
+2024-11-25 12:23:21,263 - aiogram.event - INFO - Update id=599358340 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:23:38,462 - aiogram.event - INFO - Update id=599358341 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 12:23:44,972 - aiogram.event - INFO - Update id=599358342 is handled. Duration 530 ms by bot id=8059469964
+2024-11-25 12:23:46,946 - aiogram.event - INFO - Update id=599358343 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 12:23:48,228 - aiogram.event - INFO - Update id=599358344 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 12:23:49,831 - aiogram.event - INFO - Update id=599358345 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 12:23:52,310 - aiogram.event - INFO - Update id=599358346 is handled. Duration 266 ms by bot id=8059469964
+2024-11-25 12:23:54,248 - aiogram.event - INFO - Update id=599358347 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:23:56,189 - aiogram.event - INFO - Update id=599358348 is handled. Duration 188 ms by bot id=8059469964
+2024-11-25 12:23:58,208 - aiogram.event - INFO - Update id=599358349 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 12:24:01,111 - aiogram.event - INFO - Update id=599358350 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:24:06,791 - aiogram.event - INFO - Update id=599358351 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:24:08,575 - aiogram.event - INFO - Update id=599358352 is handled. Duration 360 ms by bot id=8059469964
+2024-11-25 12:24:10,718 - aiogram.event - INFO - Update id=599358353 is not handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:24:10,718 - aiogram.event - ERROR - Cause exception while process update id=599358353 by bot id=8059469964
+ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 549, in handle_products_by_category
+    inline_kb = InlineKeyboardMarkup(row_width=2)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\pydantic\main.py", line 164, in __init__
+    __pydantic_self__.__pydantic_validator__.validate_python(data, self_instance=__pydantic_self__)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for InlineKeyboardMarkup
+inline_keyboard
+  Field required [type=missing, input_value={'row_width': 2}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.5/v/missing
+2024-11-25 12:24:15,854 - aiogram.event - INFO - Update id=599358354 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 12:24:19,841 - aiogram.event - INFO - Update id=599358355 is handled. Duration 327 ms by bot id=8059469964
+2024-11-25 12:24:25,214 - aiogram.event - INFO - Update id=599358356 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:24:42,601 - aiogram.event - INFO - Update id=599358357 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 12:24:47,437 - aiogram.event - INFO - Update id=599358358 is handled. Duration 547 ms by bot id=8059469964
+2024-11-25 12:25:15,614 - aiogram.event - INFO - Update id=599358359 is handled. Duration 405 ms by bot id=8059469964
+2024-11-25 12:25:20,772 - aiogram.event - INFO - Update id=599358360 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 12:25:27,023 - aiogram.event - INFO - Update id=599358361 is handled. Duration 157 ms by bot id=8059469964
+2024-11-25 12:25:33,056 - aiogram.event - INFO - Update id=599358362 is handled. Duration 188 ms by bot id=8059469964
+2024-11-25 12:25:36,031 - aiogram.event - INFO - Update id=599358363 is handled. Duration 266 ms by bot id=8059469964
+2024-11-25 12:25:47,027 - aiogram.event - INFO - Update id=599358364 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 12:25:50,849 - aiogram.event - INFO - Update id=599358365 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-25 12:25:56,272 - aiogram.event - INFO - Update id=599358366 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 12:26:00,464 - aiogram.event - INFO - Update id=599358367 is handled. Duration 186 ms by bot id=8059469964
+2024-11-25 12:26:02,821 - aiogram.event - INFO - Update id=599358368 is handled. Duration 922 ms by bot id=8059469964

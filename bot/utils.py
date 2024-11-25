@@ -11,6 +11,13 @@ default_languages = {
                        "Қуйидаги тиллардан бирини танланг!",
 
     "uz": {
+        "not": "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
+               "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv",
+        "connection": "Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz bor. \n"
+                      "Iltimos, boshqa viloyatni tanlang:\n"
+                      "Namangadan diller qidirilmoqda.\n"
+                      "Takliflar uchun:\n"
+                      "📞+998916694474 📩 @Ruqiyasuv",
         "name_update": "To'liq ismni o'zgartirish",
         "phone_update": "Telefon raqamini o'zgartirish",
         "lang_update": "Tilni o'zgartirish",
@@ -56,6 +63,13 @@ default_languages = {
     },
 
     "ru": {
+        "not": "❌ Сиз ботдан фойдалана олмайсиз, сиз қора рўйхатдасиз.\n"
+               "❗ Ботдан фойдаланиш учун админ билан боғланинг: @ruqiyasuv",
+        "connection": "Бизда фақат ҳозирда Фарғона учун хизматларимиз бор. \n"
+                      "Илтимос, бошқа вилоятни танланг:\n"
+                      "Намангандан диллер қидирилмоқда.\n"
+                      "Таклифлар учун:\n"
+                      "📞+998916694474 📩 @Ruqiyasuv",
         "name_update": "Тўлиқ исмни ўзгартириш",
         "phone_update": "Телефон рақамини ўзгартириш",
         "lang_update": "Тилни ўзгартириш",

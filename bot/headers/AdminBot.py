@@ -10,7 +10,7 @@ from django.conf import settings
 from bot.db import get_statistics, get_all_users, get_all_product, get_all_blocked_users
 from bot.keyboards import get_main_menu, get_admin_menu
 from bot.models import Product, OrderMinSum, CustomUser, BlockedUser
-from bot.utils import user_languages
+from bot.utils import user_languages, default_languages
 from bot.states import SendMessage, ProductSave, OrderMinSumState
 
 from aiogram.utils.text_decorations import html_decoration as fmt
@@ -30,8 +30,7 @@ async def admin(message: Message):
 
     if is_blocked:
         await message.answer(
-            "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
-            "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv"
+             default_languages[user_lang]['not']
         )
         return
 
