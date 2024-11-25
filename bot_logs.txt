@@ -1881,3 +1881,13 @@ client_session: <aiohttp.client.ClientSession object at 0x000002939FE89850>
 2024-11-25 12:13:32,765 - aiogram.dispatcher - INFO - Polling stopped
 2024-11-25 12:13:34,142 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
 2024-11-25 12:13:34,412 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:13:43,627 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 12:13:43,628 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 12:13:44,824 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 12:13:44,825 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 12:13:45,064 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:13:56,139 - aiogram.event - INFO - Update id=599358323 is handled. Duration 358 ms by bot id=8059469964
+2024-11-25 12:13:58,016 - aiogram.event - INFO - Update id=599358324 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 12:14:02,961 - aiogram.event - INFO - Update id=599358325 is handled. Duration 186 ms by bot id=8059469964
+2024-11-25 12:14:04,480 - aiogram.event - INFO - Update id=599358326 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 12:14:07,386 - aiogram.event - INFO - Update id=599358327 is handled. Duration 327 ms by bot id=8059469964
