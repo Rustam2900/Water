@@ -24,7 +24,8 @@ class ProductSave(StatesGroup):
     lotin_name = State()
     kiril_name = State()
     price = State()
-    delivery_time = State()
+    delivery_time_lotin = State()
+    delivery_time_kiril = State()
 
 
 class OrderMinSumState(StatesGroup):

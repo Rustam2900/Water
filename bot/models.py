@@ -26,7 +26,8 @@ class CustomUser(models.Model):
 class Product(models.Model):
     name = models.CharField(_("name"), max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    delivery_time = models.CharField(max_length=100)
+    delivery_time = models.CharField(_("delivery_time"), max_length=100)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -68,6 +69,7 @@ class Order(models.Model):
     total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Order #{self.id} - {self.user.full_name}"

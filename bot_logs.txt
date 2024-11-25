@@ -1,0 +1,579 @@
+2024-11-25 13:46:02,276 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 13:46:03,621 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 13:46:03,903 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:07:35,099 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 18:07:35,100 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 18:07:36,377 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 18:07:36,377 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 18:07:36,488 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:07:37,065 - aiogram.event - INFO - Update id=599358501 is handled. Duration 438 ms by bot id=8059469964
+2024-11-25 18:56:06,651 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 18:56:08,353 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 18:56:08,628 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:56:15,572 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 18:56:15,572 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 18:56:16,672 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 18:56:16,672 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 18:56:16,778 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:56:23,422 - aiogram.event - INFO - Update id=599358502 is handled. Duration 343 ms by bot id=8059469964
+2024-11-25 18:56:28,132 - aiogram.event - INFO - Update id=599358503 is not handled. Duration 31 ms by bot id=8059469964
+2024-11-25 18:56:28,133 - aiogram.event - ERROR - Cause exception while process update id=599358503 by bot id=8059469964
+FieldError: Unsupported lookup 'is_paid' for ForeignKey or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\AdminBot.py", line 54, in show_statistics
+    product_stats = await get_product_statistics()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\db.py", line 289, in get_product_statistics
+    stats_24h = CartItem.objects.filter(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1265, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1309, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'is_paid' for ForeignKey or join on the field not permitted.
+2024-11-25 18:58:58,086 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 18:58:59,902 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 18:59:00,176 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:59:05,661 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 18:59:05,662 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 18:59:06,690 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 18:59:06,691 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 18:59:06,795 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 18:59:12,170 - aiogram.event - INFO - Update id=599358504 is handled. Duration 328 ms by bot id=8059469964
+2024-11-25 18:59:13,902 - aiogram.event - INFO - Update id=599358505 is not handled. Duration 15 ms by bot id=8059469964
+2024-11-25 18:59:13,903 - aiogram.event - ERROR - Cause exception while process update id=599358505 by bot id=8059469964
+FieldError: Unsupported lookup 'is_paid' for ForeignKey or join on the field not permitted.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\AdminBot.py", line 54, in show_statistics
+    product_stats = await get_product_statistics()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\db.py", line 289, in get_product_statistics
+    stats_24h = CartItem.objects.filter(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1436, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1454, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1461, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1498, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1529, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1444, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1265, in build_lookup
+    lhs = self.try_transform(lhs, lookup_name)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\query.py", line 1309, in try_transform
+    raise FieldError(
+django.core.exceptions.FieldError: Unsupported lookup 'is_paid' for ForeignKey or join on the field not permitted.
+2024-11-25 19:04:18,530 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:04:19,809 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:04:20,076 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:04:26,013 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:04:26,014 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:04:27,226 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:04:27,228 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:04:27,343 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:04:39,365 - aiogram.event - INFO - Update id=599358506 is handled. Duration 437 ms by bot id=8059469964
+2024-11-25 19:04:40,784 - aiogram.event - INFO - Update id=599358507 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 19:06:53,537 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:06:55,045 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:06:55,301 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:07:00,440 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:07:00,441 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:07:01,875 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:07:01,876 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:07:01,999 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:07:13,571 - aiogram.event - INFO - Update id=599358508 is handled. Duration 360 ms by bot id=8059469964
+2024-11-25 19:07:14,998 - aiogram.event - INFO - Update id=599358509 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:08:55,405 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:08:56,648 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:08:56,908 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:09:02,888 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:09:02,889 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:09:04,145 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:09:04,146 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:09:04,250 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:09:08,842 - aiogram.event - INFO - Update id=599358510 is handled. Duration 452 ms by bot id=8059469964
+2024-11-25 19:09:10,333 - aiogram.event - INFO - Update id=599358511 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:10:09,434 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:10:10,753 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:10:10,826 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientOSError: [Errno 1] [SSL: APPLICATION_DATA_AFTER_CLOSE_NOTIFY] application data after close notify (_ssl.c:2706)
+2024-11-25 19:10:10,827 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-25 19:10:11,012 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:10:16,499 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:10:16,500 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:10:17,878 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:10:17,879 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:10:17,996 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:10:22,424 - aiogram.event - INFO - Update id=599358512 is handled. Duration 343 ms by bot id=8059469964
+2024-11-25 19:10:24,156 - aiogram.event - INFO - Update id=599358513 is handled. Duration 313 ms by bot id=8059469964
+2024-11-25 19:13:28,895 - aiogram.event - INFO - Update id=599358514 is handled. Duration 406 ms by bot id=8059469964
+2024-11-25 19:13:30,669 - aiogram.event - INFO - Update id=599358515 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:13:33,755 - aiogram.event - INFO - Update id=599358516 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 19:13:34,858 - aiogram.event - INFO - Update id=599358517 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 19:13:36,414 - aiogram.event - INFO - Update id=599358518 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 19:13:37,662 - aiogram.event - INFO - Update id=599358519 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 19:13:40,261 - aiogram.event - INFO - Update id=599358520 is handled. Duration 281 ms by bot id=8059469964
+2024-11-25 19:13:43,330 - aiogram.event - INFO - Update id=599358521 is handled. Duration 204 ms by bot id=8059469964
+2024-11-25 19:13:44,933 - aiogram.event - INFO - Update id=599358522 is handled. Duration 530 ms by bot id=8059469964
+2024-11-25 19:13:46,684 - aiogram.event - INFO - Update id=599358523 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 19:13:47,963 - aiogram.event - INFO - Update id=599358524 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 19:13:55,654 - aiogram.event - INFO - Update id=599358525 is handled. Duration 188 ms by bot id=8059469964
+2024-11-25 19:14:16,094 - aiogram.event - INFO - Update id=599358526 is handled. Duration 359 ms by bot id=8059469964
+2024-11-25 19:14:22,031 - aiogram.event - INFO - Update id=599358527 is handled. Duration 703 ms by bot id=8059469964
+2024-11-25 19:14:46,181 - aiogram.event - INFO - Update id=599358528 is handled. Duration 390 ms by bot id=8059469964
+2024-11-25 19:14:47,548 - aiogram.event - INFO - Update id=599358529 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:20:27,897 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:20:29,762 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:20:30,021 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:20:30,182 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000022B497F2A90>
+2024-11-25 19:20:39,134 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:20:39,134 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:20:40,108 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:20:40,108 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:20:40,210 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:20:46,688 - aiogram.event - INFO - Update id=599358530 is handled. Duration 515 ms by bot id=8059469964
+2024-11-25 19:20:48,057 - aiogram.event - INFO - Update id=599358531 is handled. Duration 171 ms by bot id=8059469964
+2024-11-25 19:33:19,092 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:33:20,525 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:33:20,797 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:33:26,871 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:33:26,872 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:33:28,175 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:33:28,176 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:33:28,282 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:33:36,501 - aiogram.event - INFO - Update id=599358532 is handled. Duration 358 ms by bot id=8059469964
+2024-11-25 19:33:38,284 - aiogram.event - INFO - Update id=599358533 is handled. Duration 188 ms by bot id=8059469964
+2024-11-25 19:34:18,724 - aiogram.event - INFO - Update id=599358534 is handled. Duration 344 ms by bot id=8059469964
+2024-11-25 19:34:20,332 - aiogram.event - INFO - Update id=599358535 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:34:22,957 - aiogram.event - INFO - Update id=599358536 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 19:34:24,720 - aiogram.event - INFO - Update id=599358537 is handled. Duration 202 ms by bot id=8059469964
+2024-11-25 19:34:28,068 - aiogram.event - INFO - Update id=599358538 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 19:34:32,923 - aiogram.event - INFO - Update id=599358539 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:34:35,632 - aiogram.event - INFO - Update id=599358540 is handled. Duration 500 ms by bot id=8059469964
+2024-11-25 19:34:37,717 - aiogram.event - INFO - Update id=599358541 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 19:34:40,215 - aiogram.event - INFO - Update id=599358542 is handled. Duration 359 ms by bot id=8059469964
+2024-11-25 19:34:51,694 - aiogram.event - INFO - Update id=599358543 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 19:35:14,442 - aiogram.event - INFO - Update id=599358544 is handled. Duration 405 ms by bot id=8059469964
+2024-11-25 19:35:18,992 - aiogram.event - INFO - Update id=599358545 is handled. Duration 561 ms by bot id=8059469964
+2024-11-25 19:35:23,052 - aiogram.event - INFO - Update id=599358546 is handled. Duration 264 ms by bot id=8059469964
+2024-11-25 19:35:25,084 - aiogram.event - INFO - Update id=599358547 is handled. Duration 235 ms by bot id=8059469964
+2024-11-25 19:40:50,803 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:40:52,248 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:40:52,503 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:40:52,666 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001C1EF1A2A10>
+2024-11-25 19:40:57,945 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:40:57,945 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:40:58,934 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:40:58,935 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:40:59,036 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:41:04,988 - aiogram.event - INFO - Update id=599358548 is handled. Duration 375 ms by bot id=8059469964
+2024-11-25 19:41:06,428 - aiogram.event - INFO - Update id=599358549 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:41:08,396 - aiogram.event - INFO - Update id=599358550 is handled. Duration 141 ms by bot id=8059469964
+2024-11-25 19:41:10,028 - aiogram.event - INFO - Update id=599358551 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 19:41:13,504 - aiogram.event - INFO - Update id=599358552 is handled. Duration 186 ms by bot id=8059469964
+2024-11-25 19:41:17,795 - aiogram.event - INFO - Update id=599358553 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 19:41:19,719 - aiogram.event - INFO - Update id=599358554 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 19:41:21,640 - aiogram.event - INFO - Update id=599358555 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 19:41:24,063 - aiogram.event - INFO - Update id=599358556 is handled. Duration 265 ms by bot id=8059469964
+2024-11-25 19:41:28,548 - aiogram.event - INFO - Update id=599358557 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:41:31,106 - aiogram.event - INFO - Update id=599358558 is handled. Duration 765 ms by bot id=8059469964
+2024-11-25 19:41:32,511 - aiogram.event - INFO - Update id=599358559 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 19:41:35,262 - aiogram.event - INFO - Update id=599358560 is handled. Duration 594 ms by bot id=8059469964
+2024-11-25 19:41:43,338 - aiogram.event - INFO - Update id=599358561 is handled. Duration 139 ms by bot id=8059469964
+2024-11-25 19:42:05,035 - aiogram.event - INFO - Update id=599358562 is handled. Duration 390 ms by bot id=8059469964
+2024-11-25 19:42:12,495 - aiogram.event - INFO - Update id=599358563 is handled. Duration 625 ms by bot id=8059469964
+2024-11-25 19:42:34,832 - aiogram.event - INFO - Update id=599358564 is handled. Duration 329 ms by bot id=8059469964
+2024-11-25 19:42:36,448 - aiogram.event - INFO - Update id=599358565 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 19:45:07,195 - aiogram.event - INFO - Update id=599358566 is handled. Duration 454 ms by bot id=8059469964
+2024-11-25 19:45:13,717 - aiogram.event - INFO - Update id=599358567 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 19:45:18,191 - aiogram.event - INFO - Update id=599358568 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 19:45:23,536 - aiogram.event - INFO - Update id=599358569 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 19:45:41,260 - aiogram.event - INFO - Update id=599358570 is handled. Duration 359 ms by bot id=8059469964
+2024-11-25 19:45:47,751 - aiogram.event - INFO - Update id=599358571 is handled. Duration 125 ms by bot id=8059469964
+2024-11-25 19:45:58,794 - aiogram.event - INFO - Update id=599358572 is handled. Duration 155 ms by bot id=8059469964
+2024-11-25 19:46:20,385 - aiogram.event - INFO - Update id=599358573 is handled. Duration 422 ms by bot id=8059469964
+2024-11-25 19:46:52,562 - aiogram.event - INFO - Update id=599358574 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-25 19:46:52,562 - aiogram.event - ERROR - Cause exception while process update id=599358574 by bot id=8059469964
+TypeError: Product() got unexpected keyword arguments: 'delivery_time_lotin', 'delivery_time_kiril'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\AdminBot.py", line 234, in add_delivery_time_kiril
+    price=data['price'],
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\modeltranslation\manager.py", line 412, in create
+    return super().create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\modeltranslation\translator.py", line 312, in new_init
+    old_init(self, *args, **kwargs)
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Product() got unexpected keyword arguments: 'delivery_time_lotin', 'delivery_time_kiril'
+2024-11-25 19:47:05,302 - aiogram.event - INFO - Update id=599358575 is handled. Duration 343 ms by bot id=8059469964
+2024-11-25 19:47:12,222 - aiogram.event - INFO - Update id=599358576 is not handled. Duration 0 ms by bot id=8059469964
+2024-11-25 19:47:12,222 - aiogram.event - ERROR - Cause exception while process update id=599358576 by bot id=8059469964
+TypeError: Product() got unexpected keyword arguments: 'delivery_time_lotin', 'delivery_time_kiril'
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\AdminBot.py", line 234, in add_delivery_time_kiril
+    price=data['price'],
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\modeltranslation\manager.py", line 412, in create
+    return super().create(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 656, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\modeltranslation\translator.py", line 312, in new_init
+    old_init(self, *args, **kwargs)
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Product() got unexpected keyword arguments: 'delivery_time_lotin', 'delivery_time_kiril'
+2024-11-25 19:48:50,545 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:48:52,067 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:48:52,323 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:48:52,486 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000131876373D0>
+2024-11-25 19:48:57,762 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:48:57,763 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:48:58,854 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:48:58,855 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:48:58,964 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:49:02,963 - aiogram.event - INFO - Update id=599358577 is handled. Duration 375 ms by bot id=8059469964
+2024-11-25 19:49:13,301 - aiogram.event - INFO - Update id=599358578 is handled. Duration 250 ms by bot id=8059469964
+2024-11-25 19:49:27,226 - aiogram.event - INFO - Update id=599358579 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:49:36,084 - aiogram.event - INFO - Update id=599358580 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 19:49:42,435 - aiogram.event - INFO - Update id=599358581 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:49:50,602 - aiogram.event - INFO - Update id=599358582 is handled. Duration 187 ms by bot id=8059469964
+2024-11-25 19:50:04,850 - aiogram.event - INFO - Update id=599358583 is handled. Duration 171 ms by bot id=8059469964
+2024-11-25 19:50:17,001 - aiogram.event - INFO - Update id=599358584 is handled. Duration 311 ms by bot id=8059469964
+2024-11-25 19:50:20,155 - aiogram.event - INFO - Update id=599358585 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:50:22,181 - aiogram.event - INFO - Update id=599358586 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:50:29,046 - aiogram.event - INFO - Update id=599358587 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 19:50:31,717 - aiogram.event - INFO - Update id=599358588 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 19:50:34,179 - aiogram.event - INFO - Update id=599358589 is handled. Duration 219 ms by bot id=8059469964
+2024-11-25 19:50:36,494 - aiogram.event - INFO - Update id=599358590 is handled. Duration 186 ms by bot id=8059469964
+2024-11-25 19:52:55,820 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 19:52:57,187 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 19:52:57,442 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:53:02,407 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-25 19:53:02,408 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-25 19:53:04,002 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-25 19:53:04,002 - aiogram.dispatcher - INFO - Start polling
+2024-11-25 19:53:04,123 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 19:53:13,421 - aiogram.event - INFO - Update id=599358591 is handled. Duration 484 ms by bot id=8059469964
+2024-11-25 19:57:07,506 - aiogram.event - INFO - Update id=599358592 is handled. Duration 358 ms by bot id=8059469964
+2024-11-25 19:58:44,842 - aiogram.event - INFO - Update id=599358593 is handled. Duration 359 ms by bot id=8059469964
+2024-11-25 19:58:47,757 - aiogram.event - INFO - Update id=599358594 is handled. Duration 156 ms by bot id=8059469964
+2024-11-25 19:58:57,450 - aiogram.event - INFO - Update id=599358595 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 19:59:00,621 - aiogram.event - INFO - Update id=599358596 is handled. Duration 186 ms by bot id=8059469964
+2024-11-25 19:59:12,665 - aiogram.event - INFO - Update id=599358597 is handled. Duration 172 ms by bot id=8059469964
+2024-11-25 19:59:17,913 - aiogram.event - INFO - Update id=599358598 is handled. Duration 280 ms by bot id=8059469964
+2024-11-25 19:59:20,137 - aiogram.event - INFO - Update id=599358599 is handled. Duration 203 ms by bot id=8059469964
+2024-11-25 19:59:22,757 - aiogram.event - INFO - Update id=599358600 is handled. Duration 453 ms by bot id=8059469964
+2024-11-25 19:59:35,453 - aiogram.event - INFO - Update id=599358601 is handled. Duration 140 ms by bot id=8059469964
+2024-11-25 20:01:02,349 - aiogram.event - INFO - Update id=599358602 is handled. Duration 811 ms by bot id=8059469964
+2024-11-25 20:01:03,862 - aiogram.event - INFO - Update id=599358603 is handled. Duration 280 ms by bot id=8059469964
+2024-11-25 20:01:05,460 - aiogram.event - INFO - Update id=599358604 is handled. Duration 264 ms by bot id=8059469964
+2024-11-25 20:01:07,579 - aiogram.event - INFO - Update id=599358605 is handled. Duration 281 ms by bot id=8059469964

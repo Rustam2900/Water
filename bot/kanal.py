@@ -23,6 +23,16 @@ def get_cart_items_from_id(order):
     ))
 
 
+def clean_phone_number(phone_number: str) -> str:
+    """
+    Telefon raqamidan bo'sh joylarni olib tashlaydi.
+
+    :param phone_number: Raqamli string (masalan, '+998 93 068 29 11')
+    :return: Toza telefon raqami (masalan, '+998930682911')
+    """
+    return phone_number.replace(" ", "")
+
+
 @sync_to_async
 def update_order_total_price(order, total_price):
     order.total_price = total_price
@@ -39,14 +49,14 @@ async def send_order_to_channel(
 
 ):
     channel_id = '-1002256139682'
-
+    cleaned_phone_number = clean_phone_number(phone_number)
     order_message = (
         f"Yangi Buyurtma!\n"
         f"Foydalanuvchi: {full_name}\n"
-        f"Telefon raqam: {phone_number}\n"
-        f"Manzil: {address}\n\n"
-        f"Viloyat: {state}\n\n"
-        f"Tuman: {county}\n\n"
+        f"Telefon raqam: {cleaned_phone_number}\n"
+        f"Manzil: {address}\n"
+        f"Viloyat: {state}\n"
+        f"Tuman: {county}\n"
         f"Buyurtma:\n"
     )
 
@@ -60,13 +70,12 @@ async def send_order_to_channel(
         order_message += (
             f"Mahsulot: {product_name}\n"
             f"Miqdor: {quantity}\n"
-            f"Narxi: {total_price_for_item} so'm\n\n"
+            f"Narxi: {total_price_for_item} so'm\n"
         )
         total_price += total_price_for_item
 
     order_message += (
         f"Jami narx: {total_price} so'm\n"
-        f"Google Maps manzili: {address}\n"
     )
 
     await bot.send_message(chat_id=channel_id, text=order_message)

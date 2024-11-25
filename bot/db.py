@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from asgiref.sync import sync_to_async
 from django.db import IntegrityError
+from django.db.models import Sum
 from django.utils import timezone
 
 from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County, BlockedUser
@@ -258,15 +259,15 @@ def create_or_update_user_country(telegram_id, county_id):
         return None, False
 
 
-@sync_to_async
-def get_statistics():
-    total_users = CustomUser.objects.count()
-
-    time_24_hours_ago = timezone.now() - timedelta(days=1)
-    new_users_24h = CustomUser.objects.filter(created_at__gte=time_24_hours_ago).count()
-
-    return f"👤 Bot a'zolar soni: {total_users}\n" \
-           f"🕒 Oxirgi 24 soatda qo'shilgan foydalanuvchilar: {new_users_24h}\n"
+# @sync_to_async
+# def get_statistics():
+#     total_users = CustomUser.objects.count()
+#
+#     time_24_hours_ago = timezone.now() - timedelta(days=1)
+#     new_users_24h = CustomUser.objects.filter(created_at__gte=time_24_hours_ago).count()
+#
+#     return f"👤 Bot a'zolar soni: {total_users}\n" \
+#            f"🕒 Oxirgi 24 soatda qo'shilgan foydalanuvchilar: {new_users_24h}\n"
 
 
 @sync_to_async
@@ -277,3 +278,61 @@ def get_all_users():
 @sync_to_async
 def get_all_blocked_users():
     return list(BlockedUser.objects.all())
+
+
+@sync_to_async
+def get_product_statistics():
+    time_24_hours_ago = timezone.now() - timedelta(days=1)
+    time_1_month_ago = timezone.now() - timedelta(days=30)
+
+    stats_24h = (
+        CartItem.objects.filter(
+            created_at__gte=time_24_hours_ago,
+            order__status=Order.OrderStatus.PAYED
+        )
+        .values('product__name')
+        .annotate(total_quantity=Sum('quantity'))
+        .order_by('-total_quantity')
+    )
+
+    stats_1_month = (
+        CartItem.objects.filter(
+            created_at__gte=time_1_month_ago,
+            order__status=Order.OrderStatus.PAYED
+        )
+        .values('product__name')
+        .annotate(total_quantity=Sum('quantity'))
+        .order_by('-total_quantity')
+    )
+
+    total_stats = (
+        CartItem.objects.filter(
+            order__status=Order.OrderStatus.PAYED
+        )
+        .values('product__name')
+        .annotate(total_quantity=Sum('quantity'))
+        .order_by('-total_quantity')
+    )
+
+    return {
+        "stats_24h": list(stats_24h),
+        "stats_1_month": list(stats_1_month),
+        "total_stats": list(total_stats),
+    }
+
+
+@sync_to_async
+def get_user_statistics():
+    total_users = CustomUser.objects.count()
+
+    time_24_hours_ago = timezone.now() - timedelta(days=1)
+    new_users_24h = CustomUser.objects.filter(created_at__gte=time_24_hours_ago).count()
+
+    time_1_month_ago = timezone.now() - timedelta(days=30)
+    new_users_1_month = CustomUser.objects.filter(created_at__gte=time_1_month_ago).count()
+
+    return {
+        "total_users": total_users,
+        "new_users_24h": new_users_24h,
+        "new_users_1_month": new_users_1_month
+    }

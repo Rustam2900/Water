@@ -130,7 +130,7 @@ async def settings_(message: Message):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -244,7 +244,7 @@ async def get_orders(message: Message):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -282,7 +282,7 @@ async def contact_us(message: Message):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -340,10 +340,11 @@ async def handle_product_detail(call: CallbackQuery):
     product = await get_product_detail(product_id)
 
     product_name = product.name_uz if user_lang == 'uz' else product.name_ru
+    delivery_time_name = product.delivery_time_uz if user_lang == 'uz' else product.delivery_time_ru
     message_text = (
         f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
         f"✅ {default_languages[user_lang]['products_price']}: {product.price} som\n"
-        f"🚚 {default_languages[user_lang]['delivery_time']} {product.delivery_time or 'not'}"
+        f"🚚 {default_languages[user_lang]['delivery_time']} {delivery_time_name or 'not'}"
     )
 
     inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
@@ -365,7 +366,7 @@ async def handle_order_start(call: CallbackQuery, state: FSMContext):
 
     if is_blocked:
         await call.message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -455,7 +456,7 @@ async def create_location_keyboard(message: Message):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -479,7 +480,7 @@ async def request_location(callback_query: CallbackQuery):
 
     if is_blocked:
         await callback_query.message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -578,7 +579,7 @@ async def handle_county_selection(call: CallbackQuery, state: FSMContext):
 
     if is_blocked:
         await call.message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -604,7 +605,7 @@ async def save_location_temp(message: Message, state: FSMContext):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -644,7 +645,7 @@ async def successful_payment_handler(message: Message, state: FSMContext):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 

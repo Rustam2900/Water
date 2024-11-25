@@ -19,7 +19,7 @@ class ProductTranslation(TranslationOptions):
 
 @register(models.Product)
 class ProductTranslation(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'delivery_time')
 
 
 @register(models.State)

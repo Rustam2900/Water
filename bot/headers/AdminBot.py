@@ -7,7 +7,8 @@ from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery, InlineKey
 from asgiref.sync import sync_to_async
 from django.conf import settings
 
-from bot.db import get_statistics, get_all_users, get_all_product, get_all_blocked_users
+from bot.db import get_all_users, get_all_product, get_all_blocked_users, get_user_statistics, \
+    get_product_statistics
 from bot.keyboards import get_main_menu, get_admin_menu
 from bot.models import Product, OrderMinSum, CustomUser, BlockedUser
 from bot.utils import user_languages, default_languages
@@ -30,7 +31,7 @@ async def admin(message: Message):
 
     if is_blocked:
         await message.answer(
-             default_languages[user_lang]['not']
+            default_languages[user_lang]['not']
         )
         return
 
@@ -48,10 +49,41 @@ async def admin(message: Message):
 async def show_statistics(message: Message):
     user_id = message.from_user.id
     if user_id == 6736873215:
-        statistics = await get_statistics()
+        user_stats = await get_user_statistics()
+        product_stats = await get_product_statistics()
+
+        statistics = f"👤 Foydalanuvchilar:\n" \
+                     f"24 soatda yangi foydalanuvchilar: {user_stats['new_users_24h']}\n" \
+                     f"1 oyda yangi foydalanuvchilar: {user_stats['new_users_1_month']}\n" \
+                     f"Jami foydalanuvchilar: {user_stats['total_users']}\n\n"
+
+        statistics += "📦 Mahsulot statistikasi (24 soat):\n"
+        if product_stats["stats_24h"]:
+            for stat in product_stats["stats_24h"]:
+                statistics += f"{stat['product__name']}: {stat['total_quantity']} dona sotilgan\n"
+        else:
+            statistics += "No data available for the last 24 hours.\n"
+
+        statistics += "\n📦 Mahsulot statistikasi (1 oy):\n"
+        if product_stats["stats_1_month"]:
+            for stat in product_stats["stats_1_month"]:
+                statistics += f"{stat['product__name']}: {stat['total_quantity']} dona sotilgan\n"
+        else:
+            statistics += "No data available for the last month.\n"
+
+        statistics += "\n📦 Mahsulot statistikasi (Jami):\n"
+        if product_stats["total_stats"]:
+            for stat in product_stats["total_stats"]:
+                statistics += f"{stat['product__name']}: {stat['total_quantity']} dona sotilgan\n"
+        else:
+            statistics += "No total product data available.\n"
+
         await message.answer(text=statistics)
     else:
-        await message.answer(text="Siz admin emassiz, statistikani ko'rish huquqiga ega emassiz.", reply_markup=None)
+        await message.answer(
+            text="Siz admin emassiz, statistikani ko'rish huquqiga ega emassiz.",
+            reply_markup=None
+        )
 
 
 @router.message(F.text == "✍️ Habar yuborish")
@@ -172,30 +204,44 @@ async def add_price(message: Message, state: FSMContext):
     if message.text.isdigit():
         price = int(message.text)
         await state.update_data(price=price)
-        await state.set_state(ProductSave.delivery_time)
-        await message.answer("Yetkazib berish vaqtini kiriting.\n"
+        await state.set_state(ProductSave.delivery_time_lotin)
+        await message.answer("Yetkazib berish vaqtini lotin harflarida kiriting.\n"
                              "Namuna: Bepul yoki 1-3 soat")
     else:
         await message.answer("Iltimos, faqat raqam kiriting.\n"
                              "Namuna: 15000")
 
 
-@router.message(ProductSave.delivery_time)
-async def add_delivery_time(message: Message, state: FSMContext):
-    delivery_time = message.text.strip()
-    await state.update_data(delivery_time=delivery_time)
-    data = await state.get_data()
+@router.message(ProductSave.delivery_time_lotin)
+async def add_delivery_time_lotin(message: Message, state: FSMContext):
+    delivery_time_lotin = message.text.strip()
+    await state.update_data(delivery_time_lotin=delivery_time_lotin)
+    await state.set_state(ProductSave.delivery_time_kiril)
+    await message.answer("Yetkazib berish vaqtini kiril harflarida kiriting.\n"
+                         "Namuna: Бепул")
 
-    await sync_to_async(Product.objects.create)(
-        name_uz=data['lotin_name'],
-        name_ru=data['kiril_name'],
-        price=data['price'],
-        delivery_time=data['delivery_time']
-    )
 
-    await message.answer(fmt.bold("Mahsulot muvaffaqiyatli qo'shildi!"),
-                         parse_mode='HTML', reply_markup=ReplyKeyboardRemove())
-    await state.clear()
+@router.message(ProductSave.delivery_time_kiril)
+async def add_delivery_time_kiril(message: Message, state: FSMContext):
+    if is_valid_kiril_text(message.text):
+        delivery_time_kiril = message.text.strip()
+        await state.update_data(delivery_time_kiril=delivery_time_kiril)
+        data = await state.get_data()
+
+        await sync_to_async(Product.objects.create)(
+            name_uz=data['lotin_name'],
+            name_ru=data['kiril_name'],
+            price=data['price'],
+            delivery_time_uz=data['delivery_time_lotin'],
+            delivery_time_ru=data['delivery_time_kiril']
+        )
+
+        await message.answer(fmt.bold("Mahsulot muvaffaqiyatli qo'shildi!"),
+                             parse_mode='HTML', reply_markup=ReplyKeyboardRemove())
+        await state.clear()
+    else:
+        await message.answer("Iltimos, Kiril harflarida va raqamlar bilan yozing.\n"
+                             "Namuna: Бепул")
 
 
 async def get_product_keyboard(user_lang):
