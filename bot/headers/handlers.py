@@ -419,7 +419,7 @@ async def show_cart(message: Message):
     for item in cart_items:
         message_text += (
             f"📦 {item.product.name_uz} - {item.quantity} dona\n"
-            f"💲 {default_languages[user_lang]['products_price']} {item.amount} som\n\n"
+            f"✅  {default_languages[user_lang]['products_price']} {item.amount} som\n\n"
         )
 
     inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
