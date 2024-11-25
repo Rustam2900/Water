@@ -2084,3 +2084,8 @@ inline_keyboard
 2024-11-25 12:25:56,272 - aiogram.event - INFO - Update id=599358366 is handled. Duration 141 ms by bot id=8059469964
 2024-11-25 12:26:00,464 - aiogram.event - INFO - Update id=599358367 is handled. Duration 186 ms by bot id=8059469964
 2024-11-25 12:26:02,821 - aiogram.event - INFO - Update id=599358368 is handled. Duration 922 ms by bot id=8059469964
+2024-11-25 12:32:26,205 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-25 12:32:27,427 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-25 12:32:27,683 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-25 12:32:27,954 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000257FA1B2190>
