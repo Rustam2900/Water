@@ -29,3 +29,11 @@ class ProductSave(StatesGroup):
 
 class OrderMinSumState(StatesGroup):
     min_sum = State()
+
+
+class UserUpdateName(StatesGroup):
+    waiting_for_name = State()
+
+
+class UserUpdatePhone(StatesGroup):
+    waiting_for_phone = State()

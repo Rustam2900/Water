@@ -18,7 +18,7 @@ from bot.db import save_user_language, save_user_info_to_db, get_user_language, 
     get_product_detail, get_cart_items, link_cart_items_to_order, add_to_cart, \
     save_order_to_database, get_or_create_order, update_order, get_user, state_get, create_or_update_user_state, \
     create_or_update_user_country, county_get
-from bot.states import UserStates, OrderAddress, OrderState
+from bot.states import UserStates, OrderAddress, OrderState, UserUpdateName, UserUpdatePhone
 from bot.models import CustomUser, BlockedUser
 from bot.kanal import send_order_to_channel
 from core.settings import PAYMENT_TOKEN
@@ -136,7 +136,69 @@ async def settings_(message: Message):
         return
 
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
-    await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=get_languages("setLang"))
+
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Tilni o'zgartirish", callback_data="change_language")],
+        [InlineKeyboardButton(text="Telefon raqamini o'zgartirish", callback_data="change_phone")],
+        [InlineKeyboardButton(text="To'liq ismni o'zgartirish", callback_data="change_fullname")],
+    ])
+
+    await message.answer(text=default_languages[user_lang]['select_language'], reply_markup=keyboard)
+
+
+@router.callback_query(F.data.in_(["change_language", "change_phone", "change_fullname"]))
+async def handle_settings(callback: CallbackQuery, state: FSMContext):
+    user_id = callback.from_user.id
+    data = callback.data
+
+    if data == "change_language":
+        await callback.message.edit_text("Iltimos, tilni tanlang:", reply_markup=get_languages("setLang"))
+
+    elif data == "change_phone":
+        await callback.message.edit_text("Iltimos, telefon raqamingizni yuboring:")
+        await state.set_state(UserUpdatePhone.waiting_for_phone)
+
+    elif data == "change_fullname":
+        await callback.message.edit_text("Iltimos, to'liq ismingizni kiriting:")
+        await state.set_state(UserUpdateName.waiting_for_name)
+
+
+@router.message(UserUpdatePhone.waiting_for_phone)
+async def handle_phone_update(message: Message):
+    user_id = message.from_user.id
+    user_lang = await get_user_language(user_id)
+    phone_number = message.text
+    if message.contact:
+        phone = fix_phone(message.contact.phone_number)
+    else:
+        phone = fix_phone(message.text)
+
+    if not phone_number_validator.match(phone):
+        error_message = default_languages[user_lang]['contact']
+
+        await message.answer(error_message)
+        return
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
+    if user:
+        user.phone_number = phone_number
+        await sync_to_async(user.save)()
+
+    await message.answer(f"Sizning telefon raqamingiz muvaffaqiyatli yangilandi: {phone_number}")
+    await bot.delete_state(user_id)
+
+
+@router.message(UserUpdateName.waiting_for_name)
+async def handle_fullname_update(message: Message):
+    user_id = message.from_user.id
+    full_name = message.text
+
+    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
+    if user:
+        user.full_name = full_name
+        await sync_to_async(user.save)()
+
+    await message.answer(f"Sizning to'liq ismingiz muvaffaqiyatli yangilandi: {full_name}")
+    await bot.delete_state(user_id)
 
 
 @router.callback_query(F.data.startswith("setLang"))
@@ -472,7 +534,6 @@ async def handle_products_by_category(call: CallbackQuery):
         )
         return
 
-    # Qora ro'yxatda bo'lmaganlar uchun davom etadi
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     state_id = int(call.data.split("_")[1])
 
