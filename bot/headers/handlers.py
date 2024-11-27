@@ -344,7 +344,7 @@ async def handle_product_detail(call: CallbackQuery):
     delivery_time_name = product.delivery_time_uz if user_lang == 'uz' else product.delivery_time_ru
     message_text = (
         f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
-        f"✅ {default_languages[user_lang]['products_price']}: {product.price} som'\n"
+        f"✅ {default_languages[user_lang]['products_price']}: {product.price} so'm\n"
         f"🚚 {default_languages[user_lang]['delivery_time']} {delivery_time_name or 'not'}"
     )
 
@@ -421,7 +421,8 @@ async def show_cart(message: Message):
     for item in cart_items:
         message_text += (
             f"📦 {item.product.name_uz} - {item.quantity} dona\n"
-            f"✅  {default_languages[user_lang]['products_price']} {item.amount} som'\n\n"
+            f"✅  {default_languages[user_lang]['products_price']} {item.amount} so'm"
+            f"\n\n"
         )
 
     inline_kb = InlineKeyboardMarkup(row_width=1, inline_keyboard=[])
