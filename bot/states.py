@@ -12,8 +12,6 @@ class OrderState(StatesGroup):
 
 class OrderAddress(StatesGroup):
     location = State()
-    payment = State()
-    total_price = State()
 
 
 class SendMessage(StatesGroup):

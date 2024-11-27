@@ -5,7 +5,7 @@ from aiogram.enums import ParseMode, ContentType
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, \
-    ReplyKeyboardMarkup, LabeledPrice, PreCheckoutQuery
+    ReplyKeyboardMarkup
 from asgiref.sync import sync_to_async
 
 from bot.keyboards import get_languages, get_main_menu
@@ -21,7 +21,6 @@ from bot.db import save_user_language, save_user_info_to_db, get_user_language, 
 from bot.states import UserStates, OrderAddress, OrderState, UserUpdateName, UserUpdatePhone
 from bot.models import CustomUser, BlockedUser
 from bot.kanal import send_order_to_channel
-from core.settings import PAYMENT_TOKEN
 
 router = Router()
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -45,14 +44,16 @@ async def welcome(message: Message):
 
     if user and user.user_lang:
         main_menu_markup = get_main_menu(user.user_lang)
-        await message.answer(
-            text=introduction_template[user.user_lang],
+        await message.answer_photo(
+            photo="https://t.me/Rustam_python_bot/83",
+            caption=introduction_template[user.user_lang],
             reply_markup=main_menu_markup,
             parse_mode="HTML"
         )
     else:
         msg = default_languages['welcome_message']
-        await message.answer(msg, reply_markup=get_languages())
+        await message.answer_photo(photo="https://t.me/Rustam_python_bot/84",
+                                   caption=msg, reply_markup=get_languages(), parse_mode="HTML")
 
 
 @router.callback_query(lambda call: call.data.startswith("lang"))
@@ -292,7 +293,7 @@ async def contact_us(message: Message):
     await message.answer(contact_info)
 
 
-@router.message(F.text.in_(["Buyurtma berish", "Буюртма бериш"]))
+@router.message(F.text.in_(["✅Buyurtma berish", "✅Буюртма бериш"]))
 async def get_categories(message: Message):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
@@ -536,15 +537,17 @@ async def handle_products_by_category(call: CallbackQuery):
             text=default_languages[user_lang]['connection']
         )
         states = await state_get()
-        inline_kb = InlineKeyboardMarkup(row_width=2)
+        inline_kb = InlineKeyboardMarkup(row_width=2, inline_keyboard=[])
+        inline_buttons = []
         for state in states:
             state_name = state.name_ru if user_lang == 'ru' else state.name_en
-            inline_kb.add(
+            inline_buttons.append(
                 InlineKeyboardButton(
                     text=state_name,
                     callback_data=f"state_{state.id}"
                 )
             )
+        inline_kb.inline_keyboard = [inline_buttons[i:i + 2] for i in range(0, len(inline_buttons), 2)]
         await call.message.answer(
             text=default_languages[user_lang]['select_state'],
             reply_markup=inline_kb
@@ -609,55 +612,15 @@ async def save_location_temp(message: Message, state: FSMContext):
         )
         return
 
-    user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     latitude = message.location.latitude
     longitude = message.location.longitude
     google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
 
     await state.update_data(latitude=latitude, longitude=longitude, maps_link=google_maps_link)
 
-    total_price = message_history.pop(user_id, None)
-    await state.update_data(total_price=total_price)
-
-    prices = [LabeledPrice(label="Buyurtma narxi", amount=total_price * 100)]
-    await bot.send_invoice(
-        chat_id=message.from_user.id,
-        title="Buyurtma uchun to'lov",
-        description="Buyurtma uchun to'lovni amalga oshiring.",
-        payload="order_payment_payload",
-        provider_token=PAYMENT_TOKEN,
-        currency="UZS",
-        prices=prices
-    )
-    await state.set_state(OrderAddress.payment)
-
-
-@router.pre_checkout_query()
-async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
-    await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True)
-
-
-@router.message(F.content_type == ContentType.SUCCESSFUL_PAYMENT)
-async def successful_payment_handler(message: Message, state: FSMContext):
-    user_id = message.from_user.id
-    user_lang = await get_user_language(user_id)
-    is_blocked = await sync_to_async(BlockedUser.objects.filter(telegram_id=user_id).exists)()
-
-    if is_blocked:
-        await message.answer(
-            default_languages[user_lang]['not']
-        )
-        return
-
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     user = await get_user(user_id)
-
-    order_data = await state.get_data()
-    latitude = order_data.get("latitude")
-    longitude = order_data.get("longitude")
-    google_maps_link = order_data.get("maps_link")
-    total_price = order_data.get("total_price")
-
+    total_price = message_history.pop(user_id, None)
     order = await update_order(
         user_id,
         latitude,
@@ -679,5 +642,6 @@ async def successful_payment_handler(message: Message, state: FSMContext):
         county_name,
     )
     main_menu_markup = get_main_menu(user_lang)
+
     await message.answer(text=default_languages[user_lang]['order__'], reply_markup=main_menu_markup)
     await state.clear()

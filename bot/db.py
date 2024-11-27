@@ -336,3 +336,15 @@ def get_user_statistics():
         "new_users_24h": new_users_24h,
         "new_users_1_month": new_users_1_month
     }
+
+
+@sync_to_async(thread_sensitive=True)
+def save_location_to_database(user_id, latitude, longitude):
+    try:
+        # Foydalanuvchining lokatsiyasini bazaga saqlash
+        user = CustomUser.objects.get(telegram_id=user_id)
+        user.latitude = latitude
+        user.longitude = longitude
+        user.save()
+    except Exception as e:
+        print(f"Error saving location to database: {e}")

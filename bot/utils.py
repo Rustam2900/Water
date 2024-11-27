@@ -13,9 +13,8 @@ default_languages = {
     "uz": {
         "not": "❌ Siz botdan foydalana olmaysiz, siz qora ro'yxatdasiz.\n"
                "❗ Botdan foydalanish uchun admin bilan bog'laning: @ruqiyasuv",
-        "connection": "Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz bor. \n"
-                      "Iltimos, boshqa viloyatni tanlang:\n"
-                      "Namangadan diller qidirilmoqda.\n"
+        "connection": "Bizda faqat hozirda Farg‘ona uchun xizmatlarimiz mavjud:\n"
+                      "Boshqa viloyatlar uchun Diller qidirilmoqda:\n"
                       "Takliflar uchun:\n"
                       "📞+998916694474 📩 @Ruqiyasuv",
         "name_update": "To'liq ismni o'zgartirish",
@@ -28,7 +27,7 @@ default_languages = {
         "back": "Orqaga",
         "country": "Tuman tanlang:",
         "state_": "Viloyat tanlang:",
-        "order__": "To'lov amalga oshirildi va buyurtmangiz qabul qilindi! 😊",
+        "order__": "Buyurtmangiz qabul qilindi, kuriyerlarimiz siz bilan 24 soat ichida bog'lanishadi.",
         "min_order_required": "minimal buyurtma talab qilinadi",
         "min_order_error": "minimal buyurtma yetmadi",
         "send_receipt": "chek yuboring",
@@ -50,7 +49,7 @@ default_languages = {
         "order_not_found": "Buyurtma topilmadi!",
         "successful_changed": "Muvaffaqiyatli o'zgartirildi",
         "select_language": "Til tanlang!",
-        'categories': 'Buyurtma berish',
+        'categories': '✅Buyurtma berish',
         "my_orders": "📦 Mening buyurtmalarim",
         "contact_us": "📲 Biz bilan bog‘lanish",
         "settings": "⚙️ Sozlamalar",
@@ -65,9 +64,8 @@ default_languages = {
     "ru": {
         "not": "❌ Сиз ботдан фойдалана олмайсиз, сиз қора рўйхатдасиз.\n"
                "❗ Ботдан фойдаланиш учун админ билан боғланинг: @ruqiyasuv",
-        "connection": "Бизда фақат ҳозирда Фарғона учун хизматларимиз бор. \n"
-                      "Илтимос, бошқа вилоятни танланг:\n"
-                      "Намангандан диллер қидирилмоқда.\n"
+        "connection": "Бизда фақат ҳозирда Фарғона учун хизматларимиз мавжуд:\n"
+                      "Бошқа вилоятлар учун Диллер қидирилмоқда:\n"
                       "Таклифлар учун:\n"
                       "📞+998916694474 📩 @Ruqiyasuv",
         "name_update": "Тўлиқ исмни ўзгартириш",
@@ -81,7 +79,7 @@ default_languages = {
         "back": "Орқага",
         "country": "Туман танланг:",
         "state_": "Вилоят танланг:",
-        "order__": "Тўлов амалга оширилди ва буюртмангиз қабул қилинди! 😊",
+        "order__": "Буюртмангиз қабул қилинди, куриерларимиз сиз билан 24 соат ичида боғланишади.",
         "min_order_required": "минимал буюртма талаб қилинади",
         "min_order_error": "минимал буюртма етмади",
         "send_receipt": "чек юборинг",
@@ -103,7 +101,7 @@ default_languages = {
         "order_not_found": "Буюртма топилмади!",
         "successful_changed": "Муваффақиятли ўзгартирилди",
         "select_language": "Тил танланг!",
-        'categories': 'Буюртма бериш',
+        'categories': '✅Буюртма бериш',
         "my_orders": "📦 Менинг буюртмаларим",
         "contact_us": "📲 Биз билан боғланиш",
         "settings": "⚙️ Созламалар",
@@ -120,14 +118,14 @@ local_user = {}
 
 introduction_template = {
     'uz': """
-<b>💧 Ruqiya Shifo</b>
-Tanangiz va ruhingiz salomatligi uchun dam solingan tabiiy toza ichimlik suvi.
+<b>💧 Ruqiya Shifo suvi</b>
+Tanangiz va ruhingiz salomatligi uchun Ruqiya qilingan tabiiy toza ichimlik suvi.
 
 <b>🚛 Yetkazib berish bepul</b>
 """,
     'ru': """
-<b>💧 Руқия Шифо</b>
-Танангиз ва руҳингиз саломатлиги учун дам солинган табиий тоза ичимлик суви.
+<b>💧 Руқия Шифо суви</b>  
+Танангиз ва руҳингиз саломатлиги учун Руқия қилинган табиий тоза ичимлик суви.  
 
 <b>🚛 Етказиб бериш бепул</b>
 """

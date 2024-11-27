@@ -56,7 +56,7 @@ async def send_order_to_channel(
         f"Telefon raqam: {cleaned_phone_number}\n"
         f"Manzil: {address}\n"
         f"Viloyat: {state}\n"
-        f"Tuman: {county}\n"
+        f"Shahar: {county}\n"
         f"Buyurtma:\n"
     )
 
