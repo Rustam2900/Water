@@ -115,8 +115,10 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://water.rustamdev.uz',
+    # boshqa trusted domenlar ham bo'lishi mumkin
+]
 
 JAZZMIN_SETTINGS = {
     "site_title": "Library Admin",
