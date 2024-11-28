@@ -68,8 +68,8 @@ async def send_order_to_channel(
         quantity = int(item[1])
         total_price_for_item = float(item[2])
         order_message += (
-            f"Mahsulot: {product_name}\n"
-            f"Miqdor: {quantity}\n"
+            f"{product_name}\n"
+            f"Miqdor: {quantity} ta\n"
             f"Narxi: {total_price_for_item} so'm\n"
         )
         total_price += total_price_for_item

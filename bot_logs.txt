@@ -1,0 +1,86 @@
+2024-11-28 15:23:12,553 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-28 15:23:12,554 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-28 15:23:13,273 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:23:13,697 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-28 15:23:13,698 - aiogram.dispatcher - INFO - Start polling
+2024-11-28 15:23:13,818 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-28 15:23:19,135 - aiogram.event - INFO - Update id=599359310 is handled. Duration 436 ms by bot id=8059469964
+2024-11-28 15:23:21,720 - aiogram.event - INFO - Update id=599359311 is handled. Duration 311 ms by bot id=8059469964
+2024-11-28 15:23:29,496 - aiogram.event - INFO - Update id=599359312 is handled. Duration 171 ms by bot id=8059469964
+2024-11-28 15:23:35,063 - aiogram.event - INFO - Update id=599359313 is handled. Duration 140 ms by bot id=8059469964
+2024-11-28 15:23:52,530 - aiogram.event - INFO - Update id=599359314 is handled. Duration 406 ms by bot id=8059469964
+2024-11-28 15:23:58,780 - aiogram.event - INFO - Update id=599359315 is handled. Duration 188 ms by bot id=8059469964
+2024-11-28 15:24:06,143 - aiogram.event - INFO - Update id=599359316 is handled. Duration 327 ms by bot id=8059469964
+2024-11-28 15:25:30,627 - aiogram.event - INFO - Update id=599359317 is handled. Duration 514 ms by bot id=8059469964
+2024-11-28 15:25:32,014 - aiogram.event - INFO - Update id=599359318 is handled. Duration 186 ms by bot id=8059469964
+2024-11-28 15:25:32,990 - aiogram.event - INFO - Update id=599359319 is handled. Duration 141 ms by bot id=8059469964
+2024-11-28 15:25:35,885 - aiogram.event - INFO - Update id=599359320 is handled. Duration 140 ms by bot id=8059469964
+2024-11-28 15:25:54,642 - aiogram.event - INFO - Update id=599359321 is handled. Duration 515 ms by bot id=8059469964
+2024-11-28 15:26:02,294 - aiogram.event - INFO - Update id=599359322 is handled. Duration 172 ms by bot id=8059469964
+2024-11-28 15:26:04,133 - aiogram.event - INFO - Update id=599359323 is handled. Duration 234 ms by bot id=8059469964
+2024-11-28 15:26:06,775 - aiogram.event - INFO - Update id=599359324 is handled. Duration 313 ms by bot id=8059469964
+2024-11-28 15:26:11,282 - aiogram.event - INFO - Update id=599359325 is handled. Duration 171 ms by bot id=8059469964
+2024-11-28 15:26:33,078 - aiogram.event - INFO - Update id=599359326 is handled. Duration 360 ms by bot id=8059469964
+2024-11-28 15:26:36,517 - aiogram.event - INFO - Update id=599359327 is handled. Duration 155 ms by bot id=8059469964
+2024-11-28 15:26:42,302 - aiogram.event - INFO - Update id=599359328 is handled. Duration 390 ms by bot id=8059469964
+2024-11-28 15:26:44,053 - aiogram.event - INFO - Update id=599359329 is handled. Duration 172 ms by bot id=8059469964
+2024-11-28 15:26:46,018 - aiogram.event - INFO - Update id=599359330 is handled. Duration 265 ms by bot id=8059469964
+2024-11-28 15:26:53,521 - aiogram.event - INFO - Update id=599359331 is handled. Duration 577 ms by bot id=8059469964
+2024-11-28 15:31:53,551 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-28 15:31:54,496 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:31:55,250 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-28 15:31:55,497 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-28 15:31:55,875 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000263CBA0A1D0>
+2024-11-28 15:32:04,460 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-28 15:32:04,461 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-28 15:32:05,326 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:32:05,836 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-28 15:32:05,838 - aiogram.dispatcher - INFO - Start polling
+2024-11-28 15:32:05,944 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-28 15:32:12,040 - aiogram.event - INFO - Update id=599359332 is handled. Duration 390 ms by bot id=8059469964
+2024-11-28 15:32:13,328 - aiogram.event - INFO - Update id=599359333 is handled. Duration 172 ms by bot id=8059469964
+2024-11-28 15:32:16,404 - aiogram.event - INFO - Update id=599359334 is handled. Duration 265 ms by bot id=8059469964
+2024-11-28 15:32:17,793 - aiogram.event - INFO - Update id=599359335 is handled. Duration 186 ms by bot id=8059469964
+2024-11-28 15:32:21,840 - aiogram.event - INFO - Update id=599359336 is handled. Duration 186 ms by bot id=8059469964
+2024-11-28 15:32:26,489 - aiogram.event - INFO - Update id=599359337 is handled. Duration 156 ms by bot id=8059469964
+2024-11-28 15:32:29,761 - aiogram.event - INFO - Update id=599359338 is handled. Duration 155 ms by bot id=8059469964
+2024-11-28 15:32:31,187 - aiogram.event - INFO - Update id=599359339 is handled. Duration 219 ms by bot id=8059469964
+2024-11-28 15:32:32,689 - aiogram.event - INFO - Update id=599359340 is handled. Duration 172 ms by bot id=8059469964
+2024-11-28 15:32:33,700 - aiogram.event - INFO - Update id=599359341 is handled. Duration 188 ms by bot id=8059469964
+2024-11-28 15:32:37,749 - aiogram.event - INFO - Update id=599359342 is handled. Duration 202 ms by bot id=8059469964
+2024-11-28 15:32:43,066 - aiogram.event - INFO - Update id=599359343 is handled. Duration 188 ms by bot id=8059469964
+2024-11-28 15:32:54,041 - aiogram.event - INFO - Update id=599359344 is handled. Duration 140 ms by bot id=8059469964
+2024-11-28 15:33:01,977 - aiogram.event - INFO - Update id=599359345 is handled. Duration 203 ms by bot id=8059469964
+2024-11-28 15:33:14,044 - aiogram.event - INFO - Update id=599359346 is handled. Duration 156 ms by bot id=8059469964
+2024-11-28 15:33:20,560 - aiogram.event - INFO - Update id=599359347 is handled. Duration 156 ms by bot id=8059469964
+2024-11-28 15:33:24,024 - aiogram.event - INFO - Update id=599359348 is handled. Duration 313 ms by bot id=8059469964
+2024-11-28 15:33:25,507 - aiogram.event - INFO - Update id=599359349 is handled. Duration 343 ms by bot id=8059469964
+2024-11-28 15:33:27,312 - aiogram.event - INFO - Update id=599359350 is handled. Duration 390 ms by bot id=8059469964
+2024-11-28 15:33:29,978 - aiogram.event - INFO - Update id=599359351 is handled. Duration 485 ms by bot id=8059469964
+2024-11-28 15:33:37,990 - aiogram.event - INFO - Update id=599359352 is handled. Duration 828 ms by bot id=8059469964
+2024-11-28 15:39:01,345 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2024-11-28 15:39:01,346 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-28 15:39:12,708 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8059469964)
+2024-11-28 15:40:01,420 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-28 15:40:02,284 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:40:02,797 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-28 15:40:03,046 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-28 15:40:03,366 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x0000019EAD649310>
+2024-11-28 15:45:54,200 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-28 15:45:54,201 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-28 15:45:54,831 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:45:55,244 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-28 15:45:55,245 - aiogram.dispatcher - INFO - Start polling
+2024-11-28 15:45:55,341 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-28 15:46:40,601 - aiogram.event - INFO - Update id=599359353 is handled. Duration 405 ms by bot id=8059469964
+2024-11-28 15:46:42,841 - aiogram.event - INFO - Update id=599359354 is handled. Duration 280 ms by bot id=8059469964
+2024-11-28 15:46:44,309 - aiogram.event - INFO - Update id=599359355 is handled. Duration 202 ms by bot id=8059469964
+2024-11-28 15:47:07,990 - aiogram.event - INFO - Update id=599359356 is handled. Duration 656 ms by bot id=8059469964
+2024-11-28 15:47:09,644 - aiogram.event - INFO - Update id=599359357 is handled. Duration 155 ms by bot id=8059469964
+2024-11-28 15:47:16,180 - aiogram.event - INFO - Update id=599359358 is handled. Duration 250 ms by bot id=8059469964
+2024-11-28 15:47:31,733 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-28 15:47:32,539 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-28 15:47:33,029 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-28 15:47:33,289 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'

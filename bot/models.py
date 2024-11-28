@@ -25,7 +25,7 @@ class CustomUser(models.Model):
 
 class Product(models.Model):
     name = models.CharField(_("name"), max_length=200)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField()
     delivery_time = models.CharField(_("delivery_time"), max_length=100)
     is_paid = models.BooleanField(default=False)
 
@@ -38,7 +38,7 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items_product')
     order = models.ForeignKey('Order', on_delete=models.CASCADE, related_name='cart_items', blank=True, null=True)
     quantity = models.PositiveIntegerField(default=1)
-    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    amount = models.IntegerField(default=0)
     is_visible = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -66,7 +66,7 @@ class Order(models.Model):
     latitude = models.DecimalField(max_digits=10, decimal_places=8, blank=True, null=True)
     longitude = models.DecimalField(max_digits=11, decimal_places=8, blank=True, null=True)
     phone_number = models.CharField(max_length=20, validators=[phone_number_validator], blank=True, null=True)
-    total_price = models.DecimalField(decimal_places=2, max_digits=10, default=0.00, blank=True, null=True)
+    total_price = models.IntegerField(default=0, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     is_confirmed = models.BooleanField(default=False, verbose_name=_('Is Confirmed'))
     is_paid = models.BooleanField(default=False)

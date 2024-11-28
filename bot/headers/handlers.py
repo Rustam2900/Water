@@ -384,18 +384,28 @@ async def process_quantity(message: Message, state: FSMContext):
     user_id = message.from_user.id
     user_lang = await get_user_language(user_id)
     data = await state.get_data()
-    quantity = int(message.text)
-    print("quantity: ", quantity)
-    product_id = data['product_id']
 
-    await add_to_cart(
-        user_id=message.from_user.id,
-        product_id=product_id,
-        quantity=quantity
-    )
+    user_input = message.text.strip()
 
-    await message.answer(default_languages[user_lang]['product_add_cart'])
-    await state.clear()
+    if re.fullmatch(r"\d+\s*(ta)?", user_input):
+        quantity = int(re.search(r"\d+", user_input).group())
+        print("quantity: ", quantity)
+
+        product_id = data['product_id']
+
+        await add_to_cart(
+            user_id=message.from_user.id,
+            product_id=product_id,
+            quantity=quantity
+        )
+
+        await message.answer(default_languages[user_lang]['product_add_cart'])
+        await state.clear()
+
+    else:
+        await message.answer(
+            default_languages[user_lang]['invalid_quantity']
+        )
 
 
 @router.message(F.text.in_(["🛒Savatcha", "🛒Cаватча"]))
