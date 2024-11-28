@@ -259,17 +259,6 @@ def create_or_update_user_country(telegram_id, county_id):
         return None, False
 
 
-# @sync_to_async
-# def get_statistics():
-#     total_users = CustomUser.objects.count()
-#
-#     time_24_hours_ago = timezone.now() - timedelta(days=1)
-#     new_users_24h = CustomUser.objects.filter(created_at__gte=time_24_hours_ago).count()
-#
-#     return f"👤 Bot a'zolar soni: {total_users}\n" \
-#            f"🕒 Oxirgi 24 soatda qo'shilgan foydalanuvchilar: {new_users_24h}\n"
-
-
 @sync_to_async
 def get_all_users():
     return list(CustomUser.objects.all())
@@ -341,7 +330,6 @@ def get_user_statistics():
 @sync_to_async(thread_sensitive=True)
 def save_location_to_database(user_id, latitude, longitude):
     try:
-        # Foydalanuvchining lokatsiyasini bazaga saqlash
         user = CustomUser.objects.get(telegram_id=user_id)
         user.latitude = latitude
         user.longitude = longitude
