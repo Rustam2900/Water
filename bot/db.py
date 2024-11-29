@@ -7,6 +7,7 @@ from django.utils import timezone
 
 from bot.models import CustomUser, Order, Product, CartItem, OrderMinSum, State, County, BlockedUser
 from bot.utils import message_history
+from decimal import Decimal
 
 
 @sync_to_async
@@ -51,7 +52,7 @@ def save_user_info_to_db(user_data):
 def get_my_orders(user_telegram_id):
     try:
         user = CustomUser.objects.get(telegram_id=user_telegram_id)
-        orders = Order.objects.filter(user=user)
+        orders = Order.objects.filter(user=user, status="TO'LLANGAN")
         return list(orders)
     except CustomUser.DoesNotExist:
         print(f"User with telegram_id {user_telegram_id} not found.")
@@ -338,9 +339,12 @@ def save_location_to_database(user_id, latitude, longitude):
         print(f"Error saving location to database: {e}")
 
 
-def format_price(price: int) -> str:
+def format_price(price) -> str:
     """
     Narxni oxiridan 3 ta raqamdan guruhlab formatlash.
+    Har qanday sonni qabul qiladi: int, float yoki Decimal.
     Masalan, 20000 -> 20 000, 298000000 -> 298 000 000.
     """
+    if isinstance(price, (float, Decimal)):
+        price = int(price)  # Float yoki Decimal ni butun songa aylantiramiz
     return f"{price:,}".replace(",", " ")

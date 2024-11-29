@@ -47,7 +47,6 @@ async def send_order_to_channel(
         address,
         state,
         county,
-
 ):
     channel_id = '-1002256139682'
     cleaned_phone_number = clean_phone_number(phone_number)
@@ -68,15 +67,18 @@ async def send_order_to_channel(
         product_name = item[0]
         quantity = int(item[1])
         total_price_for_item = float(item[2])
+
+        formatted_item_price = format_price(total_price_for_item)
         order_message += (
             f"{product_name}\n"
             f"Miqdor: {quantity} ta\n"
-            f"Narxi: {total_price_for_item} so'm\n"
+            f"Narxi: {formatted_item_price} so'm\n"
         )
         total_price += total_price_for_item
 
+    formatted_total_price = format_price(total_price)
     order_message += (
-        f"Jami narx: {format_price(total_price)} so'm\n"
+        f"Jami narx: {formatted_total_price} so'm\n"
     )
 
     await bot.send_message(chat_id=channel_id, text=order_message)

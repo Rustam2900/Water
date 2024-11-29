@@ -430,9 +430,10 @@ async def show_cart(message: Message):
 
     message_text = f"{default_languages[user_lang]['product_shopping_cart']}\n\n"
     for item in cart_items:
+        formatted_price = format_price(item.amount)
         message_text += (
             f"📦 {item.product.name_uz} - {item.quantity} dona\n"
-            f"✅  {default_languages[user_lang]['products_price']} {item.amount} so'm"
+            f"✅  {default_languages[user_lang]['products_price']} {formatted_price} so'm"
             f"\n\n"
         )
 
@@ -632,7 +633,7 @@ async def save_location_temp(message: Message, state: FSMContext):
 
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     user = await get_user(user_id)
-    total_price = format_price(message_history.pop(user_id, None))
+    total_price = message_history.pop(user_id, None)
     order = await update_order(
         user_id,
         latitude,

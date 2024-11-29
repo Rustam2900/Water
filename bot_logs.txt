@@ -1,0 +1,265 @@
+2024-11-29 14:27:24,311 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:27:24,312 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:27:25,360 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:27:26,143 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:27:26,143 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:27:26,585 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:27:31,287 - aiogram.event - INFO - Update id=599359410 is handled. Duration 532 ms by bot id=8059469964
+2024-11-29 14:27:32,416 - aiogram.event - INFO - Update id=599359411 is handled. Duration 217 ms by bot id=8059469964
+2024-11-29 14:27:33,528 - aiogram.event - INFO - Update id=599359412 is handled. Duration 266 ms by bot id=8059469964
+2024-11-29 14:27:36,235 - aiogram.event - INFO - Update id=599359413 is handled. Duration 250 ms by bot id=8059469964
+2024-11-29 14:27:39,766 - aiogram.event - INFO - Update id=599359414 is handled. Duration 250 ms by bot id=8059469964
+2024-11-29 14:27:41,419 - aiogram.event - INFO - Update id=599359415 is handled. Duration 186 ms by bot id=8059469964
+2024-11-29 14:27:42,995 - aiogram.event - INFO - Update id=599359416 is handled. Duration 202 ms by bot id=8059469964
+2024-11-29 14:27:46,064 - aiogram.event - INFO - Update id=599359417 is handled. Duration 219 ms by bot id=8059469964
+2024-11-29 14:27:49,319 - aiogram.event - INFO - Update id=599359418 is handled. Duration 250 ms by bot id=8059469964
+2024-11-29 14:28:02,503 - aiogram.event - INFO - Update id=599359419 is handled. Duration 545 ms by bot id=8059469964
+2024-11-29 14:28:03,923 - aiogram.event - INFO - Update id=599359420 is handled. Duration 172 ms by bot id=8059469964
+2024-11-29 14:28:05,448 - aiogram.event - INFO - Update id=599359421 is handled. Duration 313 ms by bot id=8059469964
+2024-11-29 14:28:11,934 - aiogram.event - INFO - Update id=599359422 is not handled. Duration 30 ms by bot id=8059469964
+2024-11-29 14:28:11,934 - aiogram.event - ERROR - Cause exception while process update id=599359422 by bot id=8059469964
+ValueError: Field 'total_price' expected a number but got '234 000'.
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2055, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '234 000'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\headers\handlers.py", line 636, in save_location_temp
+    order = await update_order(
+            ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 468, in __call__
+    ret = await asyncio.shield(exec_coro)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\asgiref\sync.py", line 522, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\bot\db.py", line 165, in update_order
+    order.save()
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 990, in _save_table
+    updated = self._do_update(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\base.py", line 1054, in _do_update
+    return filtered._update(values) > 0
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\modeltranslation\manager.py", line 396, in _update
+    return super()._update(values)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\query.py", line 1231, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1982, in execute_sql
+    cursor = super().execute_sql(result_type)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1547, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1945, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 954, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2062, in get_db_prep_value
+    value = super().get_db_prep_value(value, connection, prepared)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 947, in get_db_prep_value
+    value = self.get_prep_value(value)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\Water\venv\Lib\site-packages\django\db\models\fields\__init__.py", line 2057, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'total_price' expected a number but got '234 000'.
+2024-11-29 14:28:56,256 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:28:57,144 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:28:58,031 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:28:58,277 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:29:06,839 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:29:06,840 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:29:07,430 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:29:08,156 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:29:08,157 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:29:08,253 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:29:11,793 - aiogram.event - INFO - Update id=599359423 is handled. Duration 422 ms by bot id=8059469964
+2024-11-29 14:29:12,850 - aiogram.event - INFO - Update id=599359424 is handled. Duration 172 ms by bot id=8059469964
+2024-11-29 14:29:14,205 - aiogram.event - INFO - Update id=599359425 is handled. Duration 172 ms by bot id=8059469964
+2024-11-29 14:29:15,440 - aiogram.event - INFO - Update id=599359426 is handled. Duration 202 ms by bot id=8059469964
+2024-11-29 14:29:16,606 - aiogram.event - INFO - Update id=599359427 is handled. Duration 155 ms by bot id=8059469964
+2024-11-29 14:29:18,853 - aiogram.event - INFO - Update id=599359428 is handled. Duration 219 ms by bot id=8059469964
+2024-11-29 14:29:21,405 - aiogram.event - INFO - Update id=599359429 is handled. Duration 219 ms by bot id=8059469964
+2024-11-29 14:29:30,120 - aiogram.event - INFO - Update id=599359430 is handled. Duration 436 ms by bot id=8059469964
+2024-11-29 14:29:31,649 - aiogram.event - INFO - Update id=599359431 is handled. Duration 202 ms by bot id=8059469964
+2024-11-29 14:29:33,096 - aiogram.event - INFO - Update id=599359432 is handled. Duration 327 ms by bot id=8059469964
+2024-11-29 14:29:39,770 - aiogram.event - INFO - Update id=599359433 is handled. Duration 672 ms by bot id=8059469964
+2024-11-29 14:35:34,121 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:35:36,266 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:35:36,676 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:35:36,927 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:35:37,167 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001E467C6A050>
+2024-11-29 14:35:46,265 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:35:46,266 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:35:47,056 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:35:47,348 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:35:47,349 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:35:47,458 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:36:10,062 - aiogram.event - INFO - Update id=599359434 is handled. Duration 422 ms by bot id=8059469964
+2024-11-29 14:36:12,327 - aiogram.event - INFO - Update id=599359435 is handled. Duration 296 ms by bot id=8059469964
+2024-11-29 14:36:13,842 - aiogram.event - INFO - Update id=599359436 is handled. Duration 203 ms by bot id=8059469964
+2024-11-29 14:36:16,660 - aiogram.event - INFO - Update id=599359437 is handled. Duration 688 ms by bot id=8059469964
+2024-11-29 14:36:19,016 - aiogram.event - INFO - Update id=599359438 is handled. Duration 219 ms by bot id=8059469964
+2024-11-29 14:36:20,969 - aiogram.event - INFO - Update id=599359439 is handled. Duration 155 ms by bot id=8059469964
+2024-11-29 14:36:28,741 - aiogram.event - INFO - Update id=599359440 is handled. Duration 6484 ms by bot id=8059469964
+2024-11-29 14:36:32,979 - aiogram.event - INFO - Update id=599359441 is handled. Duration 171 ms by bot id=8059469964
+2024-11-29 14:36:35,792 - aiogram.event - INFO - Update id=599359442 is handled. Duration 342 ms by bot id=8059469964
+2024-11-29 14:36:43,396 - aiogram.event - INFO - Update id=599359443 is handled. Duration 219 ms by bot id=8059469964
+2024-11-29 14:36:45,871 - aiogram.event - INFO - Update id=599359444 is handled. Duration 484 ms by bot id=8059469964
+2024-11-29 14:36:47,463 - aiogram.event - INFO - Update id=599359445 is handled. Duration 186 ms by bot id=8059469964
+2024-11-29 14:36:48,831 - aiogram.event - INFO - Update id=599359446 is handled. Duration 313 ms by bot id=8059469964
+2024-11-29 14:36:56,176 - aiogram.event - INFO - Update id=599359447 is handled. Duration 639 ms by bot id=8059469964
+2024-11-29 14:39:55,880 - aiogram.event - INFO - Update id=599359448 is handled. Duration 1265 ms by bot id=8059469964
+2024-11-29 14:43:57,575 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:43:58,466 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:43:58,728 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:43:58,993 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:43:59,362 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000200D0BF62D0>
+2024-11-29 14:44:07,743 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:44:07,745 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:44:08,585 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:44:08,906 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:44:08,907 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:44:09,007 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:44:13,559 - aiogram.event - INFO - Update id=599359449 is handled. Duration 453 ms by bot id=8059469964
+2024-11-29 14:44:16,463 - aiogram.event - INFO - Update id=599359450 is handled. Duration 530 ms by bot id=8059469964
+2024-11-29 14:44:25,023 - aiogram.event - INFO - Update id=599359451 is handled. Duration 172 ms by bot id=8059469964
+2024-11-29 14:44:27,039 - aiogram.event - INFO - Update id=599359452 is handled. Duration 171 ms by bot id=8059469964
+2024-11-29 14:44:29,161 - aiogram.event - INFO - Update id=599359453 is handled. Duration 297 ms by bot id=8059469964
+2024-11-29 14:45:26,071 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:45:28,966 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:45:29,358 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:45:29,611 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:45:38,479 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:45:38,480 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:45:39,670 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:45:40,022 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:45:40,023 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:45:40,235 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:45:44,778 - aiogram.event - INFO - Update id=599359454 is handled. Duration 516 ms by bot id=8059469964
+2024-11-29 14:45:46,329 - aiogram.event - INFO - Update id=599359455 is handled. Duration 171 ms by bot id=8059469964
+2024-11-29 14:49:32,616 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:49:34,018 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:49:34,426 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:49:34,694 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:49:43,425 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:49:43,426 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:49:44,625 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:49:45,084 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:49:45,085 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:49:45,196 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:49:48,583 - aiogram.event - INFO - Update id=599359456 is handled. Duration 469 ms by bot id=8059469964
+2024-11-29 14:49:50,554 - aiogram.event - INFO - Update id=599359457 is handled. Duration 750 ms by bot id=8059469964
+2024-11-29 14:50:45,965 - aiogram.event - INFO - Update id=599359458 is handled. Duration 875 ms by bot id=8059469964
+2024-11-29 14:50:47,333 - aiogram.event - INFO - Update id=599359459 is handled. Duration 188 ms by bot id=8059469964
+2024-11-29 14:50:49,089 - aiogram.event - INFO - Update id=599359460 is handled. Duration 234 ms by bot id=8059469964
+2024-11-29 14:50:50,063 - aiogram.event - INFO - Update id=599359461 is handled. Duration 203 ms by bot id=8059469964
+2024-11-29 14:50:51,088 - aiogram.event - INFO - Update id=599359462 is handled. Duration 203 ms by bot id=8059469964
+2024-11-29 14:50:54,117 - aiogram.event - INFO - Update id=599359463 is handled. Duration 250 ms by bot id=8059469964
+2024-11-29 14:50:57,433 - aiogram.event - INFO - Update id=599359464 is handled. Duration 172 ms by bot id=8059469964
+2024-11-29 14:53:22,727 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 14:53:24,001 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:53:24,413 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 14:53:24,679 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:53:34,082 - bot.management.commands.run_bot - INFO - Buyruqlar o'rnatildi.
+2024-11-29 14:53:34,083 - bot.management.commands.run_bot - INFO - Router ulandi.
+2024-11-29 14:53:35,592 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 14:53:36,013 - root - INFO - Hamma foydalanuvchilarga bot ishga tushgani haqida xabar yuborildi.
+2024-11-29 14:53:36,014 - aiogram.dispatcher - INFO - Start polling
+2024-11-29 14:53:36,136 - aiogram.dispatcher - INFO - Run polling for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 14:53:41,548 - aiogram.event - INFO - Update id=599359465 is handled. Duration 514 ms by bot id=8059469964
+2024-11-29 14:53:42,668 - aiogram.event - INFO - Update id=599359466 is handled. Duration 202 ms by bot id=8059469964
+2024-11-29 14:53:46,411 - aiogram.event - INFO - Update id=599359467 is handled. Duration 547 ms by bot id=8059469964
+2024-11-29 14:53:48,277 - aiogram.event - INFO - Update id=599359468 is handled. Duration 188 ms by bot id=8059469964
+2024-11-29 14:53:50,437 - aiogram.event - INFO - Update id=599359469 is handled. Duration 344 ms by bot id=8059469964
+2024-11-29 14:54:02,416 - aiogram.event - INFO - Update id=599359470 is handled. Duration 1639 ms by bot id=8059469964
+2024-11-29 14:54:25,341 - aiogram.event - INFO - Update id=599359471 is handled. Duration 561 ms by bot id=8059469964
+2024-11-29 14:54:26,362 - aiogram.event - INFO - Update id=599359472 is handled. Duration 188 ms by bot id=8059469964
+2024-11-29 14:54:28,164 - aiogram.event - INFO - Update id=599359473 is handled. Duration 171 ms by bot id=8059469964
+2024-11-29 14:54:30,194 - aiogram.event - INFO - Update id=599359474 is handled. Duration 203 ms by bot id=8059469964
+2024-11-29 14:54:33,194 - aiogram.event - INFO - Update id=599359475 is handled. Duration 155 ms by bot id=8059469964
+2024-11-29 15:28:50,278 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2024-11-29 15:28:50,310 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8059469964)
+2024-11-29 15:29:01,429 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8059469964)
+2024-11-29 15:29:28,935 - aiogram.dispatcher - INFO - Polling stopped
+2024-11-29 15:29:30,497 - root - ERROR - Xabarni yuborishda xatolik yuz berdi: Telegram server says - Forbidden: bot was blocked by the user
+2024-11-29 15:29:30,826 - root - INFO - Hamma foydalanuvchilarga bot ishdan to'xtagani haqida xabar yuborildi.
+2024-11-29 15:29:31,129 - aiogram.dispatcher - INFO - Polling stopped for bot @Ruqiyasuvbot id=8059469964 - 'Ruqiya suv'
+2024-11-29 15:29:31,863 - asyncio - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000002D5DC303690>
