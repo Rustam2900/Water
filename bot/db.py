@@ -336,3 +336,11 @@ def save_location_to_database(user_id, latitude, longitude):
         user.save()
     except Exception as e:
         print(f"Error saving location to database: {e}")
+
+
+def format_price(price: int) -> str:
+    """
+    Narxni oxiridan 3 ta raqamdan guruhlab formatlash.
+    Masalan, 20000 -> 20 000, 298000000 -> 298 000 000.
+    """
+    return f"{price:,}".replace(",", " ")

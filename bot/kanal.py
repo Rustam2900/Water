@@ -4,6 +4,7 @@ from django.conf import settings
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
+from bot.db import format_price
 from bot.models import CartItem
 
 bot = Bot(token=settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
@@ -75,7 +76,7 @@ async def send_order_to_channel(
         total_price += total_price_for_item
 
     order_message += (
-        f"Jami narx: {total_price} so'm\n"
+        f"Jami narx: {format_price(total_price)} so'm\n"
     )
 
     await bot.send_message(chat_id=channel_id, text=order_message)

@@ -17,7 +17,7 @@ from aiogram.client.default import DefaultBotProperties
 from bot.db import save_user_language, save_user_info_to_db, get_user_language, get_my_orders, get_all_product, \
     get_product_detail, get_cart_items, link_cart_items_to_order, add_to_cart, \
     save_order_to_database, get_or_create_order, update_order, get_user, state_get, create_or_update_user_state, \
-    create_or_update_user_country, county_get
+    create_or_update_user_country, county_get, format_price
 from bot.states import UserStates, OrderAddress, OrderState, UserUpdateName, UserUpdatePhone
 from bot.models import CustomUser, BlockedUser
 from bot.kanal import send_order_to_channel
@@ -268,7 +268,7 @@ async def get_orders(message: Message):
         msg += f"Status: {order.get_status_display()}\n"
         msg += f"Address: {order.address}\n"
         msg += f"Phone: {order.phone_number}\n"
-        msg += f"Total Price: {order.total_price} USD\n"
+        msg += f"Total Price: {order.total_price} so'm\n"
         msg += f"Created At: {order.created_at.strftime('%Y-%m-%d %H:%M:%S')}\n"
         msg += "----------------------------\n"
 
@@ -342,9 +342,10 @@ async def handle_product_detail(call: CallbackQuery):
 
     product_name = product.name_uz if user_lang == 'uz' else product.name_ru
     delivery_time_name = product.delivery_time_uz if user_lang == 'uz' else product.delivery_time_ru
+    formatted_price = format_price(product.price)
     message_text = (
         f"📦 {default_languages[user_lang]['products']}: {product_name}\n\n"
-        f"✅ {default_languages[user_lang]['products_price']}: {product.price} so'm\n"
+        f"✅ {default_languages[user_lang]['products_price']}: {formatted_price} so'm\n"
         f"🚚 {default_languages[user_lang]['delivery_time']} {delivery_time_name or 'not'}"
     )
 
@@ -631,7 +632,7 @@ async def save_location_temp(message: Message, state: FSMContext):
 
     user = await CustomUser.objects.filter(telegram_id=user_id).afirst()
     user = await get_user(user_id)
-    total_price = message_history.pop(user_id, None)
+    total_price = format_price(message_history.pop(user_id, None))
     order = await update_order(
         user_id,
         latitude,
