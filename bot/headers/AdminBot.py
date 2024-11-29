@@ -181,7 +181,7 @@ async def add_name_uz(message: Message, state: FSMContext):
 
 def is_valid_kiril_text(text: str) -> bool:
     import re
-    return bool(re.match(r'^[\u0400-\u04FF\s\d.]+$', text.strip()))
+    return bool(re.match(r'^[\u0400-\u04FF\s\d.,]+$', text.strip()))
 
 
 @router.message(ProductSave.kiril_name)
