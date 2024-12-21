@@ -19,16 +19,6 @@ ___
 * Bot run
 
       python manage.py run_bot
-* Alembic init
-
-        alembic init migrations
-* env.py files database url is given
-* Alembic migrations
-
-        alembic revision --autogenerate -m "Create tables"
-* Alembic upgrade
-
-        alembic upgrade head
 
 ### Thank you all [Rustam2900](https://github.com/Rustam2900) was with you 🙂.
 
